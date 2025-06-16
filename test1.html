@@ -1,137 +1,5147 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>로그인 | 내 사이트</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      box-sizing: border-box;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)https://npmu-i.nicepark.co.kr/npmm/home -->
+<html xml:lang="ko" lang="ko" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	
+	<title>나이스파크주차관리시스템</title>
+	
+	<script type="text/javascript">
+		var contextPath = "";
+		var movePage = "/ui/npmm/frame/login.xml";
+		var SYS_CD = "NPMM";
+		var SERVER_MODE = "prd";
+		var screenParamStr = 'null' != 'null' ? 'null' : '{}';			// 화면에 넘길 파라미터
+		var subDomain = "null" != 'null' ? "null" : undefined;				// SYS_CD 하위 도메인
+		
+		
+		var screenParam = {};
+		try {
+			screenParam = JSON.parse(screenParamStr);
+		} catch (e) {}
+		var strTitle = "";
+		var strLink ="";
+		
+		if ("NPMS" == SYS_CD){
+			strTitle = "NPMS 주차통합관리시스템";
+			strLink = '<link href="/images/MS/favicon.ico" rel="shortcut icon">';
+		}else if("NPMU" == SYS_CD){ 
+			strTitle = "NPMU 주차고객관리시스템"; 
+			strLink = '<link href="/images/MS/favicon.ico" rel="shortcut icon">';
+		}else if("NPMM" == SYS_CD){ 
+			strTitle = "나이스파크주차관리시스템";
+			strLink = '<link href="/images/MM/favicon.ico" rel="shortcut icon">';
+		}else if("NPDC" == SYS_CD){ 
+			if(movePage == "/ui/npdc/frame/login.xml") {
+				strTitle = "NICEPARK 웹할인시스템 로그인";
+			} else {
+				strTitle = "나이스파크 웹할인시스템";
+			}
+			strLink = '<link href="/images/DC/favicon.ico" rel="shortcut icon">';
+		}else if("NPPL" == SYS_CD){ 
+			strTitle = "나이스파크 정기권 및 할인권 구매 시스템";
+			strLink = '<link href="/images/PL/favicon.ico" rel="shortcut icon">';
+		}else if("NPPM" == SYS_CD){ 
+			strTitle = "나이스파크 정기권 및 할인권 구매 시스템";
+			strLink = '<link href="/images/PM/favicon.ico" rel="shortcut icon">';
+		}
+		
+		document.title = strTitle; 
+		document.write(strLink);
+		
+		var WebSquareExternal = {
+			"baseURI": contextPath + "/websquare/", 
+			"w2xPath" : contextPath + movePage
+		};
+		
+		<!-- 				캐시 갱신 변수 							-->
+		var websquareEngineVersion = "v1.0";		
+		var commonVersion = "CM_20250415_0001";			
+		var screenCacheControl = "every";
+		var applicationVersion = "AP_20240730_0002";
+		
+	</script><link href="https://npmu-i.nicepark.co.kr/images/MM/favicon.ico" rel="shortcut icon">
+ 
+	<script id="configJS" type="text/javascript" src="./나이스파크주차관리시스템_files/config_NPMM.js.다운로드"></script>
+	<script type="text/javascript" src="./나이스파크주차관리시스템_files/websquare_engine.js.다운로드"></script>
+	<script id="appJS" type="text/javascript" src="./나이스파크주차관리시스템_files/app.js.다운로드"></script>
+	
+<script type="text/javascript" charset="UTF-8" src="./나이스파크주차관리시스템_files/ko.js.다운로드"></script><script type="text/javascript" src="./나이스파크주차관리시스템_files/jquery-1.10.2.min.js.다운로드"></script><script type="text/javascript" src="./나이스파크주차관리시스템_files/papaparse.js.다운로드"></script><script type="text/javascript" src="./나이스파크주차관리시스템_files/commonGlobal.js.다운로드"></script><script type="text/javascript" src="./나이스파크주차관리시스템_files/commonScope.js.다운로드"></script><script type="text/javascript" src="./나이스파크주차관리시스템_files/require.js.다운로드"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/_wpack_/ui/com/udc/fileMultiUpload.js?postfix=CM_20250415_0001" src="./나이스파크주차관리시스템_files/fileMultiUpload.js.다운로드"></script><link href="./나이스파크주차관리시스템_files/stylesheet_ext.css" type="text/css" rel="stylesheet"><link href="./나이스파크주차관리시스템_files/common.css" type="text/css" rel="stylesheet"><link href="./나이스파크주차관리시스템_files/base.css" type="text/css" rel="stylesheet"><link href="./나이스파크주차관리시스템_files/font.css" type="text/css" rel="stylesheet"><link href="./나이스파크주차관리시스템_files/contents.css" type="text/css" rel="stylesheet"><link href="./나이스파크주차관리시스템_files/MM.css" type="text/css" rel="stylesheet"><link href="./나이스파크주차관리시스템_files/swiper.css" type="text/css" rel="stylesheet"><script type="text/javascript" charset="UTF-8" data-wqinternal="true">WebSquare.core.commonCache.com= function(scopeObj){
+var com; var ret;WebSquare.scope_obj=scopeObj.id;
+ with(scopeObj.scope){
+ var udc_obj = scopeObj.id;
+var com = {"sbm":{"execute":function (sbmObj, requestData, compObj, hidesProcessMsg) {
+	return new Promise(function(resolve, reject) {
+		if (typeof sbmObj === "object") {
+			var _sbmObj = (typeof sbmObj == 'object') ? sbmObj : (typeof sbmObj == 'string') ? $p.getSubmission(sbmObj) : sbmObj;
+			if(hidesProcessMsg === true) _sbmObj.processMsg = '';
+	
+			if (com.util.isEmpty(_sbmObj.action)) {
+				var alertMsg = com.data.getMessage("MSG_CM_00002", "action");
+				com.win.alert(alertMsg);
+				return false;
+			}
+			
+			if (com.util.isEmpty(_sbmObj.submitDoneHandler)) {
+				_sbmObj._promise_submitDoneHandler = function(rtn) {
+					resolve(rtn);
+				}
+			}
+			
+			if (com.util.isEmpty(_sbmObj.submitErrorHandler)) {
+				_sbmObj._promise_submitErrorHandler = function(rtn) {
+					reject(rtn);
+				}
+			}
+			
+			$p.executeSubmission(_sbmObj, requestData, compObj);
+		}
+	});
+},"executeDynamic":function(options, requestData, obj) {
+	var submissionObj = com.util.getComponent(options.id);
+
+	if (submissionObj === null) {
+		com.sbm.create(options);
+		submissionObj = com.util.getComponent(options.id);
+	} else {
+		$p.deleteSubmission(options.id);
+		com.sbm.create(options);
+		submissionObj = com.util.getComponent(options.id);
+	}
+
+	return com.sbm.execute(submissionObj, requestData, obj, (options.hidesProcessMsg === true ? true : false) );
+},"executeWorkflow":function(workflowObj) {
+	$p.executeWorkflow(workflowObj);
+},"create":function(options) {
+	var ref = options.ref || "";
+	var target = options.target || "";
+	var action = options.action; // ajax 서비스 요청 주소
+	var mode = options.mode || gcm.DEFAULT_OPTIONS_MODE; // asynchronous(default)/synchronous
+	var mediatype = options.mediatype || gcm.DEFAULT_OPTIONS_MEDIATYPE; // application/x-www-form-urlencoded
+	var method = (options.method || "post").toLowerCase(); // get/post/put/delete
+	var processMsg = options.processMsg || "";
+	var instance = options.instance || "none";
+
+	var submitHandler = (typeof options.submitHandler === "function") ? options.submitHandler
+			: ((typeof options.submitHandler === "string") ? $p.id + options.submitHandler : "");
+	var submitDoneHandler = (typeof options.submitDoneHandler === "function") ? options.submitDoneHandler
+			: ((typeof options.submitDoneHandler === "string") ? $p.id + options.submitDoneHandler : "");
+	var submitErrorHandler = (typeof options.submitErrorHandler === "function") ? options.submitErrorHandler
+			: ((typeof options.submitErrorHandler === "string") ? $p.id + options.submitErrorHandler : "");
+
+	var resJson = null;
+
+	if ((options.isProcessMsg === true) && (processMsg === "")) {
+		processMsg = "해당 작업을 처리중입니다";
+	} else if (options.isProcessMsg === false) {
+		processMsg = "";
+	}
+	
+	var submissionObj = {
+		"id" : options.id, // submission 객체의 ID. 통신 모듈 실행 시 필요.
+		"ref" : ref, // 서버로 보낼(request) DataCollection의 조건 표현식.(조건에 때라 표현식이 복잡하다) 또는 Instance Data의 XPath.
+		"target" : target, // 서버로 응답(response) 받은 데이터가 위치 할 DataCollection의 조건 표현식. 또는 Instance Data의 XPath.
+		"action" : action, // 통신 할 서버 측 URI.(브라우저 보안 정책으로 crossDomain은 지원되지 않는다.)
+		"method" : method, // [default: post, get, urlencoded-post] get:파라메타를 url에 붙이는 방식 (HTML과 동일).
+						   // post:파라메타를 body 구간에 담는 방식 (HTML과 동일). urlencoded-post:urlencoded-post.
+		"mediatype" : mediatype, // application/json
+		"encoding" : "UTF-8", // [default: utf-8, euc-kr, utf-16] 서버 측 encoding 타입 설정 (euc-kr/utf-16/utf-8)
+		"mode" : mode, // [default: synchronous, synchronous] 서버와의 통신 방식. asynchronous:비동기식. synchronous:동기식
+		"processMsg" : processMsg, // submission 통신 중 보여줄 메세지.
+		"submitHandler" : submitHandler,
+		"submitDoneHandler" : submitDoneHandler,
+		"submitErrorHandler" : submitErrorHandler
+	};
+
+	$p.createSubmission(submissionObj);
+},"getResultCode":function(e) {
+	var rsCode = gcm.MESSAGE_CODE.STATUS_ERROR;
+	try {
+		rsCode = e.responseJSON.rsMsg.statusCode;
+	} catch (ex) {
+		console.error("결과 상태 메세지가 없습니다.", ex);
+	}
+
+	return rsCode;
+},"getStatusMessage":function(e) {
+	try {
+		return e.responseJSON.rsMsg.statusMsg;
+	} catch (ex) {
+		console.error("결과 상태 메세지가 없습니다.", ex);
+		return "";
+	}
+},"resultMsg":function(resultData, closeCallbackFncName, type) {
+	var messageContents = resultData.messageContents;
+	var messageCode = resultData.messageCode;
+	
+	if( messageCode == null ) {
+		messageCode = ( Array.isArray(messageContents) && messageContents.length > 0 ) ? messageContents[0] : "";
+	}
+	
+	var messageType = messageCode.length > 4 ? messageCode.substring(0, 4) : "INFO";
+	var message = com.data.getMessage(messageCode, messageContents);
+	
+	messageType = type == "CONF" ? "CONF" : messageType;
+
+	switch (messageType) {
+		case "CONF":
+			com.win.confirm(message, closeCallbackFncName);
+	        break;
+	    default:
+	    	com.win.alert(message, closeCallbackFncName);
+	        break;
+	}
+},"setAction":function(sbmObj, sbmAction) {
+	try {
+		if (!com.util.isEmpty(sbmObj)) {
+			sbmObj.isDefultSubmissionAction = null;
+			sbmObj.action = sbmAction || "";
+		}
+	} catch(ex) {
+		console.error(ex);
+	}
+}},"data":{"setCommonCode":function(options){
+	var setFirstRow = function(comp, typeFirstRow){
+		switch (typeFirstRow) {
+		case 'All':
+			comp.addItem('A', "전체", 0);
+			break;
+		case 'Select':
+			comp.addItem('S', "선택", 0);
+			break;
+		case 'Blank':
+			comp.addItem('B', "", 0);
+			break;
+		}
+	};
+	
+	options.forEach(function(option){
+		var componentID = option.componentID;
+		var groupCode = option.groupCode;
+		var filter = option.filter != null ? option.filter : "";
+		var typeFirstRow = option.typeFirstRow != null ? option.typeFirstRow : "All";
+		var useColumnUSE_YN = option.useColumnUSE_YN != null ? option.useColumnUSE_YN : 'Y';
+		var labelMappingColumn = option.labelMappingColumn != null ? option.labelMappingColumn : 'COMN_CD_NM';
+		var LABEL = labelMappingColumn;
+		var VALUE = "COMN_CD";
+		
+		if(componentID == null || groupCode == null) throw new Error('componentID, groupCode is null');
+		
+		var expPrefix = "(object => [COMN_GRP_CD]=='";
+		var exp = groupCode
+						+ "' && [USE_YN] == '" + useColumnUSE_YN 
+						+ "' ";
+		if(filter != "") exp += "&& (" + filter + ")";
+		exp += ");";
+		
+		exp = exp.replaceAll(" ", "");
+		var encodeExp = WebSquare.text.BASE64Encode(exp);
+		
+		var dataList = com.util.getComponent("dlt_" + encodeExp);
+		if(dataList == null) dataList = com.data.cloneDataList(gcm.gdlt_comnCd, encodeExp);
+
+		/**
+		 * // gcm.commonCodeFilteredList에 필터링한 dataList를 filter 수식을 ID로 담고다닌다.
+		 * // gcm.commonCodeFilteredList에 값이 없다면 gcm.gdlt_comnCd를 복사하여 넣는다.
+		 * if (gcm.commonCodeFilteredList[encodeExp] == null) {
+		 * 	gcm.commonCodeFilteredList[encodeExp] = com.data.cloneDataList(gcm.gdlt_comnCd, encodeExp);
+		 * }
+		 * dataList = gcm.commonCodeFilteredList[encodeExp];
+		 */
+		
+		dataList.setJSON( com.data.getFilteredJSONDataInDataList( gcm.gdlt_comnCd, expPrefix + exp ) );
+		
+		var compArr = componentID.replaceAll(" ", "").split(",");
+		
+		for(var i = 0; i < compArr.length; i++){
+			var tmpIdArr = compArr[i].split(":"); 
+			
+			if (tmpIdArr.length === 1) {	// SelectBOx
+				var comp = com.util.getComponent(tmpIdArr[0]);
+				if (!com.util.isEmpty(comp)) {
+					comp.setNodeSet("data:" + dataList.getID(), LABEL, VALUE);
+				} else {
+					console.warn("[com.data.setCommonCode] Component(" + tmpIdArr[0] + ")를 찾을 수 없습니다.");
+				}
+			} else {	// GridView
+				var gridObj = com.util.getComponent(tmpIdArr[0]);
+				if (!com.util.isEmpty(gridObj)) {
+					gridObj.setColumnNodeSet(tmpIdArr[1], "data:" + dataList.getID(), LABEL, VALUE);
+				} else {
+					console.warn("[com.data.setCommonCode] GridView(" + tmpIdArr[0] + ")를 찾을 수 없습니다.");
+				}
+			}
+		}
+	});
+},"getFilteredJSONDataInDataList":function(dataList, filterCondition){
+	try {
+		var jsonData = dataList.getAllJSON();
+	} catch (e) {
+		throw Error( "dataList is essential" );
+	}
+	
+	filterCondition = filterCondition.replaceAll("[", "object['");
+	filterCondition = filterCondition.replaceAll("]", "']");
+	
+	var filteredFunc;
+	var filteredJSON;
+	
+	try {
+		filteredFunc = new Function( "return " + dataList.getID() + ".getAllJSON().filter" + filterCondition );
+		filteredJSON = filteredFunc();
+	} catch (e) {
+		throw Error( "filterCondition is out of form: " + e );
+	}
+	
+	return filteredJSON;
+},"getCommonCodeDataList":function(cdGrp) {
+	return com.util.getComponent(gcm.DATA_PREFIX + cdGrp);
+},"executeCommonCode":function() {
+	var sbmSearchCode = com.util.getComponent("_sbm_searchCode");
+	com.sbm.execute(sbmSearchCode);
+},"getParameter":function (paramKey) {
+	var paramData = "";
+	try {
+		paramData = $p.getParameter("paramData");
+		if ((com.util.isEmpty(paramData) === false) && com.util.isJSON(paramData)) {
+			if (com.util.isEmpty(paramKey) === false) {
+				return paramData[paramKey];
+			} else {
+				return paramData;
+			}
+		} else {
+			paramData = getUrlParameter("paramData");
+			if (com.util.isEmpty(paramData) === false) {
+				paramData = com.util.getJSON(WebSquare.text.BASE64Decode(paramData));
+				if (com.util.isEmpty(paramKey) === false) {
+					return paramData[paramKey];
+				} else {
+					return paramData;
+				}
+			}
+		}
+	} catch (ex) {
+		console.error(ex);
+		return "";
+	}
+	
+	return paramData;
+	
+	function getUrlParameter(paramKey) {
+		var param = [];
+		var paramArray = location.search.split(/[\&\?\#]/);
+		for (var i = 0; i < paramArray.length; i++) {
+			if (com.util.isEmpty(paramArray[i]) === false) {
+				var valueIdx = paramArray[i].indexOf("=");
+				if (valueIdx > 0) {
+					var key = paramArray[i].substring(0, valueIdx);
+					var value = paramArray[i].substring(valueIdx + 1);
+					if (key === paramKey) {
+						return value;
+					}
+				}
+			}
+		}
+	}
+},"getColumnName":function (comObj) {
+	try {
+		if ((typeof comObj.getRef) === "function") {
+			var ref = comObj.getRef();
+			var refArray = ref.substring(5).split(".");
+			var dataCollectionName = refArray[0];
+			var columnId = refArray[1];
+
+			if ((typeof refArray !== "undefined") && (refArray.length === 2)) {
+				var dataCollection = comObj.getScopeWindow().$p.getComponentById(dataCollectionName);
+				var dataType = dataCollection.getObjectType().toLowerCase();
+				if (dataType === "datamap") {
+					return dataCollection.getName(columnId);
+				} else if (dataType === 'datalist') {
+					return dataCollection.getColumnName(columnId);
+				}
+			} else {
+				return "";
+			}
+		}
+	} catch (ex) {
+		console.error(ex);
+	} finally {
+		dataCollection = null;
+	}
+},"getDataCollection":function(comObj) {
+	try {
+		if ((typeof comObj !== "undefined") && (typeof comObj.getRef === "function")) {
+			if (comObj.getPluginName() === "gridView") {
+				return comObj.getDataListInfo();
+			} else {
+				var ref = comObj.options.ref;
+				if ((typeof ref !== "undefined") && (ref !== "")) {
+					var refArray = ref.substring(5).split(".");
+					if ((typeof refArray !== "undefined") && (refArray.length === 2)) {
+						var dataObjInfo = {};
+						dataObjInfo.runtimeDataCollectionId = comObj.getScopeWindow().$p.getFrameId() + "_" + refArray[0];
+						dataObjInfo.dataColletionId = refArray[0];
+						dataObjInfo.columnId = refArray[1];
+						return dataObjInfo;
+					} else {
+						return null;
+					}
+				} else {
+					return null;
+				}
+			}
+		}
+	} catch (e) {
+		console.error("[com.data.getDataCollection] Exception :: " + e.message);
+	}
+},"getMessage":function(msgCode, values) {
+	if(msgCode == null && (values == null || value.length == 0)) return '메시지코드와 메시지 치환 문자열이 없습니다.';
+	
+	if( gcm.gdlt_sysMsg.getRowCount() == 0 ) {
+		if( msgCode.startsWith('[[') ) return msgCode;
+		
+		return '[[' + msgCode + ']]' + JSON.stringify(values);
+	}
+	
+	var matchedData = gcm.gdlt_sysMsg.getMatchedJSON('SYS_MSG_CD', msgCode);
+	var message;
+	
+	if(matchedData.length == 0) message = msgCode;
+	else message = matchedData[0].MSG_NM;
+	
+	message = message.replace(/\\n/g, String.fromCharCode(10));
+	
+	try {
+		message = message.replace(/\{(\d+)\}/g, function() {
+	        return values[arguments[1]];
+	    });
+	} catch (e) {
+		throw new Error("This messageCode is required messageContents.");
+	}
+	
+	return message;
+},"isExistinArray":function(objArr, objVal) {
+	if (objArr.indexOf(objVal) > -1) {
+		return true;
+	} else {
+		return false;
+	}
+},"isModified":function (dcObjArr) {
+	var result = false;
+	
+	if (com.util.getObjectType(dcObjArr) === "array") {
+		for (var idx in dcObjArr) {
+			if (com.util.getObjectType(dcObjArr[idx]) === "object") {
+				if (isModified(dcObjArr[idx]) === true) {
+					result = true;
+				}
+			}
+		}
+	} else if (com.util.getObjectType(dcObjArr) === "object") {
+		result = isModified(dcObjArr);
+	}
+	
+	return result;
+
+	function isModified(dcObj) {
+		if ((typeof dcObj !== "undefined") && (typeof dcObj !== null)) {
+			var modifiedIndex = dcObj.getModifiedIndex();
+			if (modifiedIndex.length === 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	}
+},"downloadMultipleDataList":function (optionsParam, infoArrParam) {
+	var options = {
+		common: {
+			fileName : optionsParam.common.fileName || "dataList.xlsx",
+			showProcess :  optionsParam.common.showProcess || true,
+			autoSizeColumn : optionsParam.common.autoSizeColumn || true,
+			multipleSheet : optionsParam.common.multipleSheet || true,
+			printSet : optionsParam.common.printSet || {}
+		},
+		excelInfo: []
+	};
+
+	if (optionsParam.excelInfo.length > 0) {
+		var excelInfoCount = optionsParam.excelInfo.length;
+
+		for (var idx = 0; idx < excelInfoCount; idx++) {
+			var wframeId = optionsParam.excelInfo[idx].wframeId || $p.getFrameId();
+			var dataListId = optionsParam.excelInfo[idx].dataListId;
+			
+			var dataListObj = null;
+			if (com.util.isEmpty(wframeId) === false) {
+				dataListObj = $p.getComponentById(wframeId + "_" + dataListId);
+			} else {
+				dataListObj = $p.getComponentById(dataListId);
+			}
+			
+			if (typeof dataListObj === "undefined") {
+				console.warn("[com.data.downloadMultipleDataList] excelInfo.dataListId에 설정된 DataList(" + dataListId + ")를 찾을 수 없습니다.");
+				return;
+			}
+
+			var excelInfo = {
+				dataListId : dataListId,
+				sheetName : optionsParam.excelInfo[idx].sheetName || dataListId,
+				removeColumns : optionsParam.excelInfo[idx].removeColumns || "",
+				foldColumns : optionsParam.excelInfo[idx].foldColumns || "",
+				startRowIndex : optionsParam.excelInfo[idx].startRowIndex || 0,
+				startColumnIndex : optionsParam.excelInfo[idx].startColumnIndex || 0,
+				headerColor : optionsParam.excelInfo[idx].headerColor || "#33CCCC",
+				bodyColor : optionsParam.excelInfo[idx].bodyColor || "#FFFFFF",
+				wframeId : wframeId,
+				infoArr : optionsParam.excelInfo[idx].infoArr
+			};
+
+			options.excelInfo.push(excelInfo);
+		}
+	} else {
+		console.warn("[com.data.downloadMultipleDataList] options.excelInfo 정보가 입력되지 않았습니다.");
+		return;
+	}
+
+	WebSquare.util.multipleDataListDownload(options, infoArrParam);
+},"downloadMultipleGridView":function (optionsParam, infoArrParam) {
+	var options = {
+		common: {
+			fileName : optionsParam.common.fileName || "gridView.xlsx",
+			showProcess :  optionsParam.common.showProcess || true,
+			autoSizeColumn : optionsParam.common.autoSizeColumn || true,
+			multipleSheet : optionsParam.common.multipleSheet || true,
+			printSet : optionsParam.common.printSet || {}
+		},
+		excelInfo: []
+	};
+
+	if (optionsParam.excelInfo.length > 0) {
+		var excelInfoCount = optionsParam.excelInfo.length;
+
+		for (var idx = 0; idx < excelInfoCount; idx++) {
+			var wframeId = optionsParam.excelInfo[idx].wframeId || $p.getFrameId();
+			var gridId = optionsParam.excelInfo[idx].gridId;
+
+			var gridObj = null;
+			if (com.util.isEmpty(wframeId) === false) {
+				gridObj = $p.getComponentById(wframeId + "_" + gridId);
+			} else {
+				gridObj = $p.getComponentById(gridId);
+			}
+			
+			if (typeof gridObj === "undefined") {
+				console.warn("[com.data.downloadMultipleDataList] excelInfo.gridId에 설정된 " + gridId + " GridView를 찾을 수 없습니다.");
+				return;
+			}
+
+			var excelInfo = {
+				gridId : gridId,
+				sheetName : optionsParam.excelInfo[idx].sheetName || gridId,
+				removeColumns : optionsParam.excelInfo[idx].removeColumns || "",
+				foldColumns : optionsParam.excelInfo[idx].foldColumns || "",
+				startRowIndex : optionsParam.excelInfo[idx].startRowIndex || 0,
+				startColumnIndex : optionsParam.excelInfo[idx].startColumnIndex || 0,
+				headerColor : optionsParam.excelInfo[idx].headerColor || "#33CCCC",
+				bodyColor : optionsParam.excelInfo[idx].bodyColor || "#FFFFFF",
+				wframeId : wframeId,
+				infoArr : optionsParam.excelInfo[idx].infoArr
+			};
+
+			options.excelInfo.push(excelInfo);
+		}
+	} else {
+		console.warn("[com.data.downloadMultipleGridView] options.excelInfo 정보가 입력되지 않았습니다.");
+		return;
+	}
+
+	WebSquare.util.multipleExcelDownload(options, infoArrParam);
+},"downloadGridViewExcel":function(grdObj, options, infoData) {
+	if (com.util.isEmpty(options)) {
+		options = {};
+	}
+	
+	var infoArr;
+	
+	if (typeof infoData === "undefined") {
+		infoArr = {};
+	} else {
+		//타이틀 설정;
+		if( !infoData.excelTitle ) {
+			var menuInfo = com.data.getParameter('menuInfo');
+			if( menuInfo ) { infoData.excelTitle = menuInfo.menuNm; }
+			else { infoData.excelTitle = ""; }
+		}
+		
+		var infoTitle = {rowIndex : 1 , colIndex : 0 , rowSpan : 1 , colSpan : 1 , text : infoData.excelTitle, textAlign : "left", drawBorder: "false", fontWeight: "bold", fontSize : "18px"};
+		var infoSearch = {rowIndex : 3 , colIndex : 0 , rowSpan : 1 , colSpan : 1 , text : "검색조건" , textAlign : "left", drawBorder: "false", fontWeight: "bold", fontSize : "18px"};
+		
+		infoArr = [];
+		infoArr.push( infoTitle );
+		infoArr.push( infoSearch );
+		
+		var sData = infoData.searchArr;
+		var infoObj;
+		options.startRowIndex = 6;
+		
+		for ( let idx = 0, colIndex = 0, rowIndex = 4; idx < sData.length; idx++, colIndex++ ) {
+			let titleColor = "#FFFFFF";
+			// 검색 조건명, 값 색 다르게
+			if( idx % 2 == 0 ) titleColor = infoData.titleColor;
+			// 검색조건 4개마다 개행 처리
+			if( colIndex >= ( 2 * 4 ) ) {
+				colIndex = 0;
+				options.startRowIndex += 1;
+				rowIndex += 1;
+			}
+			
+			infoObj = {rowIndex : rowIndex , colIndex : colIndex , rowSpan : 1 , colSpan : 1 , text : (com.util.isEmpty(sData[idx])) ? " " : sData[idx] , textAlign : "center", drawBorder: "true",	bgColor: titleColor};
+			infoArr.push( infoObj );
+		}
+		
+		//엑셀옵션변경;
+		options.autoSizeColumn = "false";
+		options.useStyle = "true";
+	}
+	
+	gcm.data.setDownloadGridViewOption(grdObj, options);
+
+	var opts = {
+		fileName: options.fileName || "excel.xlsx", //String, [defalut: excel.xlsx] 다운로드하려는 파일의 이름으로 필수 입력 값이다.
+		sheetName: options.sheetName || "sheet", //String, [defalut: sheet] excel의 sheet의 이름
+		type: options.type || "2", //String, [defalut: 0] type이 0인 경우 실제 데이터 1인 경우 눈에 보이는 데이터를  2이면 들어가 있는 data 그대로(filter무시 expression 타입의 셀은 나오지 않음)
+		removeColumns: options.removeColumns || "", //String, [defalut: 없음] 다운로드시 excel에서 삭제하려는 열의 번호(여러 개일 경우 ,로 구분)
+		removeHeaderRows: options.removeHeaderRows || "", //String, [defalut: 없음]	다운로드시 excel에서 삭제하려는 Header의 row index(여러 개일 경우 ,로 구분)
+		foldColumns: options.foldColumns || "", //String, [defalut: 없음] 다운로드시 excel에서 fold하려는 열의 번호(여러 개일 경우 ,로 구분)
+		useHeaderCheckBoxLabel : options.useHeaderCheckBoxLabel || "true", // String, [default: false] 다운로드시 header가 checkbox인 경우 checked 값 대신 label을 출력 할지 여부 ("true"는 value를 출력, "false"는 checked 값 출력.)
+		startRowIndex: options.startRowIndex || 0, //Number, excel파일에서 그리드의 데이터가 시작되는 행의 번호(헤더 포함)
+		startColumnIndex: options.startColumnIndex || 0, //Number, excel파일에서 그리드의 데이터가 시작되는 열의 번호(헤더 포함)
+		headerColor: options.headerColor || "#eeeeee", //String, excel파일에서 그리드의 header부분의 색
+//		headerColor: options.headerColor || "#33CCCC", //String, excel파일에서 그리드의 header부분의 색
+		headerFontName: options.headerFontName || "", //String, [defalut: 없음] excel파일에서 그리드의 header부분의 font name
+		headerFontSize: options.headerFontSize || "10", //String, excel파일에서 그리드의 header부분의 font size
+		headerFontColor: options.headerFontColor || "", //String, excel파일에서 그리드의 header부분의 font색
+		bodyColor: options.bodyColor || "#FFFFFF", //String, excel파일에서 그리드의 body부분의 색
+		bodyFontName: options.bodyFontName || "", //String, [defalut: 없음] excel파일에서 그리드의 body부분의 font name
+		bodyFontSize: options.bodyFontSize || "10", //String, excel파일에서 그리드의 body부분의 font size
+		bodyFontColor: options.bodyFontColor || "", //String, excel파일에서 그리드의 body부분의 font색
+		subTotalColor: options.subTotalColor || "#CCFFCC", //String, [defalut: #CCFFCC] excel파일에서 그리드의 subtotal부분의 색
+		subTotalFontName: options.subTotalFontName || "", //String, [defalut: 없음] excel파일에서 그리드의 subtotal부분의 font name
+		subTotalFontSize: options.subTotalFontSize || "10", //String, [defalut: 10] excel파일에서 그리드의 subtotal부분의 font size
+		subTotalFontColor: options.subTotalFontColor || "", //String, [defalut: 없음] excel파일에서 그리드의 subtotal부분의 font색
+		footerColor: options.footerColor || "#008000", //String, [defalut: #008000] excel파일에서 그리드의 footer부분의 색
+		footerFontName: options.footerFontName || "", //String, [defalut: 없음] excel파일에서 그리드의 footer부분의 font name
+		footerFontSize: options.footerFontSize || "10", //String, [defalut: 10] excel파일에서 그리드의 footer부분의 font size
+		footerFontColor: options.footerFontColor || "", //String, [defalut: 없음] excel파일에서 그리드의 footer부분의 font색
+		oddRowBackgroundColor: options.oddRowBackgroundColor || "", //String, excel파일에서 그리드 body의 홀수줄의 배경색
+		evenRowBackgroundColor: options.evenRowBackgroundColor || "", //String, [defalut: 없음] excel파일에서 그리드 body의 짝수줄의 배경색
+		rowNumHeaderColor: options.rowNumHeaderColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 배경색
+		rowNumHeaderFontName: options.rowNumHeaderFontName || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 폰트이름
+		rowNumHeaderFontSize: options.rowNumHeaderFontSize || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 폰트크기
+		rowNumHeaderFontColor: options.rowNumHeaderFontColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 폰트색상
+		rowNumBodyColor: options.rowNumBodyColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 배경색
+		rowNumBodyFontName: options.rowNumBodyFontName || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 폰트이름
+		rowNumBodyFontSize: options.rowNumBodyFontSize || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 폰트크기
+		rowNumBodyFontColor: options.rowNumBodyFontColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 폰트색상
+		rowNumFooterColor: options.rowNumFooterColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 배경색
+		rowNumFooterFontName: options.rowNumFooterFontName || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 폰트이름
+		rowNumFooterFontSize: options.rowNumFooterFontSize || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 폰트크기
+		rowNumFooterFontColor: options.rowNumFooterFontColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 폰트색상
+		rowNumSubTotalColor: options.rowNumSubTotalColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 배경색
+		rowNumSubTotalFontName: options.rowNumSubTotalFontName || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 폰트이름
+		rowNumSubTotalFontSize: options.rowNumSubTotalFontSize || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 폰트크기
+		rowNumSubTotalFontColor: options.rowNumSubTotalFontColor || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 폰트색상
+		rowNumHeaderValue: options.rowNumHeaderValue || "", //String, [defalut: 없음] rowNumVisible 속성이 true인 경우 순서출력 Header 영역의 출력값
+		rowNumVisible: options.rowNumVisible || "false", //String, [defalut: false] 순서출력 유무
+		showProcess: WebSquare.util.getBoolean(options.showProcess) || true, //Boolean, [defalut: true] 다운로드 시 프로세스 창을 보여줄지 여부
+		massStorage: WebSquare.util.getBoolean(options.massStorage) || true, //Boolean, [defalut: true] 대용량 다운로드 여부 (default는 true 이 옵션을 true로 하고 showConfirm을 false로 한 경우에 IE에서 신뢰할만한 사이트를 체크하는 옵션이 뜬다.)
+		showConfirm: WebSquare.util.getBoolean(options.showConfirm) || false, //Boolean, [defalut: false] 다운로드 확인창을 띄울지 여부(옵션을 킨 경우 advancedExcelDownload를 호출후 사용자가 window의 버튼을 한번더 클릭해야 한다. massStorage는 자동으로 true가 된다)
+		dataProvider: options.dataProvider || "", //String, [defalut: 없음] 대량데이터 처리 및 사용자 데이터를 가공할 수 있는 Provider Package
+		splitProvider : options.splitProvider || "", // String, [defalut: 없음] 대량데이터 처리 및 사용자 데이터를 가공할 수 있는 Split Provider Package
+		providerRequestXml: options.providerRequestXml || "", //String, [defalut: 없음] Provider 내부에서 사용할 XML 문자열
+		userDataXml: options.userDataXml || "", //String, [defalut: 없음] 사용자가 서버모듈 개발 시 필요한 데이터를 전송 할 수 있는 변수
+		bodyWordwrap: WebSquare.util.getBoolean(options.bodyWordwrap) || false, //Boolean, [defalut: false] 다운로드시 바디의 줄 바꿈 기능
+		useEuroLocale: options.useEuroLocale || "false", //String, [defalut: false] 다운로드시 유로화 처리 기능(,와 .이 반대인 경우처리)
+		useHeader: options.useHeader || "true", //String, [defalut: true] 다운로드시 Header를 출력 할지 여부( "true"인경우 출력, "false"인경우 미출력)
+		useSubTotal: options.useSubTotal || "false", //String, [defalut: false] 다운로드시 SubTotal을 출력 할지 여부( "true"인경우 출력, "false"인경우 미출력), expression을 지정한 경우 avg,sum,min,max,targetColValue,숫자를 지원 함.
+		useFooter: options.useFooter || "true", //String, [defalut: true] 다운로드시 Footer를 출력 할지 여부( "true"인경우 출력, "false"인경우 미출력)
+		separator: options.separator || ",", //String, [defalut: ,] 다운로드시 서버로 데이터 전송할때, 데이터를 구분짓는 구분자, default는 comma(,)
+		subTotalScale: options.subTotalScale || -1, //Number, [defalut: -1] 다운로드시 subTotal 평균계산시 소수점 자리수를 지정
+		subTotalRoundingMode: options.subTotalRoundingMode || "", //String, [defalut: 없음] 다운로드시 subTotal 평균계산시 Round를 지정 한다. ("CEILING","FLOOR","HALF_UP")
+		useStyle: options.useStyle || "", //String, [defalut: false] 다운로드시 css를 제외한, style을 excel에도 적용할 지 여부 (배경색,폰트)
+		freezePane: options.freezePane || "", //String, [defalut: ""] 틀고정을 위한 좌표값 및 좌표값의 오픈셋 ( ex) freezePane="3,4" X축 3, Y축 4에서 틀고정, freezePane="0,1,0,5" X축 0, Y축 1에서 X축으로 0, Y축으로 5로 틀공정  )
+		autoSizeColumn: options.autoSizeColumn || "true", //String, [defalut: false] 너비자동맞춤 설정 유무 - 2016.08.18 옵션 설정을 true로 변경
+		displayGridlines: options.displayGridlines || "", //String, [defalut: false] 엑셀 전체 셀의 눈금선 제거 유무
+		colMerge: options.colMerge || "", //String, [defalut: false] colMerge된 컬럼을 Merge해서 출력 할 지 여부
+		mergeCell: options.mergeCell || "", //String, [defalut: false] mergeCell된 컬럼을 Merge해서 출력 할 지 여부
+		useDataFormat: options.useDataFormat || "", //String, [defalut: 없음] 그리드 dataType이 text인 경우, 엑셀의 표시형식 '텍스트' 출력 유무( "true"인 경우 표시형식 텍스트, "false"인 경우 표시형식 일반 출력)
+		indent: options.indent || "", //String, [defalut: 없음] 그리드 dataType이 drilldown인 경우, indent 표시를 위한 공백 삽입 개수, default값은 0
+		columnMove: options.columnMove || "", //String, [defalut: false] 그리드 컬럼이동시 이동된 상태로 다운로드 유무 ( "true"인경우 컬럼이동 순서대로 출력 )
+		columnOrder: options.columnOrder || "", //String, [defalut: 없음] 엑셀 다운로드시 다운로드되는 컬럼 순서를 지정 할 수 있는 속성 ( ex) "0,3,2,1"로 지정시 지정한 순서로 다운로드된다 )
+		fitToPage: options.fitToPage || "false", //String, [defalut: false] 엑셀 프린터 출력시 쪽맞춤 사용 유무
+		landScape: options.landScape || "false", //String, [defalut: false] 엑셀 프린터 출력시 가로 방향 출력 유무
+		fitWidth: options.fitWidth || "1", //String, [defalut: 1] 엑셀 프린터 출력시 용지너비
+		fitHeight: options.fitHeight || "1", //String, [defalut: 1] 엑셀 프린터 출력시 용지높이
+		scale: options.scale || "100", //String, [defalut: 100] 엑셀 프린터 출력시 확대/축소 배율, scale을 사용할 경우 fitToPage는 false로 설정 해야 한다.
+		rowHeight: options.rowHeight || "", //String, [default: 22] 엑셀 프린터 출력시 row 높이
+		pageSize: options.pageSize || "A4", //String, [defalut: A4] 엑셀 프린터 출력시 인쇄용지 설정 ( ex) "A3", "A4", "A5", "B4" )
+		sPrntRsn: options.sPrntRsn,
+		onSuccessCallback : function (e) {
+		},
+		onFailureCallback : function (e) {
+		}
+	};
+	
+	com.util.exportHistoryWrite(grdObj, options.fileName, opts);
+	grdObj.advancedExcelDownload(opts, infoArr);
+},"downloadGridViewExcelAtServer":function(grdObj, serviceName, methodName, conditionJson, option) {
+	var serviceXml = "<service>" + serviceName + "</service>";
+	var methodXml = "<method>" + methodName + "</method>";
+	var paramXml = "<param>" + JSON.stringify(conditionJson) + "</param>";
+	var requestXml = "<data>" + serviceXml + methodXml + paramXml + "</data>";
+	
+	if(option == undefined) option = {};
+	option.useProvider = "true"
+	option.showProcess = "true";
+	option.providerRequestXml = requestXml;
+	
+	com.data.downloadGridViewExcel(grdObj, option);
+},"downloadGridViewCSV":function(grdObj, options) {
+	if (com.util.isEmpty(options)) {
+		options = {};
+	}
+	
+	gcm.data.setDownloadGridViewOption(grdObj, options);
+	
+	var opts = {
+		fileName: options.fileName || "excel.csv", //[default: excel.csv] 저장 될 파일 이름
+		type: options.type || "1", //[default: 1] Grid 저장 형태 (0이면 데이터 형태,1이면 표시 방식)
+		delim: options.delim || ",", //[default: ,] CSV 파일에서 데이터를 구분할 구분자
+		removeColumns: options.removeColumns || "", //[default: 없음] 저장 하지 않을 columns index, 여러컬럼인 경우 콤마(,)로 구분해서 정의 한다.
+		header: options.header || "1", //[default: 1] Grid의 숨겨진 Column에 대한 저장 여부(0이면 저장 하지 않음,1이면 저장)
+		hidden: options.hidden || 0, //[defalut: 0] Grid의 숨겨진 Column에 대한 저장 여부(0이면 저장 하지 않음,1이면 저장)
+		checkButton: options.checkButton || "1", //[default: 1] Grid의 Control(Check, Radio, Button) Column에 대해 히든 여부 (0이면 control Column히든,1이면 보여줌)
+		saveList: options.saveList || "" //[default: 없음] hidden에 관계없이 저장할 column id들의 array
+	}
+	
+	grdObj.saveCSV(opts);
+},"downloadFile":function (fileId, fileSn) {
+	if( com.util.isEmpty(fileId) ) {
+		throw Error( "downloadFile params is Empty" );
+	}
+	
+	if( com.util.isEmpty(fileSn) ) {
+		console.warn( "fileSn params is Empty" );
+		fileSn = "1";
+	}
+	
+	com.data.downloadFileUsingURL( "/co/sa/downLoadAtchFile.do?atchFileId=" + fileId + "&fileSn=" + fileSn );
+},"downloadFileUsingProps":function (fileName, filePath, props) {
+	if( com.util.isEmpty(fileName) || com.util.isEmpty(filePath) || com.util.isEmpty(props) ) {
+		throw Error( "downloadFile params is Empty" );
+	}
+
+	com.data.downloadFileUsingURL( "/co/sa/downloadFilesUsingProps.do?fileName=" + encodeURIComponent(fileName) 
+			+ "&filePath=" + encodeURIComponent(filePath) 
+			+ "&props=" + encodeURIComponent(props) );
+},"downloadFileUsingURL":function (url) {
+	if(com.util.isEmpty(url)) throw Error("url is Empty");
+	
+	siteLoaded = function(){
+		var msgObj = {
+			messageCode : "ERRO_20088",
+			messageContents : [""],
+		};
+		var msgTextList = $("#downloadFrame").get(0).contentWindow.document.getElementsByTagName("pre");
+		
+		if(msgTextList.length > 0){
+			try {
+				var msgText = msgTextList[0].innerText;
+				var msgJSON = JSON.parse(msgText);
+				
+				msgObj.messageCode = msgJSON.errorMsgCode;
+				msgObj.messageContents = msgJSON.errorMsgContents;
+			} catch (e) {
+				
+			}
+		}
+		
+		siteLoaded = undefined;
+		com.sbm.resultMsg(msgObj);
+	}
+	
+	if(!$("#downloadFrame").length){
+		var download_frame = $('<iframe id="downloadFrame" name="downloadFrame" style="display:none;"></iframe>');
+		download_frame.appendTo('body');
+	}
+	$("#downloadFrame").attr("onload", "siteLoaded()");
+	
+	var windowObject = window.open( url, "downloadFrame" )
+},"downloadFomFile":function (pomId) {
+	if( !pomId ) return;
+		
+	var params = {
+			dma_search : {
+				FOM_ID : pomId,
+			}
+	};
+	
+	var getMessageOption = {
+		id : "_sbm_selectUpldFomDetail",
+		action : "/co/cd/selectUpldFomDetail.do",
+		submitDoneHandler : function(e) {
+			var detail = e.responseJSON.dma_detail;
+			if( detail == null || detail['USE_YN'] != 'Y' ) {
+				com.win.alert('사용할 수 없는 양식입니다.');
+				return;
+			}
+			
+			if( com.util.isRunningInApp() ){
+				let params = {
+					pluginId : "atchFile"
+					, params : {
+						fileName : detail.DNLD_FILE_NM
+						, downloadURL : location.origin + "/co/sa/downLoadAtchFile.do?atchFileId=" + detail.ATCH_FILE_ID + "&fileSn=1"
+					}
+				};
+				nice.postMessage(JSON.stringify(params));
+			} else {
+				com.data.downloadFile( detail.ATCH_FILE_ID, "1");
+			}
+		},
+		isProcessMsg : false
+	};
+	
+	com.sbm.executeDynamic(getMessageOption, params);
+},"uploadGridViewExcel":function (grdObj, options) {
+	if (com.util.isEmpty(options)) {
+		options = {};
+	}
+	
+	var width = "490";
+	var height = "450";
+	var top = ((document.body.offsetHeight / 2) - (parseInt(height) / 2) + $(document).scrollTop());
+	var left = ((document.body.offsetWidth / 2) - (parseInt(width) / 2) + $(document).scrollLeft());
+	
+	var opts = {
+		type: options.type || "0", //String, 1이면 엑셀 파일이 그리드의 보이는 결과로 만들어져있을때  0이면 엑셀 파일이 그리드의 실제 데이터로 구성되어있을때
+		sheetNo: options.sheetNo || 0, //Number, excel파일에서 그리드의 데이터가 있는 sheet번호
+		startRowIndex: options.startRowIndex || 1, //Number, [defalut:0] excel파일에서 그리드의 데이터가 시작되는 행의 번호(헤더 포함)
+		startColumnIndex: options.startColumnIndex || 0, //Number, [defalut:0] excel파일에서 그리드의 데이터가 시작되는 열의 번호
+		endColumnIndex: options.endColumnIndex || 0, //Number, [defalut: 0] excel파일에서 그리드의 데이터가 끝나는 열의 index
+		//( 엑셀컬럼수가 그리드컬럼수 보다 작은 경우 그리드 컬러수를 설정)
+		headerExist: options.headerExist || "0", //String, [defalut:0] excel파일에서 그리드의 데이터에 header가 있는지 여부
+												 //(1이면 header 존재 0이면 없음)
+		footerExist: options.footerExist || "1", //String, [defalut: 1] excel파일에서 그리드의 데이터에 footer가 있는지 여부
+		//(1이면 footer 존재 0이면 없음 기본값은 1 그리드에 footer가 없으면 적용되지 않음)
+		append: options.append || "0", //String, [defalut: 0] excel파일에서 가져온 데이터를 그리드에 append시킬지 여부
+									   // (1이면 현재 그리드에 데이터를 추가로 넣어줌 0이면 현재 그리드의 데이터를 삭제하고 넣음)
+		hidden: options.hidden || "0", //String, [defalut: 0] 읽어들이려는 엑셀파일에 hidden column이 저장되어 있는지 여부를 설정하는 int형 숫자(0이면
+									   // 엑셀파일에 hidden 데이터가 없으므로 그리드 hidden column에 빈 데이터를 삽입
+									   // 1 : 엑셀파일에 hidden 데이터가 있으므로 엑셀 파일로부터 hidden 데이터를 삽입 )
+		fillHidden: options.fillHidden || "0", //String, [defalut: 0] Grid에 hiddenColumn에 빈 값을 넣을지를 결정하기
+											   // 위한 int형 숫자(1이면 hidden Column에 빈 값을 저장하지 않음,0이면 hidden
+											   // column이 저장되어있지 않은 Excel  File이라 간주하고 hidden Column에 빈
+											   // 값을 넣어줌)(hidden이 0인 경우에는 fillhidden은 영향을 끼치지 않음)
+		skipSpace: options.skipSpace || "1", //String, [defalut: 0] 공백무시 여부(1이면 무시 0이면 포함)
+		insertColumns: options.insertColumns || "",//Array, radio, checkbox와 같은 컬럼을 엑셀에서 받아 오지 않고
+												   //사용자 컬럼 설정 으로 업로드 ( 데이터 구조 : [ { columnIndex:1, columnValue:"1" } ] )
+		popupUrl: options.popupUrl || "", //String, 업로드시에 호출할 popup의 url
+		status: options.status || "R", //String, [defalut: R]업로드된 데이터의 초기 상태값, 설정하지 않으면 "R"로 설정되며 "C"값을 설정 할 수 있다.
+		pwd: options.pwd || "", //String, 엑셀파일에 암호가 걸려 있는 경우, 비밀번호
+		features : "top="+top+",height="+height+",left="+left+",width="+width+",location=no,menubar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no",
+		wframe: true
+	};
+
+	grdObj.advancedExcelUpload(opts);
+},"uploadGridViewCSV":function (grdObj, options) {
+	if (com.util.isEmpty(options)) {
+		options = {};
+	}
+	
+	var width = "490";
+	var height = "218";
+	var top = ((document.body.offsetHeight / 2) - (parseInt(height) / 2) + $(document).scrollTop());
+	var left = ((document.body.offsetWidth / 2) - (parseInt(width) / 2) + $(document).scrollLeft());
+	
+	var opts = {
+		type: options.type || "0",					// String, [default: 1, 0]데이터 형태 (0이면 실 데이터 형태,1이면 display 표시 방식)
+		header: options.header || "0",				// String, [default: 1, 0]Grid header 존재 유무 (0이면 header row수를 무시하고 전부 업로드하고 1이면 header row수 만큼 skip한다.)
+		delim: options.delim || ",", 				// String, [default: ',']CSV 파일에서 데이터를 구분할 구분자
+		escapeChar: options.escapeChar || "",		// String, CSV 데이터에서 제거해야 되는 문자셋 ( ex) '\'' )
+		startRowIndex: options.startRowIndex || 0,	// Number, [defalut: 0] csv파일에서 그리드의 데이터가 시작되는 행의 번호, startRowIndex가 설정되면, header 설정은 무시된다.
+		append: options.append || "0", 				// String, [defalut: 0, 1]csv파일에서 가져온 데이터를 그리드에 append시킬지 여부(1이면 현재 그리드에 데이터를 추가로 넣어줌 0이면 현재 그리드의 데이터를 삭제하고 넣음)
+		hidden: options.hidden || 1, 				// Number, [defalut: 0, 1]hidden Column에 대한 저장 여부(0이면 저장하지않음,1이면 저장)
+		fillHidden: options.fillHidden || "0",		// String, [defalut: 0, 1]hidden Column에 빈 값을 넣을지를 결정하기 위한 int형 숫자(1이면 hidden Column에 빈 값을 저장하지 않음,0이면 hidden column이 저장되어있지 않은 csv File이라 간주하고 hidden Column에 빈 값을 넣어줌)(hidden이 0인 경우에는 fillhidden은 영향을 끼치지 않음)
+		skipSpace: options.skipSpace || "0", 		// String, [defalut: 0, 1]공백무시 여부(1이면 무시 0이면 포함)
+		expression: options.expression || "1",		// String, [defalut: 1, 0]expression 컬럼 데이터를 포함하고 있는지 여부, 기본값은 미포함(1이면 미포함, 0이면 포함)
+		popupUrl: options.popupUrl || "", 			// String, 업로드시에 호출할 popup의 url
+		features : "top="+top+",height="+height+",left="+left+",width="+width+",location=no,menubar=no,resizable=yes,scrollbars=auto,status=no,titlebar=yes,toolbar=no",
+		wframe: true
+	}
+	
+	grdObj.readCSV(opts);
+},"validateGroup":function (grpObj, valInfoArr, tacObj, tabId) {
+	var objArr = com.util.getChildren(grpObj, {
+		includePlugin: "checkbox checkcombobox datePicker editor input inputCalendar multiselect radio selectbox searchbox secret textarea",
+		recursive: true
+	});
+
+	var errors = [];
+
+	try {
+		for (var objIdx in objArr) {
+			var obj = objArr[objIdx];
+
+			var dataObjInfo = com.data.getDataCollection(obj);
+			var dataCollection = null;
+			var columnId = null;
+			var value = null;
+
+			if ((dataObjInfo !== undefined) && (dataObjInfo !== null)) {
+				dataCollection = $p.getComponentById(dataObjInfo.runtimeDataCollectionId);
+				columnId = dataObjInfo.columnId;
+			}
+
+			if ((dataCollection !== null) && (dataCollection.getObjectType() === "dataMap")) {
+				value = dataCollection.get(dataObjInfo.columnId);
+				if (typeof value === "string") {
+					value = value.trim();
+				}
+			} else {
+				var tempIdArr = obj.getID().split("_");
+				if (obj.getPluginName() !== "editor") {
+					if ((typeof obj.getValue === "function")) {
+						value = obj.getValue();
+						if (typeof value === "string") {
+							value = value.trim();
+						}
+					} else {
+						continue;
+					}
+				} else {
+					value = obj.getHTML();
+					if (typeof value === "string") {
+						value = value.trim();
+					}
+				}
+			}
+
+			var valInfo = { id : columnId };
+			var isVaild = false;
+
+			for (var valIdx in valInfoArr) {
+				if ((typeof valInfoArr[valIdx].id !== "undefined") && (valInfoArr[valIdx].id === columnId)) {
+					valInfo = valInfoArr[valIdx];
+					isVaild = true;
+					break;
+				}
+			}
+
+			if ((typeof objArr[objIdx].options.mandatory !== "undefined") && (objArr[objIdx].options.mandatory)) {
+				valInfo.mandatory = true;
+				isVaild = true;
+			}
+
+			if ((typeof objArr[objIdx].options.minlength !== "undefined") && (objArr[objIdx].options.minlength > 0)
+					&& (objArr[objIdx].getPluginName() !== "inputCalendar")) {
+				valInfo.minLength = objArr[objIdx].options.minlength;
+				isVaild = true;
+			}
+
+			if ((typeof objArr[objIdx].options.minByteLength !== "undefined") && (objArr[objIdx].options.minByteLength > 0)
+					&& (objArr[objIdx].getPluginName() !== "inputCalendar")) {
+				valInfo.minByteLength = objArr[objIdx].options.minByteLength;
+				isVaild = true;
+			}
+
+			if (isVaild === true) {
+				_setResult(dataCollection, obj.getID(), valInfo, value);
+			}
+		}
+
+		if (errors.length > 0) {
+			if ((typeof tacObj !== "undefined") && (typeof tabId !== "undefined") && (tabId !== "")) {
+				var tabIndex = tacObj.getTabIndex(tabId);
+				
+				Promise.resolve().then(function() {
+					 return tacObj.setSelectedTabIndex(tabIndex);
+				});
+				
+			}
+
+			var option = {
+				callBackParam : {
+					"objId" : errors[0].objId
+				}
+			}
+
+			com.win.alert(errors[0].message, function(param) {
+				var obj = $p.getComponentById(param.objId);
+				obj.focus();
+			}, option);
+
+			return false;
+		} else {
+			return true;
+		}
+
+		function _setResult(dataCollection, objId, valInfo, value) {
+			var msgInfo = gcm.data.getValResultMsg(valInfo, value);
+
+			if (com.util.isEmpty(msgInfo.message) === false) {
+				var comObj = $p.getComponentById(objId);
+
+				var errIdx = errors.length;
+				errors[errIdx] = {};
+				errors[errIdx].columnId = valInfo.id;
+				errors[errIdx].objId = objId;
+
+				if (com.util.isEmpty(valInfo.label) === false) {
+					errors[errIdx].columnName = valInfo.label;
+				} else if (com.util.isEmpty(dataCollection) === false) {
+					var scope = gcm.win.getScope(dataCollection);
+					errors[errIdx].columnName = scope.com.data.getColumnName(comObj);
+				} else if (typeof comObj.getInvalidMessage === "function") {
+					errors[errIdx].columnName = comObj.getInvalidMessage();
+				}
+
+				if (msgInfo.msgType == "2") {
+					errors[errIdx].message = msgInfo.message;
+				} else {
+					if (com.util.isEmpty(errors[errIdx].columnName) === false) {
+						errors[errIdx].message = com.str.attachPostposition(errors[errIdx].columnName) + " " + msgInfo.message;
+					} else {
+						errors[errIdx].message = msgInfo.message;
+					}
+				}
+			}
+		}
+	} catch (ex) {
+		console.error("Exception :: Object Id : " + obj.getID() + ", Plug-in Name: " + obj.getPluginName() + ", " + ex.message);
+	} finally {
+		objArr = null;
+	}
+},"validateGridView":function (gridViewObj, valInfoArr, tacObj, tabId) {
+	if (gridViewObj === null) {
+		return false;
+	}
+
+	var dataList = com.util.getGridViewDataList(gridViewObj);
+	if (dataList === null) {
+		return false;
+	}
+
+	var errors = [];
+
+	try {
+		var modifiedIdx = dataList.getModifiedIndex();
+		for (var dataIdx = 0; dataIdx < modifiedIdx.length; dataIdx++) {
+			var valInfo = {};
+			var isVaild = false;
+
+			var modifiedData = dataList.getRowJSON(modifiedIdx[dataIdx]);
+			if (modifiedData.rowStatus === "D") {
+				continue;
+			}
+
+			for (var valIdx in valInfoArr) {
+				if ((typeof valInfoArr[valIdx].id !== "undefined") && (modifiedData[valInfoArr[valIdx].id] !== "undefined")) {
+					var value = modifiedData[valInfoArr[valIdx].id];
+					if (typeof value === "string") {
+						value = value.trim();
+					}
+					_setResult(modifiedIdx[dataIdx], dataList, gridViewObj.getID(), valInfoArr[valIdx], value);
+				}
+			}
+		}
+
+		if (errors.length > 0) {
+			if ((typeof tacObj !== "undefined") && (typeof tabId !== "undefined") && (tabId !== "")) {
+				var tabIndex = tacObj.getTabIndex(tabId);
+				tacObj.setSelectedTabIndex(tabIndex);
+			}
+
+			var option = {
+				callBackParam : {
+					"objId" : errors[0].objId,
+					"columnId" : errors[0].columnId,
+					"rowIndex" : errors[0].rowIndex,
+				}
+			};
+
+			com.win.alert(errors[0].message, function(param) {
+				var grdiViewObj = $p.getComponentById(param.objId);
+				grdiViewObj.setFocusedCell(param.rowIndex, param.columnId, true);
+			}, option);
+
+			return false;
+		} else {
+			return true;
+		}
+
+		function _setResult(rowIndex, dataList, gridViewObjId, valInfo, value) {
+
+			var msgInfo = gcm.data.getValResultMsg(valInfo, value, dataList, rowIndex);
+
+			if (com.util.isEmpty(msgInfo.message) === false) {
+				var errIdx = errors.length;
+				errors[errIdx] = {};
+				errors[errIdx].columnId = valInfo.id;
+				errors[errIdx].objId = gridViewObjId;
+				if (com.util.isEmpty(valInfo.label) === false) {
+					errors[errIdx].columnName = valInfo.label;
+				} else {
+					errors[errIdx].columnName = dataList.getColumnName(valInfo.id);
+				}
+				errors[errIdx].rowIndex = rowIndex;
+
+				if (msgInfo.msgType == "2") {
+					errors[errIdx].message = msgInfo.message;
+				} else {
+					errors[errIdx].message = com.str.attachPostposition(errors[errIdx].columnName) + " " + msgInfo.message;
+				}
+			}
+		}
+	} catch (ex) {
+		console.error(ex);
+	}
+},"createDataList":function(dsId, colArr, typeArr, options) {
+	try {
+		var dltObj = com.util.getComponent(dsId);
+		if (!com.util.isEmpty(dltObj)) {
+			$p.data.remove( dsId );
+		}
+
+		var colInfoJSON = [];
+		if (typeof colArr !== "undefined") {
+
+			colInfoJSON = [];
+
+			for (var i=0; i < colArr.length; i++) {
+				var dataType = "text";
+				if (typeof typeArr !== "undefined") {
+					dataType = typeArr[i];
+				}
+				<!-- var colInfo = { -->
+					"id" : colArr[i],
+					"dataType" : dataType,
+					"name" : colArr[i]
+				};
+				colInfoJSON.push(colInfo);
+			}
+		}
+
+		if (typeof options === "undefined") {
+			options = {};
+			options.baseNode = "list";
+			options.repeatNode = "map";
+			options.saveRemovedData = "true";
+		};
+
+		var dataCollectionJSON = {
+			id : dsId,
+			type : "dataList",
+			option : {
+				"baseNode" : options.baseNode || "list",
+				"repeatNode" : options.repeatNode || "map",
+				"saveRemovedData" : options.saveRemovedData || "true",
+			},
+			columnInfo : colInfoJSON
+		};
+
+		var codeDataObj = $p.data.create(dataCollectionJSON);
+		return com.util.getComponent(dsId);
+	} catch (ex) {
+		console.error(ex);
+	}
+},"cloneDataList":function(targetList, listID, isCopyData) {
+	listID = "dlt_" + listID;
+	isCopyData = isCopyData == null ? false : true;
+	element = targetList.element;
+	
+	var dataCollectionJSON = {
+		id : listID,
+		type : "dataList",
+		option : {
+			"baseNode" : element.option.baseNode,
+			"repeatNode" : element.option.repeatNode,
+			"saveRemovedData" : element.option.saveRemovedData,
+		},
+		columnInfo : element.columnInfo
+	};
+	
+	$p.data.create(dataCollectionJSON);	
+	var dataList = com.util.getComponent(listID);
+	
+	if(isCopyData) dataList.setJSON(targetList.getAllJSON());
+	
+	return dataList;
+},"createDataMap":function(dsId, colArr, typeArr, options) {
+	try{
+		var dltObj = com.util.getComponent(dsId);
+		if (!com.util.isEmpty(dltObj)) {
+			$p.data.remove( dsId );
+		}
+
+		var colInfoJSON = [];
+		if (typeof colArr !== "undefined") {
+			colInfoJSON = [];
+			for (var i=0; i < colArr.length; i++) {
+				var dataType = "text";
+				if (typeof typeArr !== "undefined") {
+					dataType = typeArr[i];
+				}
+				var colInfo = {
+					"id" : colArr[i],
+					"type" : dataType,
+					"name" : colArr[i]
+				};
+				colInfoJSON.push(colInfo);
+			}
+		}
+
+		if (typeof options === "undefined") {
+			options = {
+				"baseNode" :  "map",
+			};
+		};
+
+		var dataCollectionJSON = {
+			"id" : dsId,
+			"type" : "dataMap",
+			"option" : {
+				"baseNode" : options.baseNode || "map",
+			},
+			"keyInfo" : colInfoJSON
+		};
+
+		$p.data.create(dataCollectionJSON);
+		return com.util.getComponent(dsId);
+	} catch (ex) {
+		console.error(ex);
+	}
+},"undoAll":function(dltId) {
+	try {
+		var dltObj = null;
+		if (typeof dltId === "string") {
+			dltObj = com.util.getComponent(dltId);
+		} else {
+			dltObj = dltId;
+		}
+
+		var rowCount = dltObj.getRowCount();
+		var removeIdx = [];
+		var undoIdx =[];
+
+		dltObj.setBroadcast(false);
+
+		for (var i = 0; i <rowCount; i++) {
+			if(dltObj.getRowStatus(i) == "C") {
+				removeIdx.push(i);
+				continue;
+			}
+			undoIdx.push(i)
+		}
+
+		dltObj.removeRows(removeIdx);
+		dltObj.undoRows(undoIdx);
+
+		dltObj.setBroadcast(true, true);
+	} catch (ex) {
+		console.error(ex)
+	}
+},"undoRow":function(dltId) {
+	try {
+		var dltObj = null;
+		if (typeof dltId === "string") {
+			dltObj = com.util.getComponent(dltId);
+		} else {
+			dltObj = dltId;
+		}
+
+		var checkedIdx = dltObj.getMatchedIndex("chk", "1");
+
+		dltObj.setBroadcast(false);
+
+		for (var idx = checkedIdx.length - 1; idx >= 0; idx--) {
+			if(dltObj.getRowStatus(checkedIdx[idx]) == "C") {
+				dltObj.removeRow(checkedIdx[idx]);
+			} else {
+				dltObj.undoRow(checkedIdx[idx]);
+			}
+		}
+
+		dltObj.setBroadcast(true, true);
+	} catch (ex) {
+		console.error(ex);
+	}
+},"undoGridView":function(grdId) {
+	try {
+		var grdObj = null;
+		if (typeof grdId === "string") {
+			grdObj = com.util.getComponent(grdId);
+		} else {
+			grdObj = grdId;
+		}
+		
+		if ((typeof grdObj === "object") && (grdObj !== "")) {
+			var dltObj = com.util.getGridViewDataList(grdObj);
+			if (dltObj === null) {
+				return;
+			}
+			
+			if (com.data.isModified(dltObj)) {
+				com.win.confirm(com.data.getMessage("MSG_CM_00052"), 
+					function(res) { 
+						if (res.clickValue === true) { 
+							com.data.undoAll(dltObj); 
+						} 
+					} 
+				);
+			}
+		}
+	} catch (ex) {
+		console.error(ex);
+	}	
+},"deleteRow":function(dltId) {
+	try {
+		var dltObj = null;
+		if (typeof dltId === "string") {
+			dltObj = com.util.getComponent(dltId);
+		} else {
+			dltObj = dltId;
+		}
+
+		var checkedIdx = dltObj.getMatchedIndex("chk", "1");
+
+		dltObj.setBroadcast(false);
+
+		for (var idx = checkedIdx.length - 1; idx >= 0; idx--) {
+			if(dltObj.getRowStatus(checkedIdx[idx]) == "C") {
+				dltObj.removeRow(checkedIdx[idx]);
+			} else {
+				dltObj.deleteRow(checkedIdx[idx]);
+				dltObj.setCellData(checkedIdx[idx], "chk", "");
+			}
+		}
+
+		dltObj.setBroadcast(true, true);
+	} catch (ex) {
+		console.error(ex);
+	}
+},"insertRow":function(grdId) {
+	try {
+		var grdObj = null;
+		if (typeof grdId === "string") {
+			grdObj = com.util.getComponent(grdId);
+		} else {
+			grdObj = grdId;
+		}
+		
+		if ((typeof grdObj === "object") && (grdObj !== "")) {
+			var dltObj = com.util.getGridViewDataList(grdObj);
+			if (dltObj === null) {
+				return;
+			}
+			
+			var focusedRowIdx = grdObj.getFocusedRowIndex();
+			if (focusedRowIdx > -1) {
+				return dltObj.insertRow(focusedRowIdx + 1);
+			} else {
+				return dltObj.insertRow();
+			}
+		}
+	} catch (ex) {
+		console.error(ex);
+	}
+},"getMatchedJSON":function(dataListObj, condArr) {
+	if (typeof dataListObj === "string") {
+		dataListObj = $p.getComponentById(dataListObj);
+	}
+	
+	var returnData = [];
+	var allData = dataListObj.getAllJSON();
+
+	if (com.util.isArray(condArr) === false) {
+		condArr = [ condArr ];
+	}
+	
+	for (var idx = 0; idx < allData.length; idx++) { 
+		var result = true;
+		
+		for (var conIdx = 0; conIdx < condArr.length; conIdx++) {
+			var colValue = allData[idx][condArr[conIdx].columnId.trim()];
+			var value = condArr[conIdx].value;
+			var operator = condArr[conIdx].operator.trim();
+			var logical = (condArr[conIdx].logical || "&&").trim();
+
+			if (operator === "==") {
+				if (colValue == value) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&"){
+						result = false;
+					}
+				}
+			} else if (operator === "!=") {
+				if (colValue != value) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&") {
+						result = false;
+					}
+				}
+			} else if (operator === ">") {
+				if (colValue > value) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&") {
+						result = false;
+					}
+				}
+			} else if (operator === "<") {
+				if (colValue < value) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&") {
+						result = false;
+					}
+				}
+			} else if (operator === ">=") {
+				if (colValue >= value) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&") {
+						result = false;
+					}
+				}
+			} else if (operator === "<=") {
+				if (colValue <= value) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&") {
+						result = false;
+					}
+				}
+			} else if (operator === "LIKE") {
+				if (colValue.indexOf(value) > -1) {
+					if (logical === "||") {
+						result = true;
+						break;
+					}
+				} else {
+					if (logical === "&&") {
+						result = false;
+					}
+				}
+			} else {
+				result = false;
+			}
+		}
+		
+		if (result === true) {
+			returnData.push(allData[idx]);
+		}
+	}
+	
+	return returnData;
+},"setChangeCheckedDc":function(dataObjArr) {
+	gcm.data.setChangeCheckedDc($p, dataObjArr);
+},"setUserData":function(comObj, key, value) {
+	comObj.setUserData("__" + key, value);
+},"getUserData":function(comObj, key) {
+	return comObj.getUserData("__" + key);
+},"getMenuList":function() {
+	return gcm.gdlt_menuComp.getAllJSON();
+},"getComnCdList":function() {
+	return gcm.gdlt_comnCd;
+},"getUserGrpAthList":function() {
+	return gcm.gdlt_userGrpAth;
+},"getUserDptList":function() {
+	return gcm.gdlt_userDpt;
+},"getSysMsgList":function() {
+	return gcm.gdlt_sysMsg;
+},"getHldayList":function() {
+	return gcm.gdlt_hlday;
+},"twowayBindingForDataList":function (generator, rootComponent, dataList, options) {
+    var components = {};
+    var generatedRowIndex = rootComponent.getGeneratedIndex();
+    var rowStatus = dataList.getRowStatus(generatedRowIndex);
+    if (!rowStatus) {
+        dataList.insertRow(generatedRowIndex);
+    }
+    var keys = options
+        .filter(function (option) { return !!option.columnId; })
+        .map(function (option) { return option.columnId; });
+    var dataMap = com.data.createDataMap("dm" + ("" + Math.random()).replace(/\./, ""), keys);
+    if (rowStatus) { // dataList 의 해당 rowIndex 에 정보가 있으면 초기 데이터로 적제
+        dataMap.setJSON(dataList.getRowJSON(generatedRowIndex));
+    }
+    dataMap.addEvent("onkeyset", function (info) {
+        dataList.setCellData(rootComponent.getGeneratedIndex(), info.key, info.newValue);
+    });
+    var lazyBindingComponents = [];
+    options.forEach(function (option) {
+        var componentId = option.componentId;
+        var component = generator.getChild(rootComponent.getGeneratedIndex(), componentId);
+        if (!component) {
+            throw new Error([componentId, " 로 등록된 컴포넌트를 찾을 수 없습니다."].join(""));
+        }
+        var events = option.events;
+        if (events) {
+            for (var name in events) {
+                component.bind(name, resolveInternalArguments(events[name]));
+            }
+        }
+        var columnId = option.columnId;
+        var defaultValue = option.defaultValue;
+        var defaultValueRefKey = option.defaultValueRefKey;
+        var nodeSet = option.nodeSet;
+        lazyBindingComponents.push(function () {
+            com.data.twowayBindingForDataMap(component, dataMap, columnId, defaultValue, defaultValueRefKey, nodeSet);
+        });
+        components[componentId] = component;
+    });
+    // setJSON 메서드 호출 시 지금까지 생성된 동적 데이터맵 제거
+    var removeDataMapFn = function () {
+        $p.data.remove(dataMap.org_id);
+        dataList.unbind("ondataload", removeDataMapFn);
+    };
+    dataList.bind("ondataload", removeDataMapFn);
+    var detach = function () {
+        var rowIndex = rootComponent.getGeneratedIndex();
+        dataList.removeRow(rowIndex);
+        removeDataMapFn();
+        generator.removeChild(rowIndex);
+    }
+    var locals = {
+        dataMap: dataMap,
+        components: components,
+        detach: detach
+    };
+    lazyBindingComponents.forEach(function (bind) { bind(); });
+    return detach;
+    
+    function resolveInternalArguments (fn) {
+        return function () {
+            var args = Array.prototype.slice.call(arguments, 0);
+            args.push(locals);
+            return fn.apply(this, args);
+        }
+    }
+},"twowayBindingForDataMap":function (component, dataMap, keyId, defaultValue, defaultValueRefKey, nodeSet) {
+    // 입출력을 다루는 컴포넌트는 바인딩 대상이 아님
+    if (!(component.getValue && component.setValue)) {
+        return;
+    }
+    
+    if (nodeSet) {
+        component.setNodeSet("data:" + nodeSet.id, nodeSet.label, nodeSet.value);
+    }
+    
+    if (keyId) {
+        component.setRef(["data:", dataMap.org_id, ".", keyId].join(""));
+    }
+    
+    if (defaultValue !== undefined) {
+        component.setValue(defaultValue);
+    } else {
+        defaultValue = component.getValue();
     }
 
-    body {
-      background-color: #f4f6f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    if (defaultValueRefKey !== undefined) {
+        defaultValue = dataMap.get(defaultValueRefKey);
+        component.setValue(defaultValue);
+    }
+    // 초기에 세팅된 값에 의해 로직 수행
+    component.trigger("onchange", { newValue: defaultValue });
+},"createGeneratorComponentCompositeApi":function (generator, methods) {
+    var api = {};
+    (methods || ["setValue", "setDisabled", "setReadOnly", "show", "hide", "addClass", "removeClass"]).forEach(function (method) {
+        api[method] = function (componentId /* ...args */) {
+            var predicate;
+            if (arguments.length > 1) {
+                var fn = arguments[arguments.length - 1];
+                if (typeof fn === "function") {
+                    predicate = fn;
+                }
+            }
+            var args = Array.prototype.slice.call(arguments, 1, predicate ? arguments.length - 1 : arguments.length);
+            var i = 0;
+            var length = generator.getLength();
+            if (predicate) {
+                for (; i < length; i++) {
+                    var component = generator.getChild(i, componentId);
+                    if (predicate(component, i)) {
+                        component[method].apply(component, args);
+                    }
+                }
+            } else {
+                for (; i < length; i++) {
+                    var component = generator.getChild(i, componentId);
+                    component && component[method].apply(component, args);
+                }
+            }
+        };
+    });
+    return api;
+},"createSearchParam":function(dataObj, arrOpt, titleColor, excelTitle) {
+	var rtnObj = {}
+	var searchObj;
+	if (typeof dataObj === "string") searchObj = com.util.getComponent(dataObj); 
+	else searchObj = dataObj;
+	if (searchObj.getObjectType() !== "dataMap") return "undefined";
+	var searchArr = new Array();
+	var objKeyInfo = searchObj.getInfo().keyInfo;
+	if (com.util.isEmpty(arrOpt) == true) return "undefined";
+	else if (arrOpt.length == 0) return "undefined";
+	if (com.util.isEmpty(titleColor) == true) rtnObj.titleColor = "#A9A9A9";
+	else rtnObj.titleColor = titleColor;
+	if (com.util.isEmpty(excelTitle) == false) rtnObj.excelTitle = excelTitle;
+	for (var forObj of arrOpt) {
+		if (objKeyInfo.hasOwnProperty(forObj.id) == false) continue;
+		searchArr.push(objKeyInfo[forObj.id].name);
+		if (com.util.isEmpty(searchObj.get(forObj.id)) == true) {
+			searchArr.push("전체");
+		}else {
+			if (com.util.isEmpty(forObj.compId) == false) {
+				var compObj = com.util.getComponent(forObj.compId);
+				var pluginName	= compObj.getPluginName();
+				if (pluginName == "checkcombobox" || pluginName == "selectbox" || pluginName == "radio" || pluginName == "checkbox") {
+					searchArr.push(compObj.getText());
+				}else if (pluginName == "inputCalendar") {
+					searchArr.push(compObj.getDisplayValue());
+				}else {
+					searchArr.push(searchObj.get(forObj.id));
+				}
+			}else {
+				if (typeof forObj.formatter === "function") {
+					searchArr.push(forObj.formatter(searchObj.get(forObj.id)));
+				}else {
+					searchArr.push(searchObj.get(forObj.id));
+				}
+			}
+		}
+	}
+	rtnObj.searchArr = searchArr; 
+	return rtnObj;
+},"formatExcelFileNm":function(excelFileNm, dataObj, arrParam) {
+	if (com.util.isEmpty(excelFileNm) == true) return "엑셀파일다운로드_"+ com.date.getServerDateTime("yyyyMMddHHmmssSSS") + ".xlsx"
+	var fileName = excelFileNm.replace(/ /gi, '_');
+	if (com.util.isEmpty(dataObj) == true) return fileName + "_"+ com.date.getServerDateTime("yyyyMMddHHmmssSSS") + ".xlsx"
+	var searchObj;
+	if (typeof dataObj === "string") searchObj = com.util.getComponent(dataObj); 
+	else searchObj = dataObj;
+	if (searchObj.getObjectType() !== "dataMap") return fileName + "_"+ com.date.getServerDateTime("yyyyMMddHHmmssSSS") + ".xlsx"
+	var searchNm = "";
+	for (var idx1=0; idx1<arrParam.length; idx1++) {
+		var keyId = arrParam[idx1];
+		if (com.util.isEmpty(searchObj.get(keyId)) == false) {
+			if (com.util.isEmpty(searchNm) == false) searchNm += ((idx1 == 2) ? "~" : ",") + searchObj.get(keyId); 
+			else searchNm += searchObj.get(keyId);
+		} 
+	}
+	if (com.util.isEmpty(searchNm) == false) fileName +=  "(" + searchNm + ")_" + com.date.getServerDateTime("yyyyMMddHHmmssSSS") + ".xlsx"
+	else fileName +=  "_" + com.date.getServerDateTime("yyyyMMddHHmmssSSS") + ".xlsx"
+	return fileName;
+},"deleteIdxGridView":function(dltId) {  	
+	try {
+		var dltObj = null;
+		if (typeof dltId === "string") {
+			dltObj = com.util.getComponent(dltId);
+		} else {
+			dltObj = dltId;
+		}
+		
+		var rowIdx = dltObj.getRowPosition();
+		var removeIdx = [];                                                                                                      
+		var undoIdx =[];                                                                                                         
+		var deleteIdx = [];     		
+					
+		if(dltObj.getRowStatus(rowIdx) == "C") {                                                                                      
+			removeIdx.push(rowIdx);
+		} else if (dltObj.getRowStatus(rowIdx) == "U"){                                                                             
+			undoIdx.push(rowIdx);                                                                                                    
+			deleteIdx.push(rowIdx);                                                                                                   
+		}  else if (dltObj.getRowStatus(rowIdx) == "D"){                                                                            
+			undoIdx.push(rowIdx);                                                                                                                                                                                         
+		} else {                                                                                                               
+			deleteIdx.push(rowIdx);                                                                                                   
+		}
+
+		dltObj.removeRows(removeIdx);
+		dltObj.undoRows(undoIdx);
+		dltObj.deleteRows(deleteIdx);
+		
+	} catch (ex) {
+		console.error(ex);
+	}	    	
+},"checkDupGridView":function(gridObj, gridCol, data) {
+	try {
+		let chkData = [];
+		chkData = gridObj.getColData(gridCol);
+		
+		for (var i=0; i < chkData.length; i++) {
+			if (data == chkData[i]) {
+				com.win.alert((i+1) + "번째 row에 중복데이터가 존재합니다.");
+				gridObj.setCellBackgroundColor(i, 0, "#ea80fc");
+				return false;
+			} else {
+				gridObj.setCellBackgroundColor(i, 0, "white");
+			}
+		}
+	
+		return true;
+	} catch (ex) {
+		console.error(ex);
+	}
+}},"util":{"getJSON":function (value) {
+	try {
+		if (com.util.isXmlDoc(value) === true) {
+			return JSON.parse(WebSquare.json.XML2JSONString(value));
+		} else {
+			return JSON.parse(value);
+		}
+	} catch (ex) {
+		return value;
+	}
+},"convertJSON":function(oDataset, nRow) {
+    if( com.util.isEmpty(oDataset) ) return null;
+    
+    // 데이터셋 전체 
+    if( com.util.isEmpty(nRow) ) {
+        var rtnval = new Array();
+        
+        for(var x=0;x<oDataset.getRowCount();x++) {
+            var objdata = {};
+            for(var y=0;y<oDataset.getColCount();y++) {
+                var colid = oDataset.getColID(y);
+                var value = oDataset.getColumn(x, colid);
+
+                if( value == null ) {
+                    objdata[colid] = value;
+                } else {
+                    if( value.hi != null )
+                        objdata[colid] = value.hi+"";
+                    else
+                        objdata[colid] = value;
+                }
+            }
+            
+            rtnval.push(objdata);
+        }
+        
+        return rtnval;
+    
+     // 선택된 ROW 만
+    } else {
+        var rtnval = {};
+        for(var i=0;i<oDataset.getColCount();i++) {
+            var colid = oDataset.getColID(i);            
+            var value = oDataset.getColumn(nRow, colid);
+            
+            if( value == null ) {
+                rtnval[colid] = value;
+            } else {
+                if( value.hi != null )
+                    rtnval[colid] = value.hi+"";
+                else
+                    rtnval[colid] = value;
+            }
+        }
+        
+        return rtnval;
+    }
+},"isJSON":function(json) {
+	try {
+		if (typeof json === "object") {
+			try {
+				if (com.util.isArray(json)) {
+					if (com.util.isPlainObject(json[0])) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					if (com.util.isPlainObject(json)) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			} catch (ex) {
+				return false;
+			}
+		} else if ((typeof json === "string") && com.util.isPlainObject(json)) {
+			try {
+				var jsonObj = JSON.parse(json);
+				if (com.util.isArray(jsonObj)) {
+					if (com.util.isPlainObject(jsonObj[0])) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return true;
+				}
+			} catch (ex) {
+				console.error(ex);
+				return false;
+			}
+		}
+		return false;
+	} catch (ex) {
+		console.error(ex);
+		return false;
+	}
+},"decode":function() {
+	var varRtnValue = null;
+
+	var arrArgument = this.gfnDecode.arguments;
+	var varValue = arrArgument[0];
+	var bIsDefault = false;
+	var nCount = 0;
+
+	if ((arrArgument.length % 2) == 0) 	{
+		nCount = arrArgument.length - 1;
+		bIsDefault = true;
+	} else {
+		nCount = arrArgument.length;
+		bIsDefault = false;
+	}
+
+	for (var i = 1; i < nCount; i += 2) {
+		if (varValue == arrArgument[i]) 
+		{
+			varRtnValue = arrArgument[i + 1];
+			i = nCount;
+		}
+	}
+
+	if (varRtnValue == null && bIsDefault) {
+		varRtnValue = arrArgument[arrArgument.length - 1];
+	}
+
+	return varRtnValue;
+},"objView":function (objArg, sName) {
+	for (var name in objArg) {
+		if (com.util.isEmpty(sName) == false) 	{
+			if (name == sName) {
+				trace("name : " + name + " / value : " + objArg[name]);
+			}
+		} else {
+			trace("name : " + name + " / value : " + objArg[name]);		
+		}
+	}
+},"copyProperties":function(tarobject, srcobject) {
+	if (tarobject && srcobject) {
+		var p, value;
+		
+		for (p in srcobject) {
+			if (srcobject.hasOwnProperty(p)) {
+				value = srcobject[p];
+				tarobject[p] = value;
+			}
+		}
+	}
+},"getSequenceId":function(form, prefix) {
+	if ( com.util.isEmpty(form) ) {
+		//console.log("getSequenceId :: 1st argument doesn't exist !!");
+		return null;
+	}
+	
+	if ( com.util.isEmpty(prefix) ) {
+		//console.log("getSequenceId :: 2nd argument doesn't exist !!");
+		return null;
+	}
+	
+	if ( !(form instanceof Form) ) {				
+		//console.log("getSequenceId :: 1st argument must be a Form !!");
+		return null;
+	}
+	
+	var cache = form._sequenceIdCache;
+	if ( com.util.isEmpty(cache) ) {
+		cache = form._sequenceIdCache = {};
+	}
+	
+	var sequence = cache[prefix];
+	if ( com.util.isEmpty(sequence) ) {
+		sequence = -1;
+	}
+	sequence++;
+	
+	cache[prefix] = sequence;
+	
+	return prefix + sequence;
+},"eachByFunc":function(object, func, scope) {
+	var p,
+		scope = scope || object;
+	for (p in object) {
+		if (object.hasOwnProperty(p)) {
+			if (func.call(scope, p, object[p], object) === false) {
+				return;
+			}
+		}
+	}
+},"arrContains":function(array, item, strict) {
+	if (com.util.indexOf(array, item, null, strict) === -1) {
+		return false;
+	} else {
+		return true;
+	}
+},"indexOf":function(array, item, from, strict) {
+	var len = array.length;
+	if ( from == null ) from = 0;
+	strict == !!strict;
+	from = (from < 0) ? Math.ceil(from) : Math.floor(from);
+	if (from < 0) {
+		from += len;
+	}
+	
+	if (strict)	{
+		for (; from < len; from++)	{
+			if ( array[from] === item) {
+				return from;
+			}
+		}
+	} else {
+		for (; from < len; from++) {
+			if ( array[from] == item) {
+				return from;
+			}
+		}
+	}
+	
+	return -1;
+},"isArray":function(array) {
+	try {
+		if ((typeof array !== "undefined") && (array !== null) && (typeof array == "object")) {
+			if (array.constructor.name && array.constructor.name.toLowerCase() == "array")
+				return true;
+			if (array.constructor && array.constructor == Array)
+				return true;
+		}
+		return false;
+	} catch (ex) {
+		console.error(ex);
+		return false;
+	}
+},"isEmpty":function(value) {
+	if ((typeof value === "undefined") || (value === null) || (value === "")) {
+		return true;
+	} else {
+		return false;
+	}
+},"isEmptyValue":function(value, returnVal) {
+	if ((typeof value === "undefined") || (value === null) || (value === "")) {
+		return returnVal;
+	} else {
+		return value;
+	}
+},"getObjectType":function (obj) {
+	var objType = typeof obj;
+	if (objType !== "object") {
+		return objType;
+	} else if (com.util.isArray(obj)) {
+		return "array";
+	} else if (com.util.isJSON(obj)) {
+		return "json";
+	} else if (objType === "object" && (com.util.isJSON(obj) === false)) {
+		return "object";
+	} else if (obj === null) {
+		return "null";
+	} else {
+		var tmpDoc = WebSquare.xml.parse("<data></data>");
+		if (obj.constructor === tmpDoc.constructor || obj.constructor === tmpDoc.childNodes[0].constructor) {
+			return "xml";
+		} else {
+			return objType;
+		}
+	}
+},"isPlainObject":function(obj) {
+	var consObj, protObj;
+
+	if (Object.prototype.toString.call(obj) !== '[object Object]') return false;
+
+	consObj = obj.constructor;
+	if (consObj === undefined) return true;
+
+	protObj = consObj.prototype;
+	if (Object.prototype.toString.call(protObj) !== '[object Object]') return false;
+
+	if (protObj.hasOwnProperty('isPrototypeOf') === false) {
+		return false;
+	}
+
+	return true;
+},"isMobile":function () {
+	return WebSquare.util.isMobile();
+},"isXmlDoc":function(data) {
+	if (typeof data != 'object')
+		return false;
+	if ((typeof data.documentElement != 'undefined' && data.nodeType == 9)
+			|| (typeof data.documentElement == 'undefined' && data.nodeType == 1)) {
+		return true;
+	}
+	return false;
+},"setGridViewDelCheckBox":function (gridViewObjArr) {
+	try {
+		if (com.util.getObjectType(gridViewObjArr) === "array") {
+			for (var idx in gridViewObjArr) {
+				setGridViewDelCheckBox(gridViewObjArr[idx]);
+			}
+		} else {
+			setGridViewDelCheckBox(gridViewObjArr);
+		}
+
+		function setGridViewDelCheckBox(gridViewObj) {
+			gridViewObj.bind("oncellclick",
+				function (row, col) {
+					var columnId = gridViewObj.getColumnID(col);
+					if (columnId == "chk") {
+						var dltObj = com.util.getGridViewDataList(this);
+						var realRowIndex = this.getRealRowIndex(row);
+
+						if(dltObj.getFilterList().length >0){
+							realRowIndex = dltObj.getFilteredRowIndex(realRowIndex);
+						}
+						var newValue = dltObj.getCellData(realRowIndex, columnId);
+						com.util._setGridViewRowCheckBox(this, realRowIndex, newValue === "1" ? true : false);
+					}
+				}
+			);
+			gridViewObj.bind("onheaderclick",
+				function (headerId) {
+					if (headerId == "chk") {
+						var newValue = this.getHeaderValue(headerId);
+						var dltObj = com.util.getGridViewDataList(this);
+						var rowCount = dltObj.getRowCount();
+						var removeIdx = [];
+						var deleteIdx = [];
+						var undoIdx =[];
+						for (var i = 0; i <rowCount; i++) {
+							var realRowIndex = dltObj.getRealRowIndex(i);
+
+							if (dltObj.getFilterList().length > 0) {
+								realRowIndex = dltObj.getFilteredRowIndex(realRowIndex);
+							} 
+							
+							if (dltObj.getRowStatus(realRowIndex) == "C") {
+								removeIdx.push(realRowIndex);
+								continue;
+							} 
+							
+							if (newValue) {
+								deleteIdx.push(realRowIndex);
+							} else {
+								undoIdx.push(realRowIndex)
+							}
+						}
+
+						if (newValue) {
+							dltObj.deleteRows(deleteIdx);
+							dltObj.removeRows(removeIdx);
+						} else {
+							dltObj.undeleteRows(undoIdx);
+						}
+
+					}
+				}
+			);
+		}
+	} catch (ex) {
+		console.error(ex);
+	}
+},"_setGridViewRowCheckBox":function (gridViewObj, rowIndex, newValue) {
+	var rowIndexArr = gridViewObj.getChildrenRowIndexArray(rowIndex);
+	var dltObj = com.util.getGridViewDataList(gridViewObj);
+
+	for (var idx in rowIndexArr) {
+		var childRowIndexArr = gridViewObj.getChildrenRowIndexArray(rowIndexArr[idx]);
+
+		if (childRowIndexArr.length > 0) {
+			com.util._setGridViewRowCheckBox( gridViewObj, rowIndexArr[idx], newValue);
+		} else {
+			com.util._deleteGridViewRow(gridViewObj, rowIndexArr[idx], newValue);
+		}
+	}
+
+	com.util._deleteGridViewRow(gridViewObj, rowIndex, newValue);
+},"_deleteGridViewRow":function (gridViewObj, rowIndex, newValue) {
+	gridViewObj.setCellChecked(rowIndex, "chk", newValue);
+	var dltObj = com.util.getGridViewDataList(gridViewObj);
+
+	if (newValue) {
+		var rowStatus = dltObj.getRowStatus(rowIndex);
+		if (rowStatus == "C") {
+			dltObj.deleteRow(rowIndex);
+			dltObj.removeRow(rowIndex);
+		} else {
+			dltObj.deleteRow(rowIndex);
+		}
+	} else {
+		dltObj.undeleteRow(rowIndex);
+	}
+},"getChildren":function(comObj, options) {
+	return WebSquare.util.getChildren(comObj, options);
+},"getGridViewDataList":function (gridViewObj) {
+	var dataListId = gridViewObj.getDataList();
+
+	if (dataListId !== "") {
+		var dataList = $p.getComponentById(dataListId);
+		if ((typeof dataList === "undefined") || (dataList === null)) {
+			console.warn("[com.util.getGridViewDataList] DataList(" + dataListId + ")를 찾을 수 없습니다.");
+			return null;
+		} else {
+			return dataList;
+		}
+	} else {
+		console.warn("[com.util.getGridViewDataList] " + gridViewObj.getID() + "는 DataList가 세팅되어 있지 않습니다.");
+		return null;
+	}
+},"getComponent":function(compId) {
+	var object = $p.getComponentById(compId);
+	if (typeof object === "undefined") {
+		return null;
+	} else {
+		return object;
+	}
+},"createComponent":function(strCompId, strCompName, option, parent, itemSet) {
+	try {
+		if ((typeof strCompId !== "undefined") && (strCompId !== "") && (typeof strCompName !== "undefined") && (strCompName !== "")) {
+
+			if (typeof option == "undefined") {
+				option = {};
+			}
+
+			if (typeof parent == "undefined") {
+				parent = "";
+			}
+
+			if (typeof itemSet == "undefined") {
+				itemSet = "";
+			}
+
+			return $p.dynamicCreate(strCompId, strCompName, option, parent, itemSet);
+		}
+	} catch (ex) {
+		console.error(ex);
+		return null;
+	}
+},"setInterval":function(func, options) {
+	$p.setInterval(func, options);
+},"clearInterval":function(func, options) {
+	$p.clearInterval(func, options);
+},"setTimeout":function(func, options) {
+	$p.setTimeout(func, options);
+},"clearTimeout":function(func, options) {
+	$p.clearTimeout(func, options);
+},"copyClipboard":function(comObj) {
+	if (typeof comObj !== "undefined") {
+		comObj.select();
+	}
+	document.execCommand("Copy");
+},"getObject":function(_objectId, _scopeObj) {
+	if ((typeof _objectId === "object") && (!com.util.isEmpty(_objectId.event))) {
+		return com.util.getComponent($p.getEventTarget(_objectId.realId));
+	} else {
+		return gcm.util.getObject($p, _objectId, _scopeObj);
+	}
+},"getFunction":function(_funcStr, _scopeId) {
+	return gcm.util.getFunction($p, _funcStr, _scopeId);
+},"getUserAgent":function() {
+	return gcm.util.getUserAgent();
+},"openMaskingRemovalPopup":function(dataNm, objGrid, opts, infoData) {
+	if( com.util.isEmpty(dataNm) ||  typeof dataNm != 'string' ) {
+		throw Error('dataNm is necessary');
+	}
+	
+	var data = { params : { 'dataNm' : dataNm }, 
+			callbackFn : function(params){
+				if( typeof params.sPrntRsn == 'string' ) {
+					opts.type = opts.type || "0";
+					opts.sPrntRsn = params.sPrntRsn;
+					
+					com.data.downloadGridViewExcel(objGrid, opts, infoData)
+				}
+			} 
+		};
+	
+	var options = { id : "MaskRlsPop",
+					popupName : "엑셀 개인정보 마스킹 제거 승인",
+					modal : true,
+					sizeType : 'S' };
+	com.win.openPopup("/ui/com/cmm/cmmMaskRlsDown.xml", options, data);
+},"exportHistoryWrite":function(objGrid, sFileName, opts) {
+	var menuInfo = com.data.getParameter("menuInfo");
+	var searchDataMap = com.util.getComponent('dma_search');
+	var searchScope = $p.getFrame().getWindow();
+	
+	while(!menuInfo) {
+		searchScope = searchScope.$p.getParentWindow();
+		var parentframeId = searchScope.$p.getFrameId();
+		menuInfo = searchScope.com.data.getParameter("menuInfo");
+		if(!searchDataMap) searchDataMap = searchScope.com.util.getComponent('dma_search');
+		
+		if( parentframeId == 'mf' ) throw Error('Excel Export is not called on normal screen')
+	}
+
+	var sMenuId = menuInfo.menuCode;
+	var sGridNm = objGrid.org_id;
+	var sInqCndCts = "";
+	var sPrntDttCd = "E"; //엑셀
+	var nInqCnt = objGrid.getRowCount() || 0;
+	var sPrntRsn, sPrnConts;
+	
+	if(opts.type == '0' ) {
+		if( typeof opts.sPrntRsn == 'string' ) {
+			sPrntRsn = opts.sPrntRsn;
+		} else {
+			sPrntRsn = com.date.getServerDateTime("yyyy-MM-dd HH:mm:ss SSS") + ' : com.util.exportHistoryWrite type is 2, but contents is null.';
+		}
+	}
+	
+	try {
+		sInqCndCts = JSON.stringify(searchDataMap.getJSON());
+	} catch (e) {
+		console.warn("Cannot stack Excel Download log: There is no dma_search Object");
+		return;
+	}
+	
+	var dma_search = {
+		"MENU_ID":sMenuId
+        ,"GRID_NM":sGridNm
+		,"INQ_COND_CNTE":sInqCndCts
+		,"OUTP_TY_CD":sPrntDttCd
+		,"FILE_NM":sFileName
+		,"OUTP_CAUSE_CNTE":sPrntRsn
+		,"PSN_RCGN_INFO_CNTE":sPrnConts
+		,"INQ_CNT":nInqCnt
+	};
+	
+	var params = {
+			dma_search : dma_search
+	};
+	
+	var option = {
+		id : "_util_writeExportHistory",
+		action : "/co/sa/saveDatOutpLog.do",
+		target : "",
+		isProcessMsg : false
+	};
+	com.sbm.executeDynamic(option, params);
+},"autoParkFndFunction":function(val, targetObj, callbackFunc) 
+{
+    var sbmOption = {};
+    sbmOption.id                = "sbm_searchAutoParkFnd";
+    sbmOption.action            = "/npCoCommon/parkAutoPfcnListData.do";
+    sbmOption.target            = 'data:json, dlt_autoParkFnd';
+    sbmOption.isProcessMsg      = false;
+    //sbmOption.submitDoneHandler = callbackFn;
+
+    var submissionObj = com.util.getComponent(sbmOption.id);
+
+    if (submissionObj === null) {
+        com.sbm.create(sbmOption);
+        submissionObj = com.util.getComponent(sbmOption.id);
+    } else {
+        $p.deleteSubmission(sbmOption.id);
+        com.sbm.create(sbmOption);
+        submissionObj = com.util.getComponent(sbmOption.id);
     }
 
-    .login-container {
-      background-color: white;
-      width: 400px;
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+    var dltObj = com.util.getComponent("dlt_autoParkFnd");
 
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    if(dltObj === null)
+    {
+        var dcoptions = {}
 
-    .logo img {
-      height: 40px;
-    }
+        dcoptions.baseNode = "list";
+        dcoptions.repeatNode = "map";
+        dcoptions.saveRemovedData = "true";
 
-    .login-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #333;
-    }
+        var col = [   "parkNo"
+                    , "parkNm"
+                    , "label"
+                    , "roadNmAddr"
+                    , "detailAddr"
+                    , "parkAddr"
+                    , "macCoCd"
+                    , "macCoNm"
+                    , "contractShp"
+                    , "contractShpNm"];
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+        var colType = ["text"
+                    , "text"
+                    , "text"
+                    , "text"
+                    , "text"
+                    , "text"
+                    , "text"
+                    , "text"
+                    , "text"
+                    , "text"];
 
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 5px;
+        dltObj = com.data.createDataList("dlt_autoParkFnd", col, colType , dcoptions);
     }
+    else
+    {
+    	dltObj.setJSON([]);
+    }
+    
+	if(com.str.getByteLength(val) < 3)
+	{
+		return;
+	}    
+    
+    com.sbm.execute(submissionObj, '{"term":"'+ val +'"}').then(function(r)
+    {
+        dlt_autoParkFnd.setJSON(r.responseJSON.autoLists);
+        targetObj.setItemSet("data:dlt_autoParkFnd", "label", "parkNm");
+        targetObj.openTable();
+	    
+        var callbackFn;
+        if(callbackFunc !== undefined)
+        {
+            if(typeof callbackFunc === 'string')
+            {
+                callbackFn = com.util.getFunction(callbackFunc);
+            }
+            else
+            {
+                callbackFn = callbackFunc;
+            }
+            
+            callbackFn(r);
+        }
+        
+        
 
-    .form-group input {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
+    });
+},"isRunningInApp":function(val, targetObj, callbackFunc) {
+	let agt = navigator.userAgent.toLowerCase();
+	if( agt.indexOf("app_running_ios") > 0 || agt.indexOf("app_running_aos") > 0 ){
+		return true;
+	} else {
+		return false;
+	}
+},"bizLpad":function(input_text, p_length, p_text) {
+	while (input_text.length < p_length) input_text = p_text + input_text;
+	return input_text;
+},"uniqueArray":function(ar) {
+    var j = {};
+    
+    ar.forEach(function(v){
+        j[v +"::"+ typeof v] = v;
+    });
+    
+    return Object.keys(j).map(function(v){return j[v];});
+},"formatTelNo":function(cellvalue) {
+	var formatValue = "";
+	if (!com.util.isEmpty(cellvalue) && cellvalue.length == 8) {
+		return cellvalue.replace(/(\d{4})(\d{4})/, '$1-$2');
+	} else if (!com.util.isEmpty(cellvalue) && cellvalue.length == 9) {
+		return cellvalue.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
+	} else if (!com.util.isEmpty(cellvalue) && cellvalue.length == 10) {
+		return cellvalue.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
+	} else if (!com.util.isEmpty(cellvalue) && cellvalue.length == 11) {
+		return cellvalue.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
+	} else {
+		return cellvalue = cellvalue == null ? "" : cellvalue;
+	}
+},"formatBizNo":function(cellvalue) {
+	var formatValue = "";
+	if (!com.util.isEmpty(cellvalue) && cellvalue.length == 10) {
+		formatValue += cellvalue.substring(0, 3) + "-";
+		formatValue += cellvalue.substring(3, 5) + "-";
+		formatValue += cellvalue.substring(5, 10);
+		return formatValue;
+	} else {
+		return cellvalue = cellvalue == null ? "" : cellvalue;
+	}
+},"setSessionStorage":function(key, value) {
+	if(com.util.isEmpty(key)) {
+		return null;
+	}
 
-    .login-btn {
-      width: 100%;
-      background-color: #0072ce;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.3s;
-    }
+	if(typeof sessionStorage != 'undefined' && sessionStorage) {
+		sessionStorage.setItem(key, value);
+	} else {
+		alert("지원하지 못하는 브라우저입니다.[sessionStorage 사용불가]");
+	}
+ },"getSessionStorage":function(key) {
+	if(com.util.isEmpty(key)) {
+		return null;
+	}
+	if(typeof sessionStorage != 'undefined' && sessionStorage) {
+		return sessionStorage.getItem(key);
+	} else {
+		alert("지원하지 못하는 브라우저입니다.[sessionStorage 사용불가]");
+	}
+ },"formatPrice":function(cellvalue) {
+	var str = 0;
+	if (cellvalue !== '' && cellvalue !== null && typeof cellvalue !== "undefined") {
+		str = cellvalue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	return str;
+},"formatCardNo":function(cardNo) {
+	if (com.util.isEmpty(cardNo)) {
+		return "";
+	} else if (cardNo.length != 16) {
+		return cardNo;
+	}
 
-    .login-btn:hover {
-      background-color: #005fa3;
-    }
+	var splitCardNo = new Array(4);
 
-    .links {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      font-size: 14px;
-    }
+	splitCardNo[0] = cardNo.substring(0, 4);
+	splitCardNo[1] = cardNo.substring(4, 8);
+	splitCardNo[2] = cardNo.substring(8, 12);
+	splitCardNo[3] = cardNo.substring(12, 16);
 
-    .links a {
-      color: #0072ce;
-      text-decoration: none;
-    }
+	return splitCardNo[0] + "-" + splitCardNo[1] + "-" + splitCardNo[2] + "-" + splitCardNo[3];
+},"formatDotAfterDel":function(cellvalue) {
+	var str = 0;
+	if (cellvalue !== '' && cellvalue !== null && typeof cellvalue !== "undefined") {
+		str = cellvalue.substring(0, cellvalue.lastIndexOf("."));
+	}
+	return str;
+},"formatPriceWithSuffix":function(numberValue, suffix) {
+	var str = '';
+	if (!com.util.isEmpty(suffix)) {
+		str = com.util.formatPrice(numberValue) + suffix;
+	} else {
+		str = '0';
+	}
+	return str;
+},"isValidPwd":function(userPwd) {
+	var continueRegExp = /(123)|(234)|(345)|(456)|(567)|(678)|(789)|(987)|(876)|(765)|(654)|(543)|(432)|(321)/; // 연속된 숫자 체크
+	var numRegExg = /[0-9]/; // regular expression 숫자 체크
+	var engRegExg = /[a-zA-Z]/; // regular expression 영문 체크
+	var expRegExg = /[~!@\#$%<>^&*\()\-=+_\']/gi; // regular expression 특수문자 체크
 
-    .links a:hover {
-      text-decoration: underline;
-    }
+	var chkFlag = false;
+	var str = String(userPwd);
 
-    .notice {
-      margin-top: 30px;
-      padding: 10px;
-      background-color: #f9f9f9;
-      font-size: 13px;
-      color: #777;
-      border-radius: 6px;
+	// 연속된 3자리 숫자,문자 정규식 체크
+	if (str.match(continueRegExp)) {
+		com.win.alert("비밀번호는 연속된 숫자를 3자 이상 사용할 수 없습니다.");
+		return chkFlag;
+	}
+
+	// 동일 3자리 문자, 숫자 체크
+	var temp = "";
+	for (var i = 0; i < str.length; i++) {
+		temp = str.charAt(i);
+		if (temp == str.charAt(i + 1) && temp == str.charAt(i + 2)) {
+			com.win.alert("비밀번호는 연속된 숫자를 3자 이상 사용할 수 없습니다.");
+			return chkFlag;
+		}
+	}
+
+	// 숫자,영문,특수문자 갯수 체크
+	var cntNumRegExg = com.util.chkRegexp(str, numRegExg);
+	var cntEngRegExg = com.util.chkRegexp(str, engRegExg);
+	var cntExpRegExg = com.util.chkRegexp(str, expRegExg);
+
+	// 비밀번호 유효성 통과 체크 (숫자 1개 이상, 영문 1개 이상, 특수문자 1개 이상)
+	if (cntNumRegExg >= 1 && cntEngRegExg >= 1 && cntExpRegExg >= 1) {
+		return !chkFlag;
+	} else {
+		com.win.alert("비밀번호는 숫자/문자/특수문자가 각각 최소 1자 이상 포함되어야 합니다.");
+		return chkFlag;
+	}
+},"chkRegexp":function(input, regExg) {
+	var cnt = 0;
+	for (var i = 0; i < input.length; i++) {
+		if (input.charAt(i).match(regExg) != " " && (input.charAt(i).search(regExg) != -1)) {
+			cnt++;
+		}
+	}
+	return cnt;
+},"checkCarNo4":function(carNo) {
+	
+	if(carNo.length < 4){
+		return false;
+	}
+	
+	var carNo4 = "";
+	
+	if(carNo.length == 4){
+		carNo4 = carNo;
+	}else{
+		carNo4 = carNo.substring(carNo.length - 4, carNo.length);
+	}
+	
+	return !isNaN(carNo4);
+},"hasAuth":function(authType) {
+	if( typeof authType !== 'string' ) {
+		console.warn('authType is not string');
+		return;
+	}
+	
+	if( authType === 'niceEmpGrp' ) {
+		return gcm.gdma_userInfo.get('USR_TY_CD') === '1'
+	}
+	
+	var scope = $p.getFrame().getWindow();
+	var menuInfo = scope.com.data.getParameter("menuInfo");
+	var searchScope = scope;
+	
+	while(!menuInfo) {
+		searchScope = searchScope.$p.getParentWindow();
+		var parentframeId = searchScope.$p.getFrameId();
+		menuInfo = searchScope.com.data.getParameter("menuInfo");
+		
+		if( parentframeId == 'mf' && !menuInfo) return false;
+	}
+	
+	var authMap = {
+			select 				: 'INQ_AUTH_YN',
+			add 					: 'REG_AUTH_YN',
+			save 					: 'MDF_AUTH_YN',
+			'delete' 				: 'DEL_AUTH_YN',
+			settlement 			: 'STLE_AUTH_YN',
+			confirm 				: 'CONFIRM_AUTH_YN',
+			remoteControl 	: 'RMT_CONTROL_AUTH_YN',
+			up 					: 'UPLD_AUTH_YN',
+			excelUp 				: 'UPLD_AUTH_YN',
+			down 				: 'DNLD_AUTH_YN',
+			excelDown 			: 'DNLD_AUTH_YN',
+			stsControl 			: 'STS_CONTROL_AUTH_YN',
+			maskRlsDown 		: 'MASK_RLS_AUTH_YN',
+	};
+	
+	if(menuInfo[ authMap[authType] ] == 'Y') return true;
+	return false;
+},"carNoChecker":function(v) {
+	var newCarRegex = /^[0-9]{2,3}[\s]*[가-힣]{1}[\s]*[0-9]{4}$/;
+	var oldCarRegex = /^[가-힣]{2}[\s]*[0-9]{2}[\s]*[가-힣]{1}[\s]*[0-9]{4}$/;
+	var diplomacyCarRegex = /^외교\d{6}$/;
+	var diplomacyCarRegex2 = /^국기\d{6}$/;
+	var diplomacyCarRegex3 = /^준외\d{6}$/;
+	var diplomacyCarRegex4 = /^임\d{4}$/;
+	
+	if (newCarRegex.test(v) == false 
+			&& oldCarRegex.test(v) == false 
+			&& diplomacyCarRegex.test(v) == false 
+			&& diplomacyCarRegex2.test(v) == false
+			&& diplomacyCarRegex3.test(v) == false
+			&& diplomacyCarRegex4.test(v) == false) {
+		return false;
+	} else {
+		return true;
+	}
+}},"win":{"goHome":function(siteType) {
+	if (SYS_CD == "NPPM") {
+		if (siteType == "skku") {
+			gcm.CONTEXT_PATH = "/mcust/skku/skkuHome";
+		} else {
+			gcm.CONTEXT_PATH = "/mcust/home";
+		}
+	}
+	
+	if (SYS_CD == "NPPL") {
+		if (siteType == "ulsan") {
+			gcm.CONTEXT_PATH = "/ncust/ulsanac/ulsanHome";
+		} else {
+			gcm.CONTEXT_PATH = "/ncust/home";
+		}
+	}
+	
+	if (SYS_CD == "NPMM") {
+		gcm.CONTEXT_PATH = "/npmm/home";
+	}
+	
+	if (gcm.CONTEXT_PATH == "") { 
+		top.window.location.href = "/"; 
+	} else {
+		top.window.location.href = gcm.CONTEXT_PATH;
+	}
+},"logout":function() {
+	gcm.win.removeEventOnBeforeUnload();
+	
+	var logoutGrpOption = {
+		id : "_sbm_Logout",
+		action : "/logout.do",
+		target : "",
+		submitDoneHandler : "com.win.goHome",
+		isProcessMsg : false
+	};
+	com.sbm.executeDynamic(logoutGrpOption, { dma_search : { SYS_CD : SYS_CD } });
+},"isAdmin":function() {
+	scwin.isAdmin = $p.top().wfm_side.getWindow().dma_defInfo.get("IS_ADMIN");
+	if (scwin.isAdmin === "Y") {
+		return true;
+	} else {
+		return false;
+	}
+},"getFullPath":function(path) {
+	var rtn_path = "";
+	if (gcm.CONTEXT_PATH == "") {
+		rtn_path = path;
+	} else {
+		rtn_path = gcm.CONTEXT_PATH + path;
+	}
+	return rtn_path;
+},"setEnterKeyEvent":function(grpObj, objFunc) {
+	var objArr = com.util.getChildren(grpObj, {
+		includePlugin: "checkbox checkcombobox editor input inputCalendar multiselect radio selectbox searchbox secret textarea autoComplete",
+		recursive: true
+	});
+
+	try {
+		for (var i = 0; i < objArr.length; i++) {
+			try {
+				if (typeof objFunc === "function") {
+					objArr[i].bind("onkeyup", function (e) {
+						if (e.keyCode === 13) {
+							if (typeof this.getRef === "function") {
+								var ref = this.getRef();
+								var refArray = ref.substring(5).split(".");
+								if ((typeof refArray !== "undefined") && (refArray.length === 2)) {
+									var dataCollectionName = refArray[0];
+									var columnId = refArray[1];
+									var dataCollection = this.getScopeWindow().$p.getComponentById(dataCollectionName);
+									var dataType = dataCollection.getObjectType().toLowerCase();
+									if (dataType === "datamap") {
+										dataCollection.set(columnId, this.getValue());
+									} else if ((dataType === 'datalist') && (typeof rowIndex !== "undefined")) {
+										dataCollection.setCellData(dataCollection.getRowPosition(), columnId, this.getValue());
+									}
+								}
+								this.blur();
+								objFunc();
+							}
+						}
+					});
+				}
+			} catch (e) {
+				console.error("[com.win.setEnterKeyEvent] Exception :: " + e.message);
+			}
+		}
+	} catch (ex) {
+		console.error(ex);
+	} finally {
+		objArr = null;
+	}
+},"alert":function(messageStr, closeCallbackFncName, opts) {
+	return new Promise(function(resolve, reject) {
+		if (typeof opts !== "object") {
+			opts = {};
+		}
+
+		if (com.util.isEmpty(closeCallbackFncName)) {
+			closeCallbackFncName = function() {
+				resolve();
+			};
+		}
+		
+		gcm.win.messagBox($p, "alert", messageStr, closeCallbackFncName, opts);
+	});
+},"confirm":function(messageStr, closeCallbackFncName, opts) {
+	return new Promise(function(resolve, reject) {
+		if (typeof opts !== "object") {
+			opts = {};
+		}
+		
+		if (com.util.isEmpty(closeCallbackFncName)) {
+			closeCallbackFncName = function(rtn) {
+				if (!com.util.isEmpty(rtn) && !com.util.isEmpty(rtn.clickValue)) {
+					resolve(rtn.clickValue);
+				} else {
+					resolve(false);
+				}
+			};
+		}
+		
+		gcm.win.messagBox($p, "confirm", messageStr, closeCallbackFncName, opts);
+	});
+},"gfnAlert":function(msgId, arrArg, closeCallbackFncName, msgType) {
+	return new Promise(function(resolve, reject) {
+		var option = {
+			messageContents : arrArg,
+			messageCode : msgId
+		};
+		
+		if(typeof option.messageContents == "string") {
+			option.messageContents = [option.messageContents];
+		}
+		
+		if (com.util.isEmpty(closeCallbackFncName)) {
+			closeCallbackFncName = function(rtn) {
+				if (!com.util.isEmpty(rtn) && !com.util.isEmpty(rtn.clickValue)) {
+					resolve(rtn.clickValue);
+				} else {
+					resolve(false);
+				}
+			};
+		}
+		
+		com.sbm.resultMsg(option, closeCallbackFncName, msgType);
+	});
+},"showToastMessage":function(messageType, message) {
+	gcm.win.showToastMessage(messageType, message);
+},"getLanguage":function() {
+	var language = navigator.language || navigator.userLanguage || navigator.systemLanguage;
+	if ((com.util.isEmpty(language) === false) && (language.length > 1)) {
+		return language.substring(0,2);
+	} else {
+		return "";
+	}
+},"getPopupId":function() {
+	var parent = opener || parent;
+
+	if ($p.getPopupId()) {
+		return $p.getPopupId();
+	} else {
+		return window.scwin.$w.getPopupId();
+	}
+},"openPopup":function(url, opts, data) {
+	return new Promise(function(resolve, reject) {
+		if( typeof ecm != 'undefined' && ecm != null ) ecm.gridFinderUtil.hideFindWindow();
+		
+		if (typeof opts !== "object") {
+			opts = {};
+		}
+		
+		if (com.util.isEmpty(data)) {
+			data = {};
+		}
+		
+		if (com.util.isEmpty(data.callbackFn)) {
+			data.callbackFn = function(rtn) {
+				if (!com.util.isEmpty(rtn)) {
+					if (!com.util.isEmpty(rtn.clickValue)) {
+						resolve(rtn.clickValue);
+					} else {
+						resolve(rtn);
+					}
+				} else {
+					resolve(false);
+				}
+			};
+		}
+		
+		gcm.win.openPopup($p, url, opts, data);
+	});
+},"openSearchCodePopup":function(options) {
+	if(com.util.isEmpty(options.code)) {
+		throw Error("options.code is empty");
+	}
+	
+	options.param				= options.param || "";
+	options.type				= options.type || "popup";
+	options.sizeType			= options.sizeType || "S";
+	options.isAutoFit			= options.isAutoFit || true;
+	options.title					= options.title || "";
+	options.callbackFunc	= options.callbackFunc || "";
+	
+	var params = {
+			popupMap : {
+				"FIND_PPP_CD" : options.code
+			}
+	};
+	
+	var searchCodeGrpOption = {
+		id: "sbm_selectPopupDetail", 
+		action: "/co/co/selectComFindPopup.do",
+		method: "post",
+		mediatype: "application/json", mode: "asynchronous", 
+		isProcessMsg: false,
+		submitDoneHandler : function(e){
+			var jsonObject = e.responseJSON;
+			var popInfo = jsonObject.popupMap;
+			var popupOptions = {
+				id: "cmmCodePopup",
+				popupName: "프로젝트요청등록",
+				modal : true,
+				sizeType : options.sizeType,
+				width : options.width,
+				height : options.height,
+			};
+			var url = "/ui/com/cmm/cmmCodePopup.xml";
+			
+			var data = { data: options, callbackFn: options.callbackFunc };
+			
+			if(popInfo.FIND_COND_USE_YN == "N"){
+				url = popInfo.PGM_URL;
+				popupOptions.id = popInfo.FIND_PPP_CD;
+				popupOptions.popupName = popInfo.PPP_NM;
+			}
+			
+			com.win.openPopup(url, popupOptions, data);
+		},
+	};
+
+	com.sbm.executeDynamic(searchCodeGrpOption, params);
+},"closePopup":function(callbackParam, callbackFnStr) {
+	if ( com.util.isEmpty(callbackParam) ) {
+		callbackParam = {};
+	}
+	
+	com.win.popup = {
+		callbackParam : callbackParam
+	};
+	gcm.win.closePopup($p, com.win.getPopupId(), com.str.serialize(callbackParam), callbackFnStr);
+},"closeAllPopup":function() {
+	// WebSquare.uiplugin.popup.popupList 속성은 엔진 내 비공개 속성으로 공통에서만 제한적으로 사용함(업무 화면 소스 사용 금지)
+	var popupList = WebSquare.uiplugin.popup.popupList;
+	for (var idx = 0; idx < popupList.length; idx++) {
+		$p.closePopup(WebSquare.uiplugin.popup.popupList[idx].id);
+	}
+},"isPopup":function() {
+	return $p.isPopup();
+},"openMenu":function(menuNm, url, menuCode, paramObj, option) {
+	return gcm.win.openMenu($p, menuNm, url, menuCode, paramObj, option);
+},"openInWframe":function(url, paramObj) {
+	return gcm.win.openInWframe($p, url, paramObj);
+},"moveUrl":function(moveUrl, paramObj) {
+	var paramObj = {
+		"dataObject" : {
+			"type" : "json",
+			"name" : "paramData",
+			"data" : paramObj
+		}
+	};
+	
+	
+	Promise.resolve().then(function() {
+		 return $p.getFrame().setSrc(gcm.CONTEXT_PATH + moveUrl, paramObj);
+    	});
+},"setWFrameSrc":function(wframeObj, moveUrl, paramObj) {
+	var paramObj = {
+		"dataObject" : {
+			"type" : "json",
+			"name" : "paramData",
+			"data" : paramObj
+		}
+	};
+	
+	wframeObj.setSrc(gcm.CONTEXT_PATH + moveUrl, paramObj);
+},"getFrame":function() {
+	try {
+		return $p.getFrame();
+	} catch (ex) {
+		console.error(ex);
+	}
+},"getParent":function() {
+	try {
+		return $p.parent();
+	} catch (ex) {
+		console.error(ex);
+	}
+},"setLangCode":function(langCode) {
+	WebSquare.cookie.setCookie("system_language", langCode);
+},"setBtnAuth":function(obj, auth) {
+	if( obj && obj.id == 'mf' ) obj = WebSquare.getBody();
+	var children = com.util.getChildren(obj, {
+		includePlugin : "trigger",
+		recursive : true
+	});
+	
+	var authMap = {	
+		//"btn_select"		: 12,				// 조회권한, select 권한이 없을 경우는 side.xml에서 화면이 열리지 않도록 처리
+		"btn_add"		: 11, 					// 등록권한
+		"btn_save"		: 10,					// 수정권한
+		"btn_delete"	: 9,					// 삭제권한
+		"btn_settlement" : 8,					// 결제권한
+		"btn_confirm" : 7,					// 확정권한
+		"btn_remoteControl" : 6,			// 원격제어권한
+		"btn_up"	: 5,							// 첨부파일 업로드권한
+		"btn_excelUp"	: 4,					// 엑셀 업로드 권한
+		"btn_down" : 3,						// 첨부파일 다운로드권한
+		"btn_excelDown" : 2,				// 엑셀 다운로드 권한
+		"btn_stsControl" : 1,					// 상태제어권한
+		"btn_maskRlsDown" : 0,			// 마스킹해제권한
+	};
+	
+	auth = parseInt( auth, 2 );
+	for( var child of children ){
+		var originId = child.getOriginalID();
+		
+		for( var name of Object.keys(authMap) ) {
+			var pos = originId.indexOf(name);
+			
+			if( pos != 0 ) continue;
+			
+			if( ( auth & 1 << authMap[name] ) == 0){
+				child.remove();
+				break;
+			}
+		}
+	}
+},"openNicePay":function(input_param, submission_options, payment_window_fail ) {
+	
+	var getNicePayPaymentInfo = function( form_param, input_param ) {
+		if( com.util.isEmpty(input_param['Amt']) || com.util.isEmpty(input_param['ParkNo']) ) throw Error("input_param.Amt or ParkNo is null");
+		
+		var searchCodeGrpOption = {
+			id: "sbm_getNicePayPaymentInfo", action: '/getNicePayPaymentInfo.do',
+			method: "post",
+			mediatype: "application/json", mode: "asynchronous", 
+			submitDoneHandler : function(e){
+				var payment_info = e.responseJSON.payment_info;
+				Object.assign(input_param, payment_info);
+				
+				init_param( form_param, input_param );
+			}
+		};
+
+		com.sbm.executeDynamic(searchCodeGrpOption, { dma_search : { Amt : input_param['Amt'], ParkNo : input_param['ParkNo'] } } );
+	}
+	
+	var init_param = function (form_param, input_param) {
+		
+		// 파라미터 체크
+		var checkEssential = [
+			"GoodsName", "Amt", "MID", "EdiDate", "Moid", "SignData"
+		]
+		
+		for( var checkKey of checkEssential ) {
+			if( input_param[checkKey] == null ) {
+				throw Error("input_param." + checkKey + " is null");
+			}
+		}
+		
+		if( submission_options.action == null ) {
+			throw Error("submission_options.action is null");
+		}
+		
+		// 기기별 기본 파라미터 세팅
+		var nowScope = $p.getFrame().getWindow();
+		if( com.util.isMobile() ) {
+			document.charset = 'euc-kr';
+			form_param['target'] = 'payFrame';
+			form_param['action'] = 'https://pg-web.nicepay.co.kr/v3/gwPayment.jsp';
+			
+			input_param["ReturnURL"] = window.location.protocol + "//" + window.location.host + "/nicepay/paymentResponse";
+		}
+		
+		// 결제창 성공시 호출 함수
+		nicepaySubmit = function (result) { 
+			if( result == false ) return;
+			
+			var scope = nowScope;
+			var dataMapID = submission_options.dataMapID || "dma_payment";
+			var mapObj = scope.com.data.createDataMap(dataMapID, [
+				"AuthResultCode", "AuthResultMsg", "AuthToken", "PayMethod", "MID", "Moid", "Signature", "Amt", "ReqReserved", "TxTid", "NextAppURL", "NetCancelURL", "EdiDate" ] ,
+				["text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text", "text"]);
+			
+			var form_id = scope.payForm.getID(); 
+			var iptArr = $("#" + form_id ).children("input");
+			
+			for( var idx = 0; idx < iptArr.length; idx++ ) {
+				var name = iptArr[idx].name;
+				var value = iptArr[idx].value;
+				
+				mapObj.set( name, value );
+			}
+
+			if( com.util.isEmpty(mapObj.get('AuthResultCode')) && gcm.payment_window_response != null ) {
+				for( var key in gcm.payment_window_response ){
+					mapObj.set( key, gcm.payment_window_response[key] );
+				}
+			}
+			if( gcm.payment_window_response != null ) gcm.payment_window_response = null;
+
+			if( typeof NicePayStd != "undefined" && typeof NicePayStd.deleteLayer == "function" ) {
+				NicePayStd.deleteLayer();
+			}
+			
+			var searchCodeGrpOption = {
+				id: "sbm_payment", action: submission_options.action,
+				method: "post",
+				ref : 'data:json,{"id":"' + dataMapID + '","key":"dma_payment"}',
+				mediatype: "application/json", mode: "asynchronous", 
+				isProcessMsg: true,
+			};
+			
+			if(typeof submission_options.submitDone == "function") {
+				searchCodeGrpOption["submitDoneHandler"] = submission_options["submitDone"];
+			}
+			
+			if(typeof submission_options.submitError == "function") {
+				searchCodeGrpOption["submitErrorHandler"] = submission_options["submitError"];
+			}
+			
+			if( submission_options.extraRequestObj != null ) {
+				if( typeof submission_options.extraRequestObj != "object" ) submission_options.extraRequestObj = {};
+				submission_options.extraRequestObj['dma_payment'] = mapObj.getJSON();
+			}
+
+			com.sbm.executeDynamic(searchCodeGrpOption, submission_options.extraRequestObj);
+		};
+		
+		// 결제창 실패시 함수 호출
+		nicepayClose = function () { 
+			if( typeof payment_window_fail == "function" ) {
+				payment_window_fail();
+			}
+		};
+		
+		nicepaySubmit_Android = function (isSuccess, method, param) {
+            console.log(param);
+            if(isSuccess == false || param == null ) {
+                    com.win.gfnAlert("결제 중 오류가 발생하였습니다. 다시 결제를 진행해주세요.");
+                    return;
+            }
+
+            try {
+                    param = JSON.parse(decodeURIComponent(param));
+                    var payment_window_response = JSON.parse(param.payment_window_response);
+            } catch (e) {
+                    com.win.gfnAlert("결제 중 오류가 발생하였습니다. 다시 결제를 진행해주세요.");
+                    throw Error('JSON.parse error');
+            }
+
+            var form_dom = $.find("form[id$='payForm'")[0];
+
+            for( var key in payment_window_response ){
+                    let comp = top.com.util.getComponent( form_dom.id + "_" + key );
+                    if(comp != null) comp.remove();
+                    top.$p.dynamicCreate(form_dom.id + "_" + key, "input", { "type" : "hidden", "initValue" : payment_window_response[key], "name" : key }, form_dom);
+            }
+
+            nicepaySubmit(true);
+		}
+		
+		mainProcess( form_param, input_param );
+	};
+	
+	var make_form = function (form_param, input_param) {
+		if( com.util.getComponent("payForm") != null ) com.util.getComponent("payForm").remove();
+		form_param.sytle = "visibility:hidden";
+		
+		$p.dynamicCreate("payForm", "group", { "style" : "hidden", "tagname" : "form" } );
+		
+		var form_dom = document.getElementById( payForm.id );
+		for( var key in form_param ){
+			form_dom.setAttribute( key , form_param[key] );
+		}
+		
+		input_param[ 'CharSet' ] = 'utf-8';
+		
+		for( var key in input_param ){
+			let comp = top.com.util.getComponent( form_dom.id + "_" + key );
+            if(comp != null) comp.remove();
+			$p.dynamicCreate("payForm_" + key, "input", { "type" : "hidden", "initValue" : input_param[key], "name" : key }, payForm);
+		}
+		
+		return payForm.id;
+	};
+	
+	var mainProcess = function (form_param, input_param) {
+		var form_id = make_form( form_param, input_param );
+		
+		if( com.util.isMobile() ) {
+			// 안드로이드 앱에서는 다른 웹뷰를 통해 결제해야하므로 추가 로직 추가
+			let agt = navigator.userAgent.toLowerCase();
+			if(  agt.indexOf("app_running_aos") > 0 ){
+				let params = { pluginId : "pay", params : { url : '' } };
+				params.params.url = 'https://pg-web.nicepay.co.kr/v3/gwPayment.jsp?'
+				for( var key in input_param ){
+					params.params.url += key + "=" + encodeURIComponent(input_param[key]) + '&';
+				}
+				
+				nice.postMessage(JSON.stringify(params));
+				return;
+			}
+			
+			var data = { data : {form : form_id }, callbackFn : nicepaySubmit };
+			var options = { id : "cmmNicePay",
+							popupName : "NicePay 결제",
+							modal : true,
+							width : document.body.offsetWidth, 
+							height : document.body.offsetHeight };
+			com.win.openPopup("/ui/com/cmm/cmmNicePay.xml", options, data);
+		} else {
+			$p.js("https://pg-web.nicepay.co.kr/v3/common/js/nicepay-pgweb.js", function(){
+				goPay( document.getElementById( form_id ) );
+			} );
+		}
+	}
+	
+	// 프로세스 시작
+	form_param = {};
+	
+	if( com.util.isEmpty(input_param['MID']) ) getNicePayPaymentInfo( form_param, input_param );
+	else init_param( form_param, input_param );
+},"verifyColPopup":function(dma_search, dma_verifyCol, callbackFunc) {
+	if(dma_search == null) {
+		com.win.alert("검색 항목이 존재하지 않습니다.");
+		return;
+	}
+	if(dma_verifyCol == null) {
+		com.win.alert("개인정보 검색 정보가 존재하지 않습니다.");
+		return;
+	}
+	
+	var verifyColList = dma_verifyCol.get("verifyColList");
+	if(verifyColList.length < 1) {
+		com.win.alert("개인정보 검색 항목이 존재하지 않습니다.");
+		return;
+	}
+	
+	for(var i = 0; i < verifyColList.length; i++) {
+        var curColData = verifyColList[i];
+        var curColCd = curColData.colCd;
+        curColData.colNm = dma_search.getName(curColCd);
+        curColData.colVal = dma_search.get(curColCd);
     }
-  </style>
-</head>
-<body>
-  <div class="login-container">
-    <div class="logo">
-      <img src="https://via.placeholder.com/120x40?text=LOGO" alt="Site Logo">
-    </div>
-    <h2>로그인</h2>
-    <form>
-      <div class="form-group">
-        <label for="userid">아이디</label>
-        <input type="text" id="userid" name="userid" required>
-      </div>
-      <div class="form-group">
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <button type="submit" class="login-btn">로그인</button>
-      <div class="links">
-        <a href="#">아이디 찾기</a>
-        <a href="#">비밀번호 찾기</a>
-        <a href="#">회원가입</a>
-      </div>
-    </form>
-    <div class="notice">
-      보안 강화를 위해 정기적으로 비밀번호를 변경해주세요.
-    </div>
-  </div>
-</body>
-</html>
+	
+	var verifyColData = {
+		verifyColList : verifyColList
+    };
+    
+    var data = {
+		data : verifyColData,
+		callbackFn : function(verifyColList) {
+		    for(var i = 0; i < verifyColList.length; i++) {
+		        if(dma_search.get(verifyColList[i].colCd) != null) {
+		            dma_search.set(verifyColList[i].colCd, verifyColList[i].colVal);
+		        }
+		    }
+		    
+		    var callbackFn;
+	        if(callbackFunc !== undefined) {
+	            if(typeof callbackFunc === 'string') {
+	                callbackFn = com.util.getFunction(callbackFunc);
+	            } else {
+	                callbackFn = callbackFunc;
+	            }
+	            
+	            callbackFn();
+	        }
+		}
+	};
+    
+    var options = {
+		id: "NPCO000P12",
+		popupName: "개인정보 검색 조건",
+		modal: true,
+		width: "660", height: "720"
+	};
+	com.win.openPopup("/ui/npco/co/NPCO000P12.xml", options, data);
+}},"num":{"round":function(value, point) {
+	var num = 1;
+	if (typeof point !== "undefined") {
+		num = Math.pow(10, point);
+	}
+
+	return Math.round(Number(value) * num) / num;
+},"floor":function(value, point) {
+	var num = 1;
+	if (typeof point !== "undefined") {
+		num = Math.pow(10, point);
+	}
+
+	return Math.floor(Number(value) * num) / num;
+},"ceil":function(value, point) {
+	var num = 1;
+	if (typeof point !== "undefined") {
+		num = Math.pow(10, point);
+	}
+
+	return Math.ceil(Number(value) * num) / num;
+},"formatMoney":function (value, type) {
+	var amount;
+
+	if (type == "plusZero") {
+		amount = new String(value) + "0";
+	} else {
+		amount = new String(value);
+	}
+
+	amount = amount.split(".");
+
+	var amount1 = amount[0].split("").reverse();
+	var amount2 = amount[1];
+
+	var output = "";
+	for (var i = 0; i <= amount1.length - 1; i++) {
+		output = amount1[i] + output;
+		if ((i + 1) % 3 == 0 && (amount1.length - 1) !== i)
+			output = ',' + output;
+	}
+
+	if (type == "dollar") {
+		if (!amount2) {
+			output = "$ " + output;
+		} else {
+			output = "$ " + output + "." + amount2;
+		}
+	} else if (type == "won") {
+		if (!amount2) {
+			output = output + "원";
+		} else {
+			output = output + "." + amount2 + "원";
+		}
+	} else {
+		if (!amount2) {
+			output = output;
+		} else {
+			output = output + "." + amount2;
+		}
+	}
+
+	return output;
+},"formatNumber":function (value) {
+	return WebSquare.util.setNumber(value);
+},"removeComma":function (pStr) {
+	pStr = pStr.replaceAll(",", "");
+	return pStr;
+},"isNumber":function (value) {
+	return !isNaN(value);
+},"isOdd":function (value) {
+	return WebSquare.util.isOdd(value);
+},"parseInt":function (value, defaultValue) {
+	return WebSquare.util.parseInt(value, defaultValue);
+},"parseFloat":function (value, defaultValue) {
+	return WebSquare.util.parseFloat(value, defaultValue);
+},"formatByte":function(value) {
+	var unitType = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+	if (value == 0 || value == "0" || isNaN(value)) {
+		return 0 + " " + unitType[0];
+	}
+	var index = Math.floor(Math.log(value) / Math.log(1024));
+	return (value / Math.pow(1024, index)).toFixed(1) + " " + unitType[index];
+},"deciamlToHexa":function(objNum) {
+	return objNum.toString(16);
+},"formatDecimalFix2":function(cellvalue) {
+	if(isNaN(cellvalue)){
+		return cellvalue;
+	}
+	var num = Number(cellvalue).toFixed(2);	
+	return num;
+},"isDigit":function(sNum) {
+	var c;
+	var point_cnt=0;
+	var ret=true;
+
+	if ( com.util.isEmpty(sNum) )	return false;
+
+	for (var i=0; i<sNum.length; i++) {
+		c = sNum.charAt(i);
+		if (i == 0 && (c == "+" || c == "-"));
+		else if (c >= "0" && c <= "9");
+		else if (c == ".")
+		{
+			point_cnt++;
+			if ( point_cnt > 1 )
+			{
+				ret = false;
+				break;
+			}
+		}
+		else
+		{
+			ret = false;
+			break;
+		}
+	}
+	return ret;
+}},"str":{"convertHtmlTag":function(returnStr) {
+	if (com.util.isEmpty(returnStr)) return;
+	
+	returnStr = returnStr.replaceAll("<br>", "\n");
+    returnStr = returnStr.replaceAll("&gt;", ">");
+    returnStr = returnStr.replaceAll("&lt;", "<");
+    returnStr = returnStr.replaceAll("&quot;", "");
+    returnStr = returnStr.replaceAll("&nbsp;", " ");
+    returnStr = returnStr.replaceAll("&amp;", "&");
+    
+    return returnStr;
+},"serialize":function (object, replacer, space) {
+	if (typeof object === 'string') {
+		return object;
+	} else if (com.util.isJSON(object)) {
+		return JSON.stringify(object, replacer, space);
+	} else if (com.util.isXmlDoc(object)) {
+		return WebSquare.xml.serialize(object);
+	} else {
+		return object;
+	}
+},"getDigit":function(strVal) {
+	const regex = /[^0-9]/g;
+	return strVal.replace(regex, "");
+},"removeSpecialChar":function(strVal) {
+	const regex =  /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+	return strVal.replace(regex, "");
+},"isSpecial":function(strValue) {
+	var retVal = false;
+	var regExp = /[~!@#$%^&*()_+|<>?:{}]/;
+	if(!regExp.test(strValue)) return true;
+
+	return retVal;
+},"lpad":function(str, length, char) {
+	if (typeof str === "number") {
+		str = str.toString();
+	}
+	
+	if (char.length > length) {
+		console.warn("[com.str.lpad] 오류 : 채우고자 하는 문자열이 요청 길이보다 큽니다");
+		return str + "";
+	}
+	
+	while (str.length < length) {
+		str = char + str;
+	}
+
+	str = str.length >= length ? str.substring(0, length) : str;
+	return str;
+},"rpad":function(str, length, char) {
+	if (char.length > length) {
+		console.warn("[com.str.rpad] 오류 : 채우고자 하는 문자열이 요청 길이보다 큽니다");
+		return str + "";
+	}
+	
+	while (str.length < length) {
+		str += char;
+	}
+	
+	str = str.length >= length ? str.substring(0, length) : str;
+	return str;
+},"removeAtArr":function(arrObj, sIdx, rmCnt) {
+	arrObj.splice(sIdx, rmCnt);
+	return arrObj; 
+},"formatSSN":function (str) {
+	var front = String(str).substr(0, 6);
+	var back = String(str).substr(6, 7);
+	var output = front + "-" + back;
+
+	return output;
+},"formatPhone":function (str) {
+	if (str != "" && str.length > 8) {
+		  str = str.replace(/\s+/g,"");
+		  var commCdList = ["0505"]; // 4자리 국번 ,예외가 되는 국번 확인
+		  var commCdNum = str.substr(0,4); // 국번 4자리 확인
+		  if (commCdList.indexOf(commCdNum) >-1) { //국번이 0505 인경우
+			  return str.replace(/^(01[0136789]{1}|02|0[3-9]{1}[0-9]{1}[0-9]{1})-?([*0-9]{3,4})-?([0-9]{4})$/,"$1-$2-$3");
+		  } else if(str.length <=11) {
+			  return str.replace(/^(01[0136789]{1}|02|0[3-9]{1}[0-9]{1})-?([*0-9]{3,4})-?([0-9]{4})$/,"$1-$2-$3");
+		  } else {
+			  return str;
+		  }
+	} else {
+		return str;
+	}
+},"formatPhone2":function (str) {
+	str = str(5, str.length);
+	if (str != "" && str.length > 8) {
+		  str = str.replace(/\s+/g,"");
+		  var commCdList = ["0505"]; // 4자리 국번 ,예외가 되는 국번 확인
+		  var commCdNum = str.substr(0,4); // 국번 4자리 확인
+		  if (commCdList.indexOf(commCdNum) >-1) { //국번이 0505 인경우
+			  return str.replace(/^(01[0136789]{1}|02|0[3-9]{1}[0-9]{1}[0-9]{1})-?([*0-9]{3,4})-?([0-9]{4})$/,"$1-$2-$3");
+		  } else if(str.length <=11) {
+			  return str.replace(/^(01[0136789]{1}|02|0[3-9]{1}[0-9]{1})-?([*0-9]{3,4})-?([0-9]{4})$/,"$1-$2-$3");
+		  } else {
+			  return str;
+		  }
+	} else {
+		return str;
+	}
+},"formatTime":function(str) {
+	try {
+		var hour = String(str).substr(0, 2);
+		var minute = String(str).substr(2, 2);
+		var second = String(str).substr(4, 2);
+		if (com.util.isEmpty(second)) {
+			return hour + ":" + minute;
+		} else {
+			return hour + ":" + minute + ":" + second;
+		}
+	} catch (ex) {
+		console.error(ex);
+		return str;
+	}
+},"getLocale":function (str) {
+	var locale = 0;
+	if (str.length > 0) {
+		var charCode = str.charCodeAt(0);
+
+		if (charCode >= 0XAC00 && charCode <= 0XD7A3) { // 한글음절.[ 44032 ~ 55203 ]
+			locale = 0X1; // 1
+		} else if ((charCode >= 0X1100 && charCode <= 0X11F9) || (charCode >= 0X3131 && charCode <= 0X318E)) { // 한글자모.[ 4352 ~ 4601 ]
+			locale = 0X2; // 2
+		} else if (charCode >= 0X30 && charCode <= 0X39) { // 숫자.[ 48 ~ 57 ]
+			locale = 0X4; // 4
+		} else if ((charCode >= 0X20 && charCode <= 0X2F) || (charCode >= 0X3A && charCode <= 0X40) || (charCode >= 0X5B && charCode <= 0X60)
+			|| (charCode >= 0X7B && charCode <= 0X7E)) { // 특수문자
+			locale = 0X8; // 8
+		} else if (charCode >= 0X41 && charCode <= 0X5A) { // 영문 대.[ 65 ~ 90 ]
+			locale = 0X10; // 16
+		} else if (charCode >= 0X61 && charCode <= 0X7A) { // 영문 소.[ 97 ~ 122 ]
+			locale = 0X20; // 32
+		} else { // 기타
+			locale = 0X30; // 48
+		}
+	}
+	return locale;
+},"existKorean":function (value) {
+	var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+	if (check.test(value)) {
+		return true;
+	} else {
+		return false;
+	}
+},"isKorean":function (str) {
+	var result = false;
+
+	for (var i = 0; i < str.length; i++) {
+		var c = str.charAt(i);
+		if (!com.str.existKorean(c)) {
+			result = false;
+			break;
+		} else {
+			result = true;
+		}
+
+	}
+	return result;
+},"isFinalConsonant":function (str) {
+	var code = str.charCodeAt(str.length - 1);
+	if ((code < 44032) || (code > 55197)) {
+		return false;
+	}
+	if ((code - 16) % 28 == 0) {
+		return false;
+	}
+	return true;
+},"attachPostposition":function (str) {
+	if (com.win.getLanguage() === "ko") {
+		if (com.str.isFinalConsonant(str)) {
+			str = str + "은";
+		} else {
+			str = str + "는";
+		}
+		return str;
+	} else {
+		return str;
+	}
+},"isBizID":function (str) {
+	var sum = 0;
+	var aBizID = new Array(10);
+	var checkID = new Array("1", "3", "7", "1", "3", "7", "1", "3", "5");
+	
+	if(str.length == 10) {
+		for (var i = 0; i < 10; i++) {
+			aBizID[i] = str.substring(i, i + 1);
+		}
+		
+		for (var i = 0; i < 9; i++) {
+			sum += aBizID[i] * checkID[i];
+		}
+		
+		sum = sum + parseInt((aBizID[8] * 5) / 10);
+		var temp = sum % 10;
+		var temp1 = 0;
+
+		if (temp != 0) {
+			temp1 = 10 - temp;
+		} else {
+			temp1 = 0;
+		}
+		
+		if (temp1 == aBizID[9]) {
+			return true;
+		}
+	}
+	
+	return false;
+},"isCardNo":function(strNo) {
+	if (strNo.length < 13 || strNo.length > 19 || !com.num.isNumber(strNo)) return false;
+	
+	var sum = 0;
+	var buf = new Array();
+	
+	for (var i=0; i<strNo.length; i++) {
+		buf[i] = Number(strNo.charAt(i));
+	}
+	
+	var temp;
+	for (var i=buf.length-1, j=0; i>=0; i--, j++) {
+		temp = buf[i] * ((j%2) + 1);
+		if (temp >= 10) {
+			temp = temp - 9;
+		}
+		sum += temp;
+	}
+	
+	if ((sum % 10) == 0) {
+		return true;
+	} else {
+		return false;
+	}
+},"checkSpecial":function(sValue) {
+    var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+    if (special_pattern.test(sValue) == true) {
+        return true;
+    } else { 
+        return false;
+    }
+},"getFormatPhone":function(phoneNum) {
+    var rtnFormat = "############";
+	
+	if ( com.util.isEmpty(phoneNum) ) { return rtnFormat; }
+
+	if ( com.str.isPhone(phoneNum) ) { 
+        var rtnNum;
+        var regExp =/(^02)([0-9]{3,4})([0-9]{4})$/;
+        var myArray;
+        
+        if ( regExp.test(phoneNum) ) { 
+			myArray = regExp.exec(phoneNum);
+			rtnNum = myArray[1].replace(/\d/g,'#') + '-' + myArray[2].replace(/\d/g,'#')+ '-' + myArray[3].replace(/\d/g,'#');
+			return rtnNum;
+        } else {  
+			regExp =/(^050[1-9]{1})([0-9]{3,4})([0-9]{4})$/;
+			if (regExp.test(phoneNum))
+			{ 
+				myArray = regExp.exec(phoneNum);
+				rtnNum = myArray[1].replace(/\d/g,'#') + '-' + myArray[2].replace(/\d/g,'#')+ '-' + myArray[3].replace(/\d/g,'#');
+				return rtnNum;
+			} else {	
+				regExp =/(^0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+				if (regExp.test(phoneNum))
+				{ 
+					myArray = regExp.exec(phoneNum);
+					rtnNum = myArray[1].replace(/\d/g,'#') + '-' + myArray[2].replace(/\d/g,'#')+ '-' + myArray[3].replace(/\d/g,'#');
+					return rtnNum;
+				} else { 
+					return rtnFormat;
+				}
+			}
+        }
+    } else { 
+		return rtnFormat;
+    } 
+},"getMobileFormat":function(phoneNum) {
+    var rtnFormat = "###########";
+	
+	if ( com.util.isEmpty(phoneNum) ) { return rtnFormat; }
+	
+	if( com.str.isPhone(phoneNum)) {
+        var rtnNum;
+        var regExp =/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+        var myArray;
+        if(regExp.test(phoneNum))
+        {
+            myArray = regExp.exec(phoneNum);
+            rtnNum = myArray[1].replace(/\d/g,'#') + '-' + myArray[2].replace(/\d/g,'#')+ '-' + myArray[3].replace(/\d/g,'#');
+            return rtnNum;
+        } 
+    } else {
+		return rtnFormat;
+	}
+},"getPhoneAllFormat":function(phoneNum) {
+    var rtnFormat = "############";
+	
+	if ( com.util.isEmpty(phoneNum) ) { return rtnFormat; }
+	
+	if ( com.str.isMobilePhone(phoneNum) ) {
+		rtnFormat = com.str.getMobileFormat(phoneNum);
+	} else if ( com.str.isPhone(phoneNum) ) {
+		rtnFormat = com.str.getFormatPhone(phoneNum);
+	}
+	return rtnFormat;
+},"isMobilePhone":function(phoneNum) {
+    var regExp =/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+    var myArray;
+    
+    if(regExp.test(phoneNum)) {
+        return true;
+    } else { 
+        return false;
+    }
+},"getSsnFormat":function(ssNum, sType, bForce) {
+    var sJumin = com.util.isEmptyValue(ssNum,"") + "";
+	var strType = com.util.isEmptyValue(sType,"A");
+	var bOnlyFormat = com.util.isEmpty(bForce) ? false : bForce;
+	var rtnFormat = "######-#######";
+	
+	// 강제지정 옵션이 아니면 Null이거나 13자리 아닌경우 "-" 없는 포맷으로 Return
+	if ( !bForce  && ( com.util.isEmpty(ssNum) || sJumin.length != 13 ) ) {
+		return rtnFormat;
+	}
+	
+	// 타입별로 처리
+	switch(sType) {
+		case "A" :
+			rtnFormat = "######-#######";
+			break;
+		case "B" :
+			rtnFormat = "######-#{999999}";
+			break;
+		default:
+	}
+	
+	return rtnFormat;
+},"formatAcptNo":function(strAcptNo,strType) {
+    var strType = com.util.isEmptyValue(strType,"P");
+	if ( com.util.isEmpty(strAcptNo) ) { return strAcptNo; }
+	
+	var sAcptNo = strAcptNo.replaceAll("_", "");
+	
+	if ( sAcptNo.length < 8 ) {
+		return sAcptNo;
+	}
+	sAcptNo = sAcptNo.substr(0,8);
+	if ( strType == "P" ) {
+		return com.str.format(sAcptNo, "##_######", "_");
+	} else {
+		return sAcptNo;
+	}
+},"isSSN":function (str) {
+	var checkID = new Array(2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5);
+	var i = 0, sum = 0;
+	var temp = 0;
+	var yy = "";
+
+	if (str.length != 13) {
+		return false;
+	}
+	
+	for (i = 0; i < 13; i++) {
+		if (str.charAt(i) < '0' || str.charAt(i) > '9') {
+			return false;
+		}
+	}
+
+	// foreigner PersonID Pass
+	if (str.substring(6, 13) == "5000000" || str.substring(6, 13) == "6000000" || str.substring(6, 13) == "7000000"
+		|| str.substring(6, 13) == "8000000") {
+		return true;
+	}
+	
+	for (i = 0; i < 12; i++) {
+		sum += str.charAt(i) * checkID[i];
+	}
+	
+	temp = sum - Math.floor(sum / 11) * 11;
+	temp = 11 - temp;
+	temp = temp - Math.floor(temp / 10) * 10;
+
+	// 나이 (-) 체크
+	if (str.charAt(6) == '1' || str.charAt(6) == '2' || str.charAt(6) == '5' || str.charAt(6) == '6') {
+		yy = "19";
+	} else {
+		yy = "20";
+	}
+
+	if (parseInt(com.date.getServerDateTime("yyyy")) - parseInt(yy + str.substring(0, 2)) < 0) {
+		return false;
+	}
+
+	// 외국인 주민번호 체크로직 추가
+	if (str.charAt(6) != '5' && str.charAt(6) != '6' && str.charAt(6) != '7' && str.charAt(6) != '8') {
+		if (temp == com.num.parseInt(str.charAt(12))) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		if ((temp + 2) % 10 == com.num.parseInt(str.charAt(12))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	return false;
+},"dateToTimeStr":function(date) {
+    var sHour = com.util.isEmpty(date.getHours()) ? "00" :  com.str.trim(date.getHours());
+    var sMin = com.util.isEmpty(date.getMinutes()) ? "00" :  com.str.trim(date.getMinutes()); 
+    var sSec = com.util.isEmpty(date.getSeconds()) ? "00" :  com.str.trim(date.getSeconds());
+    
+    sHour =  sHour.length == 1 ? "0" + sHour : sHour;
+    sMin =  sMin.length == 1 ? "0" + sMin : sMin;
+    sSec =  sSec.length == 1 ? "0" + sSec : sSec;
+    
+    return sHour + sMin + sSec;
+},"dateTimeToStr":function(oDate) {
+    var sDate = com.date.dateToStr(oDate);
+    var sTime = com.str.dateToTimeStr(oDate);
+    
+    // time 을 추가함 
+    return sDate + sTime;
+},"getYear":function() {
+	return WebSquare.date.getCurrentServerDate().substr(0,4);
+},"cutByte":function(ch, endByte) {
+	if(ch == null || ch.length == 0) return "";
+	
+	var size = 0;
+	var rIndex = ch.length;
+	
+	for(var i=0, cnt=ch.length; i < cnt;  i++) {
+		size += com.str.getByteLength(ch.charAt(i));
+		
+		if(size == endByte) {
+			rIndex = i+1;
+			break;
+		} else if (size > endByte) {
+			rIndex = i;
+			break;
+		}
+	}
+
+	return ch.substring(0, rIndex);
+},"format":function(str, format, gubun) {
+	// 2021.10.21 null값인경우 "" return처리 추가
+	if ( com.util.isEmpty(str) ) return "";
+	
+	var strLen = str.length;
+	var arrFormat = format.split(gubun);
+	var arrFormatLen = format.length;
+	
+	if(strLen != (arrFormatLen -1)){
+		str = com.util.bizLpad(str, arrFormatLen -(arrFormat.length-1), "0")
+	};
+	
+	var result = "";
+	var strCnt = 0;
+	
+	for(var i=0; i < arrFormat.length; i++){
+		var len = arrFormat[i].length;
+		result = result + str.substring(strCnt, Number(strCnt + len)) + gubun;
+		strCnt = strCnt + len;
+	}
+	
+	return result.substring(0, result.length -1);
+},"posReverse":function(sOrg, sFind, nStart) {
+	var pos;
+
+	if (com.util.isEmpty(sOrg) || com.util.isEmpty(sFind)) {
+		return -1;
+	}
+	
+	if (com.util.isEmpty(nStart)) {
+		nStart = sOrg.length - 1;
+	}
+
+	for (pos = nStart; pos >= 0; pos--) {
+		if (sOrg.substr(pos, sFind.length) == sFind) {
+			break;
+		}
+	}
+
+	return pos;
+},"isEmail":function (str) {
+	if (typeof str != "undefined" && str != "") {
+		var format = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+		if (format.test(str)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	return true;
+},"isPhone":function(str) {
+	try {
+		var phoneNum = com.str.formatPhone(str);
+		var isDash = (phoneNum.indexOf("-")>1);
+		return isDash;
+	} catch (ex) {
+		console.error(ex);
+		return false;
+	}
+},"replaceAll":function( str, orgStr, repStr ){
+	try {
+		str = ""+str;
+		return str.split(orgStr).join(repStr);
+	} catch (ex) {
+		console.error(ex);
+		return str;
+	}
+},"trim":function(str) {
+	try {
+		if (typeof str == "undefined" || str == null) {
+			str ="";
+		}
+		if (typeof str !== "string") {
+			str = str + "";
+		}
+		return str.trim();
+	} catch (ex) {
+		console.error(ex);
+	}
+},"trimall":function(str) {
+	try {
+		if (typeof str == "undefined" || str == null) {
+			str ="";
+		}
+		if (typeof str !== "string") {
+			str = str + "";
+		}
+		return str.replace(/\s/gi, "");
+	} catch (ex) {
+		console.error(ex);
+	}
+},"left":function(str, num) {
+	try {
+		if (typeof str == "undefined" || str == null) {
+			str ="";
+		}
+		if (typeof str !== "string") {
+			str = str + "";
+		}
+		return str.substring(0, num);
+	} catch (ex) {
+		console.error(ex);
+	}
+},"right":function(str, num) {
+	try {
+		if (typeof str == "undefined" || str == null) {
+			str ="";
+		}
+		if (typeof str !== "string") {
+			str = str + "";
+		}
+		var len = str.length;
+		return str.substring(len - num);
+	} catch (ex) {
+		console.error(ex);
+	}
+},"getByteLength":function(str, ignoreChar) {
+	return WebSquare.util.getStringByteSize(str, ignoreChar);
+},"getByteLengthUTF8":function(str, ignoreChar) {
+	return WebSquare.util.getByteLengthUtf8(str, ignoreChar);
+},"maskingPhone":function(phone) {
+	var resVal = com.str.formatPhone(phone);
+	if( resVal === phone ) return com.str.maskMidStr(phone);
+	
+	const values = resVal.split("-");
+	if ( values[1] != undefined ) {
+		values[1] = "*".repeat(values[1].length);
+	}
+	
+	return values.join("-");
+},"maskingName":function (name) {
+	if (name.length > 2) {
+		const originName = name.split('');
+		originName.forEach(function (splitName, i) {
+			if (i === 0 || i === originName.length - 1) return; 
+			originName[i] = '*';
+		});
+		const joinName = originName.join();
+		return joinName.replace(/,/g, '');
+	} else { 
+		const pattern = /.$/; 
+		return name.replace(pattern, '*'); 
+	} 
+},"maskingEmail":function(email) {
+	const emailHeader = email.split("@")[0];
+	return emailHeader.substring(0, emailHeader.length - 3) + "***@" + email.split("@")[1];
+},"maskingSocNo":function(val) {
+    return val.replace(/(\d{6})(\d{1})(\d{6})/, "$1-$2"+"******");
+},"maskingAddr":function(addr) {
+	var idx = Math.round(addr.length / 3);
+	var addrH = addr.substring(0, idx);
+	var addrD = addr.substring(idx);
+	var maskStr = "";
+	for (var i=0; i < addrD.length; i++) {
+		maskStr += "*";
+	}
+	return  addrH + maskStr;
+},"maskMidStr":function(str) {
+	if(str == null || str.trim().length < 1){
+		return "";
+	}
+
+	var strLenDiv3 = str.length / 3;
+
+	if(str.length < 2){
+		return "*";
+	} else if(str.length < 3){
+		return str.substring(0, 1) + "*";
+	} else{
+		var temp1 = str.substring(0, strLenDiv3);
+		var temp2 = str.substring(temp1.length + strLenDiv3);
+		var maskStr = "";
+	
+		for(var i=0; i < strLenDiv3; i++){
+		maskStr += "*";
+	}
+
+		return temp1 + maskStr + temp2;
+	}
+}},"date":{"addMinute":function(pYmd, offset) {
+	return WebSquare.date.dateTimeAdd(pYmd, offset, "minute");
+},"formatDtPeriod":function(cellvalue) {
+	var formatValue = "";
+	if (!com.util.isEmpty(cellvalue) && cellvalue.length == 16) {
+		formatValue += cellvalue.substring(0, 4) + "-";
+		formatValue += cellvalue.substring(4, 6) + "-";
+		formatValue += cellvalue.substring(6, 8) + " ~ ";
+		formatValue += cellvalue.substring(8, 12) + "-";
+		formatValue += cellvalue.substring(12, 14) + "-";
+		formatValue += cellvalue.substring(14, 16);
+		return formatValue;
+	} else {
+		return cellvalue = cellvalue == null ? "" : cellvalue;
+	}
+},"addHour":function(pYmd, offset) {
+	return WebSquare.date.dateTimeAdd(pYmd, offset, "hour");
+},"addDate":function(pYmd, offset) {
+	return WebSquare.date.dateAdd(pYmd, offset);
+},"getBizDtYn":function(sBizDt) {
+  
+		// dataMap 생성 (JSON 객체)
+		/*
+		 var option = {
+			 "id" : "dma_search",
+			 "type" : "dataMap",
+			 "option" : {
+			     "baseNode" : "map"
+			 },
+			 "columnInfo" : [
+			     {
+			         "id" : "sBizDt",
+			         "name" : "sBizDt",
+			         "dataType" : "text"
+			     }
+			 ]
+		 };
+		 
+		 $p.data.create( option );
+	
+		// Dynamic Submission 생성
+		var sbxOption = {
+	        id : "sbx_getBizDtYn",
+	        action : "/co/cd/selectBizDtYn.do", 
+	        ref : "data:json, dma_search", 
+	        target : "data:json, {"id" : "dlt_result", "key" : "dlt_result"}, 
+	        submitDoneHandler : com.date.getBizDtYn_submitdone, 
+	        isProcessMsg: false  
+		};
+	
+		//서브미션 실행
+		com.sbx.executeDynamic(sbxOption);
+		*/
+		
+},"getBizDtYn_submitdone":function(e) {	
+
+},"addMonth":function(pYmd, offset) {
+	try {
+		var date = "";
+		var isDate = com.date.isDate(pYmd);
+
+		if (!isDate) {
+			return;
+		}
+		if (typeof offset == "undefined" || isNaN(offset)) {
+			offset = 0;
+		}
+
+		var dY = (pYmd + "").substring(0, 4);
+		var dM = (pYmd + "").substring(4, 6);
+		var dD = (pYmd + "").substring(6, 8);
+		var dTime = (pYmd + "").substring(8);
+		dM = (dM * 1) + (offset * 1);
+		
+		if (dM > 0) {
+			dY = (dY * 1) + Math.floor(dM / 12);
+			dM = dM % 12;
+		} else {
+			dY = (dY * 1) - Math.floor((dM * -1 + 12) / 12);
+			dM = dM % 12 + 12;
+		}
+		
+		if (Number(dD) >= 30) {
+			var chkMonth1 = [ 2 ];
+			var chkMonth2 = [ 4, 6, 9, 11 ];
+
+			if (chkMonth1.indexOf(dM) > -1) {
+				if (com.date.isLeafYear(dY + "01" + "01")) {
+					dD = "29";
+				} else {
+					dD = "28";
+				}
+			} else if (chkMonth2.indexOf(dM) > -1) {
+				/*if (Number(dD) > 30) {
+					dD = "30";
+				}*/
+			}
+		}
+		var cDate = new Date(dY, dM - 1, dD);
+		var cYear = cDate.getFullYear();
+		var cMonth = cDate.getMonth() + 1;
+		if ((cMonth + "").length < 2) {
+			cMonth = "0" + cMonth;
+		}
+		var cDay = cDate.getDate();
+		if ((cDay + "").length < 2) {
+			cDay = "0" + cDay;
+		}
+		date = cYear + "" + cMonth + "" + cDay + "" + dTime;
+		return date;
+	} catch (ex) {
+		console.error(ex);
+	}
+},"addMonthNew":function(pYmd, offset) {
+	try {
+		var date = "";
+		var isDate = com.date.isDate(pYmd);
+		
+		if (!isDate) {
+			return;
+		}
+		if (typeof offset == "undefined" || isNaN(offset)) {
+			offset = 0;
+		}
+		
+		var dY = (pYmd + "").substring(0, 4);
+		var dM = (pYmd + "").substring(4, 6);
+		var dD = (pYmd + "").substring(6, 8);
+		var dTime = (pYmd + "").substring(8);
+		dM = (dM * 1) + (offset * 1);
+		
+		console.log("::::[addMonthNew]:::dM=" + dM + " ::::dD=" + dD);
+		
+		if (dM > 0) {
+			dY = (dY * 1) + Math.floor(dM / 12);
+			dM = dM % 12;
+		} else {
+			dY = (dY * 1) - Math.floor((dM * -1 + 12) / 12);
+			dM = dM % 12 + 12;
+		}
+		
+		if (Number(dD) >= 30) {
+			var chkMonth1 = [ 2 ];
+			var chkMonth2 = [ 4, 6, 9, 11 ];
+			
+			if (chkMonth1.indexOf(dM) > -1) {
+				if (com.date.isLeafYear(dY + "01" + "01")) {
+					dD = "29";
+				} else {
+					dD = "28";
+				}
+			} else if (chkMonth2.indexOf(dM) > -1) {
+
+				console.log("::::[addMonthNew]:::2::::dM=" + dM);
+				/*if (Number(dD) > 30) {
+					dD = "30";
+				}*/
+			}
+		}
+		var cDate = new Date(dY, dM - 1, dD);
+		
+		console.log("::::[addMonthNew]:::::::cDate=" + cDate.getDate());
+		
+		var cYear = cDate.getFullYear();
+		var cMonth = cDate.getMonth() + 1;
+		if ((cMonth + "").length < 2) {
+			cMonth = "0" + cMonth;
+		}
+		var cDay = cDate.getDate();
+		if ((cDay + "").length < 2) {
+			cDay = "0" + cDay;
+		}
+		
+		console.log("::::[addMonthNew]:::::::cDay=" + cDay);
+		
+		date = cYear + "" + cMonth + "" + cDay + "" + dTime;
+		return date;
+	} catch (ex) {
+		console.error(ex);
+	}
+},"getServerDateTime":function (sDateFormat) {
+	if (com.util.isEmpty(sDateFormat)) {
+		sDateFormat = "yyyyMMdd";
+	}
+
+	return WebSquare.date.getCurrentServerDate(sDateFormat);
+},"formatDate":function (str, type) {
+	var output = "";
+	var date = new String(str);
+
+	if (type == "slash") {
+		date = date.substring(2, date.length);
+		for (var i = 0; i <= date.length - 1; i++) {
+			output = output + date[i];
+			if ((i + 1) % 2 == 0 && (date.length - 1) !== i)
+				output = output + "/";
+		}
+	} else if (type == "date") {
+		if (date.length == 8) {
+			output = date.substr(0, 4) + "/" + date.substr(4, 2) + "/" + date.substr(6, 2);
+		}
+	} else if (type == "colon") {
+		if (date.length == 8) {
+			output = date.substr(0, 4) + ":" + date.substr(4, 2) + ":" + date.substr(6, 2);
+		}
+	} else if (!com.util.isEmpty(type)) {
+		if (date.length == 8) {
+			output = date.substr(0, 4) + type + date.substr(4, 2) + type + date.substr(6, 2);
+		}
+	} else {
+		var year = date.substr(0, 4);
+		var month = date.substr(4, 2);
+		var day = date.substr(6, 2);
+		var output = year + "년 " + month + "월 " + day + "일";
+	}
+	
+	return output;
+},"formatDateTime":function (value, sDateFormat) {
+	if (com.util.isEmpty(sDateFormat)) {
+		sDateFormat = "yyyyMMdd";
+	}
+
+	return WebSquare.date.getFormattedDate(value, sDateFormat);
+},"isDate":function(sDate, timeChk) {
+	var flag = true;
+	try {
+		if (sDate.length == 8) {
+			sDate = sDate + "000000";
+		}
+		
+		var y1 = parseInt(sDate.substring(0, 4), 10);
+		var m1 = parseInt(sDate.substring(4, 6), 10);
+		var d1 = parseInt(sDate.substring(6, 8), 10);
+		var h1 = parseInt(sDate.substring(8, 10), 10);
+		var t1 = parseInt(sDate.substring(10, 12), 10);
+		var s1 = parseInt(sDate.substring(12), 10);
+		if (isNaN(y1) || isNaN(m1) || isNaN(d1) || isNaN(h1) || isNaN(t1) || isNaN(s1))
+			flag = false;
+
+		if (m1 < 1 || m1 > 12)
+			flag = false;
+
+		var maxDay = 31;
+		if (m1 == 2) {
+			maxDay = ((y1 % 400 == 0) || ((y1 % 4 == 0) && (y1 % 100 != 0))) ? 29
+					: 28;
+		} else if (m1 == 4 || m1 == 6 || m1 == 9 || m1 == 11) {
+			maxDay = 30;
+		}
+		
+		if (d1 < 1 || d1 > maxDay) {
+			flag = false;
+		}
+		
+		if (h1 + t1 + s1 != "") {
+			if (h1 < 0 || h1 > 24) {
+				flag = false;
+			} else if (h1 == 24) {
+				if(typeof timeChk == "boolean" && !timeChk)
+					flag = false;
+				if (t1 > 0)
+					flag = false;
+				if (s1 > 0)
+					flag = false;
+			}
+			if (t1 < 0 || t1 > 59)
+				flag = false;
+			if (s1 < 0 || s1 > 59)
+				flag = false;
+		}
+	} catch (ex) {
+		console.error(ex);
+		flag = false;
+	}
+	return flag;
+},"isDateYM":function(strDate) {
+	var retVal = com.str.getDigit(strDate);
+	
+	if (retVal.length != 6) {
+		return false;
+	}
+
+	var nYear  = Number(strDate.substr(0,4));	//년도값을 숫자로
+	var nMonth = Number(strDate.substr(4,2));	//월을 숫자로
+
+	if((nMonth < 1) || (nMonth > 12)) {
+		return false;
+	}
+
+	return true;
+},"isTime":function(strTime) {
+	if (strTime.length != 6 || isNaN(strTime)) {
+		return false;
+	}
+	
+	var t01 = Number(strTime.slice(0, 2));
+	var t02 = Number(strTime.slice(2, 4));
+	var t03 = Number(strTime.slice(4, 6));
+
+	if ((t01 < 0 || t01 > 23) || (t02 < 0 || t02 > 59) || (t03 < 0 || t03 > 59)) {
+		return false;
+	} else {
+		return true;
+	}
+},"getLastDate":function(strDate) {
+	var nYear  = Number(strDate.substr(0,4));	//년도값을 숫자로
+	var nMonth = Number(strDate.substr(4,2));	//월을 숫자로
+	var last = new Date(nYear, nMonth);
+	var lastDate = new Date(last - 1);
+	return WebSquare.date.getFormattedDate(lastDate, "yyyyMMdd");
+},"getFirstDate":function(strDate) {
+	var sYear  = strDate.substr(0,4);
+	var sMonth = strDate.substr(4,2);
+	var sDay = "01";
+	return sYear + sMonth + sDay;
+},"getDayEnName":function(strDate) { 
+    var objDayName = new Array("SUN", "MON","TUE","WED","THU","FRI","STA"); 
+    var objDate = com.date.getDay(strDate); 
+    return objDayName[objDate]; 
+},"diffDate":function(fromDate, toDate) {
+	try {
+		if (!com.date.isDate(fromDate) || !com.date.isDate(toDate)) {
+			return;
+		}
+		var diffDate = WebSquare.date.dateDiff(fromDate, toDate);
+		return diffDate;
+	} catch (ex) {
+		console.error(ex);
+	}
+},"getDiffMonth":function(sStartDate, sEndDate) {
+	var nStartMon, nEndMon;
+	
+	nStartMon = parseInt(sStartDate.substr(0,4), 10)*12 + parseInt(sStartDate.substr(4,2), 10);
+	nEndMon = parseInt(sEndDate.substr(0,4), 10)*12 + parseInt(sEndDate.substr(4,2), 10);
+	
+	return (nEndMon - nStartMon);
+},"makeDate":function(nYear,nMonth,nDate) {
+	   if(com.util.isEmpty(nYear)||com.util.isEmpty(nMonth)||com.util.isEmpty(nDate)) return "";
+	   
+		var objDate = new Date(nYear,nMonth-1,nDate);
+
+		var sYear = objDate.getFullYear().toString();
+		var sMonth = com.str.left((objDate.getMonth()+1),2);
+		var sDate = com.str.left(objDate.getDate(),2);
+		return sYear+sMonth+sDate; 
+	},"isLeafYear":function(pYmd) {
+	try{
+		var isLeafYear = false;
+		if (!com.date.isDate(pYmd)) {
+			return;
+		} else {
+			pYmd = pYmd.substr(0, 8);
+			var y1 = parseInt( pYmd.substr(0, 4), 10);
+			isLeafYear = ((y1 % 400 == 0 ) || ((y1 % 4 == 0) && (y1 % 100 != 0))) ? true : false;
+		}
+		return isLeafYear;
+	} catch (ex) {
+		console.error(ex);
+	}
+},"getHolidays":function(nYear) {
+	var nYear;
+	var aHoliday = new Array();
+
+	/////// 음력 체크
+	// 구정
+	aHoliday[0] = this.gfnLunarToSolar((nYear-1) + "1230", false) + "설날";
+	aHoliday[1] = this.gfnAddDate(aHoliday[0].substring(0, 8), 1) + "설날";
+	aHoliday[2] = this.gfnAddDate(aHoliday[1].substring(0, 8), 1) + "설날";
+	// 석가탄신일
+	aHoliday[3] = this.gfnLunarToSolar(nYear + "0408", false) + "석가탄신일";
+	// 추석
+	aHoliday[4] = this.gfnLunarToSolar(nYear + "0814", false) + "추석";
+	aHoliday[5] = this.gfnAddDate(aHoliday[4].substring(0, 8), 1) + "추석";
+	aHoliday[6] = this.gfnAddDate(aHoliday[5].substring(0, 8), 1) + "추석";	
+
+	/////// 양력 체크
+	aHoliday[7] = nYear+"0101" + "신정";
+	aHoliday[8] = nYear+"0301" + "삼일절";
+	aHoliday[9] = nYear+"0505" + "어린이날";	
+	aHoliday[10] = nYear+"0606" + "현충일";		
+	aHoliday[11] = nYear+"0815" + "광복절";	
+	aHoliday[12] = nYear +"1003" + "개천절";
+	aHoliday[13] = nYear +"1009" + "한글날";
+	aHoliday[14] = nYear+"1225" + "성탄절";			
+	
+	return aHoliday.sort();
+},"lunarToSolar":function(value, leapMonth) {
+
+	var sMd          = "31,0,31,30,31,30,31,31,30,31,30,31";
+	var arrMd        = [];	
+	var arrBaseInfo = [];
+	var nTd           = 0;
+	var nSy, nSm, nSd;			    // 계산된 양력 년, 월, 일을 저장할 변수
+	var nY1, nM1, nY2, nY3, nTemp;	// 임시변수	
+	var nLeap;    
+		
+	var nLy, nLm, nLd;
+
+	nLy = parseInt(value.substr(0,4), 10);
+	nLm = parseInt(value.substr(4,2), 10);
+	nLd = parseInt(value.substr(6,2), 10);
+	
+
+	if (nLy < 1841 || nLy > 2043) {
+		return null;
+	}	
+
+	arrBaseInfo = com.date.solarBase();
+	arrMd       = sMd.split(",");
+	arrMd[1]    = 28;
+	
+	//윤년여부 확인
+	if ((nLy % 4) == 0) 
+	{
+		if ((nLy % 100) != 0 || (nLy % 400) == 0)
+		{ 
+			arrMd[1] = 29;
+		}
+	} 
+		
+	nY1   = nLy - 1841; //176
+	nM1   = nLm - 1; //02
+	nLeap = 0;
+	
+	if (parseInt(arrBaseInfo[nY1 * 12 + nM1]) > 2)
+	{
+		//윤년여부 확인
+		if ((nLy % 4) == 0) 
+		{
+			if ((nLy % 100) != 0 || (nLy % 400) == 0)
+			{ 
+				nLeap = 1;
+			}
+		} 
+	}
+	if (nLeap == 1)
+	{
+		switch (parseInt(arrBaseInfo[nY1 * 12 + nM1]))
+		{
+			case 3 : nTemp = 29;
+					 break;
+			case 4 : nTemp = 30;
+					 break;			
+			case 5 : nTemp = 29;
+					 break;			
+			case 6 : nTemp = 30;
+					 break;
+		}
+	}
+	else
+	{
+		switch (parseInt(arrBaseInfo[nY1 * 12 + nM1]))
+		{
+			case 1 : nTemp = 29;
+					 break;			
+			case 2 : nTemp = 30;
+					 break;			
+			case 3 : nTemp = 29;
+					 break;			
+			case 4 : nTemp = 29;
+					 break;			
+			case 5 : nTemp = 30;
+					 break;			
+			case 6 : nTemp = 30;
+					 break;			
+		}
+	}
+	
+	var tempY1 = nY1 - 1;
+	for (var i = 0; i <= tempY1; i++)
+	{
+		for (var j = 0; j <= 11; j++)
+		{
+			switch (parseInt(arrBaseInfo[i * 12 + j]))
+			{
+				case 1 : nTd = nTd + 29;
+						 break;
+				case 2 : nTd = nTd + 30;
+						 break;				
+				case 3 : nTd = nTd + 58;
+						 break;				
+				case 4 : nTd = nTd + 59;
+						 break;				
+				case 5 : nTd = nTd + 59;
+						 break;				
+				case 6 : nTd = nTd + 60;
+						 break;				
+			}
+		}
+	}
+
+	var tempM1 = nM1 - 1;
+	for (var j = 0; j <= tempM1; j++)
+	{
+		switch (parseInt(arrBaseInfo[nY1 * 12 + j]))
+		{
+			case 1 : nTd = nTd + 29;
+					 break;			
+			case 2 : nTd = nTd + 30;
+					 break;						
+			case 3 : nTd = nTd + 58;
+					 break;						
+			case 4 : nTd = nTd + 59;
+					 break;						
+			case 5 : nTd = nTd + 59;
+					 break;						
+			case 6 : nTd = nTd + 60;
+					 break;						
+		}
+	}
+
+	if (nLeap == 1)
+	{
+		switch (parseInt(arrBaseInfo[nY1 * 12 + nM1]))
+		{
+			case 3 : nTemp = 29;
+					 break;						
+			case 4 : nTemp = 29;
+					 break;						
+			case 5 : nTemp = 30;
+					 break;						
+			case 6 : nTemp = 30;
+					 break;						
+		}
+	}
+	
+	nTd = nTd + nLd + 22;
+	
+	if (leapMonth)
+	{
+		switch (parseInt(arrBaseInfo[nY1 * 12 + nM1]))
+		{
+			case 3 : nTd = nTd + 29;
+					 break;						
+			case 4 : nTd = nTd + 30;
+					 break;						
+			case 5 : nTd = nTd + 29;
+					 break;						
+			case 6 : nTd = nTd + 30;
+					 break;						
+		}
+	}
+	
+	nY1 = 1840;
+	do
+	{
+		nY1 = nY1 + 1;
+		
+		nLeap = 0;
+		
+		//윤년여부 확인
+		if ((nY1 % 4) == 0) 
+		{
+			if ((nY1 % 100) != 0 || (nY1 % 400) == 0)
+			{ 
+				nLeap = 1;
+			}
+		} 
+
+		if (nLeap == 1)
+		{
+			nY2 = 366;
+		}
+		else
+		{
+			nY2 = 365;
+		}
+
+		if( nTd <= nY2 )
+		{
+			break;
+		}
+			
+		nTd = nTd - nY2;
+	}
+	while(1);
+
+	nSy      = nY1;
+	arrMd[1] = nY2 - 337;
+	nM1      = 0;
+	
+	do
+	{
+		nM1 = nM1 + 1;
+		if (nTd <= parseInt(arrMd[nM1-1]))
+		{
+			break;
+		}
+		nTd = nTd - parseInt(arrMd[nM1-1]);
+	}
+	while(1);
+	
+	nSm = nM1;
+	nSd = nTd;
+	nY3 = nSy;
+	nTd = nY3 * 365 + parseInt(nY3/4) - parseInt(nY3/100) + parseInt(nY3/400);
+	
+	var tempSm = nSm - 1;
+	for (var i = 0; i <= tempSm; i++)
+	{
+		nTd = nTd + parseInt(arrMd[i]);
+	}
+
+	nTd = nTd + nSd;
+
+	var sRtn = nY3;
+	sRtn = sRtn + nSm.toString().padEnd(2, "0"); 
+	sRtn = sRtn + nSd.toString().padEnd(2, "0");    
+
+	return sRtn;	
+},"solarBase":function() {
+	var sBase;
+	
+	//1841
+	sBase = "1,2,4,1,1,2,1,2,1,2,2,1,";
+	sBase += "2,2,1,2,1,1,2,1,2,1,2,1,";
+	sBase += "2,2,2,1,2,1,4,1,2,1,2,1,";
+	sBase += "2,2,1,2,1,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,2,2,1,2,1,2,1,2,1,";
+	sBase += "2,1,2,1,5,2,1,2,2,1,2,1,";
+	sBase += "2,1,1,2,1,2,1,2,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,2,3,2,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,1,2,1,1,2,2,1,2,";
+	//1851
+	sBase += "2,2,1,2,1,1,2,1,2,1,5,2,";
+	sBase += "2,1,2,2,1,1,2,1,2,1,1,2,";
+	sBase += "2,1,2,2,1,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,2,1,2,5,2,1,2,1,2,";
+	sBase += "1,1,2,1,2,2,1,2,2,1,2,1,";
+	sBase += "2,1,1,2,1,2,1,2,2,2,1,2,";
+	sBase += "1,2,1,1,5,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,1,2,1,1,2,2,1,2,2,";
+	sBase += "2,1,2,1,1,2,1,1,2,1,2,2,";
+	sBase += "2,1,6,1,1,2,1,1,2,1,2,2,";
+	//1861
+	sBase += "1,2,2,1,2,1,2,1,2,1,1,2,";
+	sBase += "2,1,2,1,2,2,1,2,2,3,1,2,";
+	sBase += "1,2,2,1,2,1,2,2,1,2,1,2,";
+	sBase += "1,1,2,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,1,2,4,1,2,2,1,2,2,1,";
+	sBase += "2,1,1,2,1,1,2,2,1,2,2,2,";
+	sBase += "1,2,1,1,2,1,1,2,1,2,2,2,";
+	sBase += "1,2,2,3,2,1,1,2,1,2,2,1,";
+	sBase += "2,2,2,1,1,2,1,1,2,1,2,1,";
+	sBase += "2,2,2,1,2,1,2,1,1,5,2,1,";
+	//1871
+	sBase += "2,2,1,2,2,1,2,1,2,1,1,2,";
+	sBase += "1,2,1,2,2,1,2,1,2,2,1,2,";
+	sBase += "1,1,2,1,2,4,2,1,2,2,1,2,";
+	sBase += "1,1,2,1,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,1,2,1,1,2,1,2,2,2,1,";
+	sBase += "2,2,1,1,5,1,2,1,2,2,1,2,";
+	sBase += "2,2,1,1,2,1,1,2,1,2,1,2,";
+	sBase += "2,2,1,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,2,4,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,1,2,2,1,2,2,1,2,1,1,2,";
+	//1881
+	sBase += "1,2,1,2,1,2,5,2,2,1,2,1,";
+	sBase += "1,2,1,2,1,2,1,2,2,1,2,2,";
+	sBase += "1,1,2,1,1,2,1,2,2,2,1,2,";
+	sBase += "2,1,1,2,3,2,1,2,2,1,2,2,";
+	sBase += "2,1,1,2,1,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,2,1,1,2,1,2,1,2,";
+	sBase += "2,2,1,5,2,1,1,2,1,2,1,2,";
+	sBase += "2,1,2,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,1,2,2,1,2,1,2,1,2,1,2,";
+	sBase += "1,5,2,1,2,2,1,2,1,2,1,2,";
+	//1891
+	sBase += "1,2,1,2,1,2,1,2,2,1,2,2,";
+	sBase += "1,1,2,1,1,5,2,2,1,2,2,2,";
+	sBase += "1,1,2,1,1,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,2,1,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,5,1,2,1,2,1,2,1,";
+	sBase += "2,2,2,1,2,1,1,2,1,2,1,2,";
+	sBase += "1,2,2,1,2,1,2,1,2,1,2,1,";
+	sBase += "2,1,5,2,2,1,2,1,2,1,2,1,";
+	sBase += "2,1,2,1,2,1,2,2,1,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,5,2,2,1,2,";
+	//1901
+	sBase += "1,2,1,1,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,2,1,1,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,2,3,2,1,1,2,2,1,2,";
+	sBase += "2,2,1,2,1,1,2,1,1,2,2,1,";
+	sBase += "2,2,1,2,2,1,1,2,1,2,1,2,";
+	sBase += "1,2,2,4,1,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,2,1,2,2,1,2,1,2,1,";
+	sBase += "2,1,1,2,2,1,2,1,2,2,1,2,";
+	sBase += "1,5,1,2,1,2,1,2,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,1,2,2,2,1,";
+	//1911
+	sBase += "2,1,2,1,1,5,1,2,2,1,2,2,";
+	sBase += "2,1,2,1,1,2,1,1,2,2,1,2,";
+	sBase += "2,2,1,2,1,1,2,1,1,2,1,2,";
+	sBase += "2,2,1,2,5,1,2,1,2,1,1,2,";
+	sBase += "2,1,2,2,1,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,2,1,2,2,1,2,1,2,1,";
+	sBase += "2,3,2,1,2,2,1,2,2,1,2,1,";
+	sBase += "2,1,1,2,1,2,1,2,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,5,2,2,1,2,2,";
+	sBase += "1,2,1,1,2,1,1,2,2,1,2,2,";
+	//1921
+	sBase += "2,1,2,1,1,2,1,1,2,1,2,2,";
+	sBase += "2,1,2,2,3,2,1,1,2,1,2,2,";
+	sBase += "1,2,2,1,2,1,2,1,2,1,1,2,";
+	sBase += "2,1,2,1,2,2,1,2,1,2,1,1,";
+	sBase += "2,1,2,5,2,1,2,2,1,2,1,2,";
+	sBase += "1,1,2,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,1,2,1,2,1,2,2,1,2,2,";
+	sBase += "1,5,1,2,1,1,2,2,1,2,2,2,";
+	sBase += "1,2,1,1,2,1,1,2,1,2,2,2,";
+	sBase += "1,2,2,1,1,5,1,2,1,2,2,1,";
+	//1931
+	sBase += "2,2,2,1,1,2,1,1,2,1,2,1,";
+	sBase += "2,2,2,1,2,1,2,1,1,2,1,2,";
+	sBase += "1,2,2,1,6,1,2,1,2,1,1,2,";
+	sBase += "1,2,1,2,2,1,2,2,1,2,1,2,";
+	sBase += "1,1,2,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,4,1,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,1,2,1,1,2,1,2,2,2,1,";
+	sBase += "2,2,1,1,2,1,4,1,2,2,1,2,";
+	sBase += "2,2,1,1,2,1,1,2,1,2,1,2,";
+	sBase += "2,2,1,2,1,2,1,1,2,1,2,1,";
+	//1941
+	sBase += "2,2,1,2,2,4,1,1,2,1,2,1,";
+	sBase += "2,1,2,2,1,2,2,1,2,1,1,2,";
+	sBase += "1,2,1,2,1,2,2,1,2,2,1,2,";
+	sBase += "1,1,2,4,1,2,1,2,2,1,2,2,";
+	sBase += "1,1,2,1,1,2,1,2,2,2,1,2,";
+	sBase += "2,1,1,2,1,1,2,1,2,2,1,2,";
+	sBase += "2,5,1,2,1,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,2,1,1,2,1,2,1,2,";
+	sBase += "2,2,1,2,1,2,3,2,1,2,1,2,";
+	sBase += "2,1,2,2,1,2,1,1,2,1,2,1,";
+	//1951
+	sBase += "2,1,2,2,1,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,2,4,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,1,2,2,1,2,2,1,2,2,";
+	sBase += "1,1,2,1,1,2,1,2,2,1,2,2,";
+	sBase += "2,1,4,1,1,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,2,1,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,2,1,1,5,2,1,2,2,";
+	sBase += "1,2,2,1,2,1,1,2,1,2,1,2,";
+	sBase += "1,2,2,1,2,1,2,1,2,1,2,1,";
+	sBase += "2,1,2,1,2,5,2,1,2,1,2,1,";
+	//1961
+	sBase += "2,1,2,1,2,1,2,2,1,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,2,3,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,2,1,1,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,2,1,1,2,1,1,2,2,1,";
+	sBase += "2,2,5,2,1,1,2,1,1,2,2,1,";
+	sBase += "2,2,1,2,2,1,1,2,1,2,1,2,";
+	sBase += "1,2,2,1,2,1,5,2,1,2,1,2,";
+	sBase += "1,2,1,2,1,2,2,1,2,1,2,1,";
+	sBase += "2,1,1,2,2,1,2,1,2,2,1,2,";
+	//1971
+	sBase += "1,2,1,1,5,2,1,2,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,2,1,1,2,1,1,2,2,2,1,";
+	sBase += "2,2,1,5,1,2,1,1,2,2,1,2,";
+	sBase += "2,2,1,2,1,1,2,1,1,2,1,2,";
+	sBase += "2,2,1,2,1,2,1,5,2,1,1,2,";
+	sBase += "2,1,2,2,1,2,1,2,1,2,1,1,";
+	sBase += "2,2,1,2,1,2,2,1,2,1,2,1,";
+	sBase += "2,1,1,2,1,6,1,2,2,1,2,1,";
+	sBase += "2,1,1,2,1,2,1,2,2,1,2,2,";
+	//1981
+	sBase += "1,2,1,1,2,1,1,2,2,1,2,2,";
+	sBase += "2,1,2,3,2,1,1,2,2,1,2,2,";
+	sBase += "2,1,2,1,1,2,1,1,2,1,2,2,";
+	sBase += "2,1,2,2,1,1,2,1,1,5,2,2,";
+	sBase += "1,2,2,1,2,1,2,1,1,2,1,2,";
+	sBase += "1,2,2,1,2,2,1,2,1,2,1,1,";
+	sBase += "2,1,2,2,1,5,2,2,1,2,1,2,";
+	sBase += "1,1,2,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,1,2,1,2,1,2,2,1,2,2,";
+	sBase += "1,2,1,1,5,1,2,1,2,2,2,2,";
+	//1991
+	sBase += "1,2,1,1,2,1,1,2,1,2,2,2,";
+	sBase += "1,2,2,1,1,2,1,1,2,1,2,2,";
+	sBase += "1,2,5,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,2,2,1,2,1,2,1,1,2,1,2,";
+	sBase += "1,2,2,1,2,2,1,5,2,1,1,2,";
+	sBase += "1,2,1,2,2,1,2,1,2,2,1,2,";
+	sBase += "1,1,2,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,1,2,3,2,2,1,2,2,2,1,";
+	sBase += "2,1,1,2,1,1,2,1,2,2,2,1,";
+	sBase += "2,2,1,1,2,1,1,2,1,2,2,1,";
+	//2001
+	sBase += "2,2,2,3,2,1,1,2,1,2,1,2,";
+	sBase += "2,2,1,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,2,1,2,2,1,2,1,1,2,1,2,";
+	sBase += "1,5,2,2,1,2,1,2,2,1,1,2,";
+	sBase += "1,2,1,2,1,2,2,1,2,2,1,2,";
+	sBase += "1,1,2,1,2,1,5,2,2,1,2,2,";
+	sBase += "1,1,2,1,1,2,1,2,2,2,1,2,";
+	sBase += "2,1,1,2,1,1,2,1,2,2,1,2,";
+	sBase += "2,2,1,1,5,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,2,1,1,2,1,2,1,2,";
+	//2011
+	sBase += "2,1,2,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,1,6,2,1,2,1,1,2,1,2,1,";
+	sBase += "2,1,2,2,1,2,1,2,1,2,1,2,";
+	sBase += "1,2,1,2,1,2,1,2,5,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,2,2,1,2,2,";
+	sBase += "1,1,2,1,1,2,1,2,2,1,2,2,";
+	sBase += "2,1,1,2,3,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,2,1,1,2,1,2,1,2,2,";
+	sBase += "2,1,2,1,2,1,1,2,1,2,1,2,";
+	sBase += "2,1,2,5,2,1,1,2,1,2,1,2,";
+	//2021
+	sBase += "1,2,2,1,2,1,2,1,2,1,2,1,";
+	sBase += "2,1,2,1,2,2,1,2,1,2,1,2,";
+	sBase += "1,5,2,1,2,1,2,2,1,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,2,1,2,2,1,";
+	sBase += "2,1,2,1,1,5,2,1,2,2,2,1,";
+	sBase += "2,1,2,1,1,2,1,2,1,2,2,2,";
+	sBase += "1,2,1,2,1,1,2,1,1,2,2,2,";
+	sBase += "1,2,2,1,5,1,2,1,1,2,2,1,";
+	sBase += "2,2,1,2,2,1,1,2,1,1,2,2,";
+	sBase += "1,2,1,2,2,1,2,1,2,1,2,1,";
+	//2031
+	sBase += "2,1,5,2,1,2,2,1,2,1,2,1,";
+	sBase += "2,1,1,2,1,2,2,1,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,5,2,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,2,1,2,2,2,1,";
+	sBase += "2,1,2,1,1,2,1,1,2,2,1,2,";
+	sBase += "2,2,1,2,1,4,1,1,2,1,2,2,";
+	sBase += "2,2,1,2,1,1,2,1,1,2,1,2,";
+	sBase += "2,2,1,2,1,2,1,2,1,1,2,1,";
+	sBase += "2,2,1,2,5,2,1,2,1,2,1,1,";
+	sBase += "2,1,2,2,1,2,2,1,2,1,2,1,";
+	//2041
+	sBase += "2,1,1,2,1,2,2,1,2,2,1,2,";
+	sBase += "1,5,1,2,1,2,1,2,2,2,1,2,";
+	sBase += "1,2,1,1,2,1,1,2,2,1,2,2";
+	
+	var arrBase = [];
+	arrBase = sBase.split(",");
+	
+	return arrBase;
+},"getDay":function (strDate) {
+    var date = new Date();
+
+    var iYear = parseInt(strDate.substr(0, 4));
+    var iMonth = parseInt(strDate.substr(4, 2) - 1);
+    var iDate = parseInt(strDate.substr(6, 2));
+    
+	date.setFullYear(iYear,iMonth,iDate);
+    return date.getDay();
+},"getLunar":function (value) {
+	return  WebSquare.date.toLunar(value);
+},"strToDate":function(strObj) {
+	return new Date(strObj);
+},"dateToStr":function(date, preFix) {
+	var strYear = date.getFullYear().toString();
+	var strMonth = (date.getMonth()+1).toString();
+	var strDate = date.getDate().toString();
+	
+	if (strYear.length==2) {
+		strYear = '19'+strYear;
+	} else if (strYear.length==1) {
+		strYear = '190'+strYear;
+	}
+	
+	if (strMonth.length==1) strMonth = '0'+strMonth;
+	
+	if (strDate.length==1) strDate = '0'+strDate;
+	
+    if (com.util.isEmpty(preFix)) {
+        return strYear+strMonth+strDate;    
+    } else {
+        return strYear + preFix + strMonth + preFix +strDate;
+    }
+},"getWeek":function(strDate) {
+	if (strDate.length != 8 || !com.num.isNumber(strDate)) {
+		return "";
+	}
+	
+	var year  = parseInt(strDate.substr(0,4));
+	var month = parseInt(strDate.substr(4,2));
+	var day   = parseInt(strDate.substr(6,8));
+
+	var startAt = 1; ///////////// 일요일 표시 부분 / 0 : 일요일(일월화...) / 1 : 월요일(...금토일)
+
+	if(startAt == 0) {
+		day = day + 1;
+	}
+
+	var a    = Math.floor((14-month) / 12);
+	var y    = year + 4800 - a;
+	var m    = month + (12 * a) - 3;
+	var b    = Math.floor(y/4) - Math.floor(y/100) + Math.floor(y/400);
+	var J    = day + Math.floor(((153 * m) + 2) / 5) + (365 * y) + b - 32045;
+	var d4   = (((J + 31741 - (J % 7)) % 146097) % 36524) % 1461;
+	var L    = Math.floor(d4 / 1460);
+	var d1   = ((d4 - L) % 365) + L;
+	var week = Math.floor(d1/7) + 1;
+		week = week.toString();
+	return year+week.padEnd(2,"0");
+},"getLastDateOfMonth":function(yearMonth) {
+	try {
+		if (typeof yearMonth !== "string") {
+			yearMonth = com.str.serialize(yearMonth);
+		}
+
+		var year = yearMonth.substring(0, 4);
+		var month = yearMonth.substring(4, 6);
+
+		return (new Date(year, month, 0)).getDate();
+	} catch(ex) {
+		console.error(ex);
+		return null;
+	}
+},"formatDt":function(cellvalue) {
+	if (!com.util.isEmpty(cellvalue) && cellvalue.length >= 8) {
+		var d = new Date(cellvalue.substring(0, 4), cellvalue.substring(4, 6) - 1, cellvalue.substring(6, 8));
+		return com.date.getDateFormat(d, 'YYYY-MM-DD');
+	} else if (!com.util.isEmpty(cellvalue) && cellvalue.length == 6) {
+		var d = new Date(cellvalue.substring(0, 4), cellvalue.substring(4, 6) - 1, "01");
+		return com.date.getDateFormat(d, 'YYYY-MM');
+	} else {
+		return cellvalue == null ? "" : cellvalue;
+	}
+},"getDateFormat":function(date, pPattern) {
+	var GLB_MONTH_IN_YEAR = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+	var GLB_DAY_IN_WEEK = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var dayInWeek = date.getDay();
+	var hour24 = date.getHours();
+	var hour12 = (hour24 > 12) ? (hour24 - 12) : hour24;
+	var min = date.getMinutes();
+	var sec = date.getSeconds();
+	var YYYY = "" + year;
+	var YY = YYYY.substr(2);
+	var MM = (("" + month).length == 1) ? "0" + month : "" + month;
+	var MON = GLB_MONTH_IN_YEAR[month - 1];
+	var DD = (("" + day).length == 1) ? "0" + day : "" + day;
+	var DAY = GLB_DAY_IN_WEEK[dayInWeek];
+	var HH = (("" + hour12).length == 1) ? "0" + hour12 : "" + hour12;
+	var hh = (("" + hour24).length == 1) ? "0" + hour24 : "" + hour24;
+	var mm = (("" + min).length == 1) ? "0" + min : "" + min;
+	var ss = (("" + sec).length == 1) ? "0" + sec : "" + sec;
+	var a = (a == 0) ? "AM" : "PM";
+
+	var dateStr;
+	if (typeof (pPattern) == "undefined" && pPattern == 'YYYY-MM-DD') {
+		dateStr = "YYYYMMDD";
+	} else if (typeof (pPattern) == "undefined" && pPattern == 'hh:mm:ss') {
+		dateStr = "hhmmss";
+	} else {
+		dateStr = pPattern;
+	}
+
+	dateStr = dateStr.replace(/a/g, a);
+	dateStr = dateStr.replace(/YYYY/g, YYYY);
+	dateStr = dateStr.replace(/YY/g, YY);
+	dateStr = dateStr.replace(/MM/g, MM);
+	dateStr = dateStr.replace(/MON/g, MON);
+	dateStr = dateStr.replace(/DD/g, DD);
+	dateStr = dateStr.replace(/DAY/g, DAY);
+	dateStr = dateStr.replace(/hh/g, hh);
+	dateStr = dateStr.replace(/HH/g, HH);
+	dateStr = dateStr.replace(/mm/g, mm);
+	dateStr = dateStr.replace(/ss/g, ss);
+
+	return dateStr;
+},"formatTime":function(cellvalue) {
+	if (!com.util.isEmpty(cellvalue) && cellvalue.length >= 6) {
+		var d = new Date();
+		d.setHours(cellvalue.substring(0, 2));
+		d.setMinutes(cellvalue.substring(2, 4));
+		d.setSeconds(cellvalue.substring(4, 6));
+
+		return com.date.getDateFormat(d, 'hh:mm:ss');
+	} else if (!com.util.isEmpty(cellvalue) && cellvalue.length == 4) {
+		var d = new Date();
+		d.setHours(cellvalue.substring(0, 2));
+		d.setMinutes(cellvalue.substring(2, 4));
+
+		return com.date.getDateFormat(d, 'hh:mm');
+	} else {
+		return cellvalue = cellvalue == null ? "" : cellvalue;
+	}
+},"formatDtTm":function(cellvalue) {
+	if (!com.util.isEmpty(cellvalue) && cellvalue.length >= 14) {
+		var d = new Date();
+		d.setYear(cellvalue.substring(0, 4));
+		d.setMonth(cellvalue.substring(4, 6) - 1);
+		d.setDate(cellvalue.substring(6, 8));
+
+		d.setHours(cellvalue.substring(8, 10));
+		d.setMinutes(cellvalue.substring(10, 12));
+		d.setSeconds(cellvalue.substring(12, 14));
+
+		return com.date.getDateFormat(d, 'YYYY-MM-DD hh:mm:ss');
+	} else {
+		return cellvalue = cellvalue == null ? "" : cellvalue;
+	}
+},"setCalendarClass":function() {
+    var settingVal = ui_yearMonthCal.getValue();
+    ui_yearMonthCal.setValue(settingVal);
+  	setInterval(() => $(".w2calendar_picker_header_dynamic_entity").removeClass("w2calendar_picker_header_dynamic_entity"), 10);
+}},"ext":{},"debug":function (domElement) {
+	var frameId = $p.debug.getFrame(domElement);
+	var scope = $p.debug.getScope(domElement);
+	var scope_id = com.util.getObject(domElement.id).scope_id;
+	
+	console.log( '* domID : ', domElement.id
+	,'\n* dom의 컴포넌트 타입 : ', scope_id == null ? 'NOT Websquare Component' : com.util.getObject(domElement.id).getPluginName() + '\n* dom의 실제 ID : ' + com.util.getObject(domElement.id).getOriginalID()
+	,'\n* dom이 속한 Frame ID : ', frameId
+	,'\n* dom이 속한 Frame의 scope 객체( $p.debug.getScope(' + domElement.id + ') ) : ', scope
+	,'\n* dom이 속한 Wframe 계층 구조\n', com.debug.printFrameHierarchy(WebSquare.util.getComponentById(frameId))
+	);
+},"mob":{"openMenu":function(menuCode,  params, option) {
+	if(menuCode != "MAIN"){
+		var menuList;
+		
+		if(SYS_CD == "NPPL" || SYS_CD == "NPMM" || SYS_CD == "NPDC"  ){
+			menuList = $p.main().wfm_header.getWindow().dlt_menu.getMatchedJSON("MENU_ID", menuCode, true);
+		} else if(SYS_CD == "NPPM"){
+			menuList = $p.main().wfm_menu.getWindow().dlt_menu.getMatchedJSON("MENU_ID", menuCode, true);
+		} else {
+			throw Error("SYS_CD is not defined")
+		}
+		
+		var menu = menuList[0];
+		if(!menu) return;
+	
+		params = params || {};
+		if(menu.LEVEL == 1 && com.util.isEmpty(menu.PGM_ID)){
+			menu = dlt_menu.getMatchedJSON("UPER_MENU_ID", menuCode, true)[0];
+		}
+	
+		if(com.util.isEmpty(menu)){
+			com.win.alert("메뉴가 등록되지 않았습니다.");
+			if(SYS_CD == "NPPM" && menuCode !=  "412000") {
+				$p.main().wfm_sub_header.show();
+			}
+			if($p.main().wfm_body.getSrc() == "/ui/nppm/frame/skku_main.xml"){
+				$p.main().wfm_sub_header.hide();
+			}
+			return;
+		}
+		
+		params.menuInfo = menu;
+		var obj = { 
+			dataObject: {
+				type : "json",
+				name : "paramData",  
+				data : params
+			}
+		};
+		
+		var data = {};
+		data.menuInfo = {
+			menuNm : menu.MENU_NM,
+			menuCode : menu.MENU_ID,
+			src : menu.PGM_URL
+		};
+		
+		// history에 화면 전환했던 프로그램 코드 저장
+		option = com.util.isEmpty(option) ? { isHistory : true } : option;
+		if ( option.isHistory && !com.util.isEmpty(menuCode)) {
+			gcm.win.pushState(data);
+		};
+		
+		$p.main().wfm_body.setSrc(menu.PGM_URL, obj);
+
+		window.scrollTo(0,0);
+		option.shouldChangeHeader = option.shouldChangeHeader === false ? false : true;
+		if( SYS_CD == "NPPM" && option.shouldChangeHeader ) {
+			$p.main().wfm_header.getWindow().scwin.setSubHeader();
+			$("html").removeClass("scroll-off");
+			$p.main().layoutWrap.removeClass("mainWrap");
+			if($p.top().wfm_sub_header) {
+				$p.top().wfm_sub_header.getWindow().scwin.setTitle(menu.MENU_NM);
+			} else if($p.top().wfm_header) {
+				$p.top().wfm_header.getWindow().scwin.setSubHeaderTitle(menu.MENU_NM);
+			}
+		}
+	} else {
+		$p.main().wfm_body.setSrc("/ui/nppm/frame/main.xml", {});
+		$p.main().wfm_header.getWindow().scwin.setMainHeader();
+	}
+}}}
+ret = com; 
+WebSquare.scope_obj=null;
+}
+return ret;}</script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/_wpack_/ui/npmm/frame/login.js?postfix=1750039574640" src="./나이스파크주차관리시스템_files/login.js.다운로드"></script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"><script type="text/javascript" charset="UTF-8" data-wqinternal="true">WebSquare.scope_obj=mf; with(WebSquare.util.getComponentById('mf').scope){ var udc_obj = mf;
+
+    /**
+    *
+    *  Secure Hash Algorithm (SHA256)
+    *  http://www.webtoolkit.info/
+    *
+    *  Original code by Angel Marin, Paul Johnston.
+    *
+    **/
+      
+    function SHA256(s){
+      
+        var chrsz   = 8;
+        var hexcase = 0;
+      
+        function safe_add (x, y) {
+            var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+            var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+            return (msw << 16) | (lsw & 0xFFFF);
+        }
+      
+        function S (X, n) { return ( X >>> n ) | (X << (32 - n)); }
+        function R (X, n) { return ( X >>> n ); }
+        function Ch(x, y, z) { return ((x & y) ^ ((~x) & z)); }
+        function Maj(x, y, z) { return ((x & y) ^ (x & z) ^ (y & z)); }
+        function Sigma0256(x) { return (S(x, 2) ^ S(x, 13) ^ S(x, 22)); }
+        function Sigma1256(x) { return (S(x, 6) ^ S(x, 11) ^ S(x, 25)); }
+        function Gamma0256(x) { return (S(x, 7) ^ S(x, 18) ^ R(x, 3)); }
+        function Gamma1256(x) { return (S(x, 17) ^ S(x, 19) ^ R(x, 10)); }
+      
+        function core_sha256 (m, l) {
+             
+            var K = new Array(0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5, 0x3956C25B, 0x59F111F1,
+                0x923F82A4, 0xAB1C5ED5, 0xD807AA98, 0x12835B01, 0x243185BE, 0x550C7DC3,
+                0x72BE5D74, 0x80DEB1FE, 0x9BDC06A7, 0xC19BF174, 0xE49B69C1, 0xEFBE4786,
+                0xFC19DC6, 0x240CA1CC, 0x2DE92C6F, 0x4A7484AA, 0x5CB0A9DC, 0x76F988DA,
+                0x983E5152, 0xA831C66D, 0xB00327C8, 0xBF597FC7, 0xC6E00BF3, 0xD5A79147,
+                0x6CA6351, 0x14292967, 0x27B70A85, 0x2E1B2138, 0x4D2C6DFC, 0x53380D13,
+                0x650A7354, 0x766A0ABB, 0x81C2C92E, 0x92722C85, 0xA2BFE8A1, 0xA81A664B,
+                0xC24B8B70, 0xC76C51A3, 0xD192E819, 0xD6990624, 0xF40E3585, 0x106AA070,
+                0x19A4C116, 0x1E376C08, 0x2748774C, 0x34B0BCB5, 0x391C0CB3, 0x4ED8AA4A,
+                0x5B9CCA4F, 0x682E6FF3, 0x748F82EE, 0x78A5636F, 0x84C87814, 0x8CC70208,
+                0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2);
+ 
+            var HASH = new Array(0x6A09E667, 0xBB67AE85, 0x3C6EF372, 0xA54FF53A, 0x510E527F, 0x9B05688C, 0x1F83D9AB, 0x5BE0CD19);
+ 
+            var W = new Array(64);
+            var a, b, c, d, e, f, g, h, i, j;
+            var T1, T2;
+      
+            m[l >> 5] |= 0x80 << (24 - l % 32);
+            m[((l + 64 >> 9) << 4) + 15] = l;
+      
+            for ( var i = 0; i<m.length; i+=16 ) {
+                a = HASH[0];
+                b = HASH[1];
+                c = HASH[2];
+                d = HASH[3];
+                e = HASH[4];
+                f = HASH[5];
+                g = HASH[6];
+                h = HASH[7];
+      
+                for ( var j = 0; j<64; j++) {
+                    if (j < 16) W[j] = m[j + i];
+                    else W[j] = safe_add(safe_add(safe_add(Gamma1256(W[j - 2]), W[j - 7]), Gamma0256(W[j - 15])), W[j - 16]);
+      
+                    T1 = safe_add(safe_add(safe_add(safe_add(h, Sigma1256(e)), Ch(e, f, g)), K[j]), W[j]);
+                    T2 = safe_add(Sigma0256(a), Maj(a, b, c));
+      
+                    h = g;
+                    g = f;
+                    f = e;
+                    e = safe_add(d, T1);
+                    d = c;
+                    c = b;
+                    b = a;
+                    a = safe_add(T1, T2);
+                }
+      
+                HASH[0] = safe_add(a, HASH[0]);
+                HASH[1] = safe_add(b, HASH[1]);
+                HASH[2] = safe_add(c, HASH[2]);
+                HASH[3] = safe_add(d, HASH[3]);
+                HASH[4] = safe_add(e, HASH[4]);
+                HASH[5] = safe_add(f, HASH[5]);
+                HASH[6] = safe_add(g, HASH[6]);
+                HASH[7] = safe_add(h, HASH[7]);
+            }
+            return HASH;
+        }
+      
+        function str2binb (str) {
+            var bin = Array();
+            var mask = (1 << chrsz) - 1;
+            for(var i = 0; i < str.length * chrsz; i += chrsz) {
+                bin[i>>5] |= (str.charCodeAt(i / chrsz) & mask) << (24 - i%32);
+            }
+            return bin;
+        }
+      
+        function Utf8Encode(string) {
+            string = string.replace(/\r\n/g,"\n");
+            var utftext = "";
+      
+            for (var n = 0; n < string.length; n++) {
+      
+                var c = string.charCodeAt(n);
+      
+                if (c < 128) {
+                    utftext += String.fromCharCode(c);
+                }
+                else if((c > 127) && (c < 2048)) {
+                    utftext += String.fromCharCode((c >> 6) | 192);
+                    utftext += String.fromCharCode((c & 63) | 128);
+                }
+                else {
+                    utftext += String.fromCharCode((c >> 12) | 224);
+                    utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                    utftext += String.fromCharCode((c & 63) | 128);
+                }
+      
+            }
+      
+            return utftext;
+        }
+      
+        function binb2hex (binarray) {
+            var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+            var str = "";
+            for(var i = 0; i < binarray.length * 4; i++) {
+                str += hex_tab.charAt((binarray[i>>2] >> ((3 - i%4)*8+4)) & 0xF) +
+                hex_tab.charAt((binarray[i>>2] >> ((3 - i%4)*8  )) & 0xF);
+            }
+            return str;
+        }
+      
+        s = Utf8Encode(s);
+        return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
+      
+    }
+     
+      
+ WebSquare.scope_obj=null;
+}</script><script type="text/javascript" charset="UTF-8" data-wqinternal="true">WebSquare.scope_obj=mf; with(WebSquare.util.getComponentById('mf').scope){ var udc_obj = mf;
+WebSquare.scope_obj=mf; with(WebSquare.util.getComponentById('mf').scope){ var udc_obj = mf;
+(function() { 
+            gcm.hkey.init($p);
+            //com.hkey.setShortKey($p.main());
+            com.win.setLangCode(com.win.getLanguage());
+            gcm.win.setHistoryBackEvent(); 
+            gcm.data.loadMessage(); 
+            gcm.data.loadGlobalData();
+            gcm.win.setProgramAuthority($p);
+         
+        })() 
+ WebSquare.scope_obj=null;
+} 
+ WebSquare.scope_obj=null;
+}</script></head>
+<body style="" class=""><div id="mf_npmm" class="w2group login_wrap"><div id="mf_wq_uuid_4" class="w2group cm-accessibility"><a id="mf_wq_uuid_5" class="w2anchor2 " href="https://npmu-i.nicepark.co.kr/npmm/home#login_content" title="로그인영역으로 이동">로그인영역으로 이동</a></div><section style="" id="login_content" class="login_content"><article style="" id="wq_uuid_7" class="subContent"><div id="mf_wq_uuid_8" class="w2group login_area_top"><h1 id="mf_wq_uuid_9" class="w2textbox ">나이스파크 주차통합 관리 시스템</h1></div><div id="mf_grp_loginInfo" class="w2group login_area_content"><div id="mf_wq_uuid_11" class="w2group id_fied field"><label id="mf_wq_uuid_12" class="w2textbox _hidden" for="mf_ibx_empCd">ID</label><input id="mf_ibx_empCd" class="w2input w2input_mandatory" type="text" title="아이디를 입력하세요." placeholder="ID"><p id="mf_tbx_textbox11" class="w2textbox error-message" aria-hidden="false">필수 입력 항목입니다.</p></div><div id="mf_wq_uuid_15" class="w2group id_fied field mb0"><label id="mf_wq_uuid_16" class="w2textbox _hidden" for="mf_sct_password">Password</label><input id="mf_sct_password" class="w2input w2input_mandatory" type="password" placeholder="PW"><p id="mf_textbox1" class="w2textbox error-message" aria-hidden="false">필수 입력 항목입니다.</p></div><div id="mf_wq_uuid_19" class="w2group login_item"><div id="mf_chk_remember" class="w2checkbox " title="아이디저장"><table class="w2checkbox_main"><tbody><tr class="w2checkbox_row"><td class="w2checkbox_td_input"><input type="checkbox" class="w2checkbox_input" name="mf_chk_remember_input" index="0" id="mf_chk_remember_input_0" title="ID저장"></td><td class="w2checkbox_td_label"><label class="w2checkbox_label " index="0" for="mf_chk_remember_input_0">ID저장</label></td></tr></tbody></table></div><div id="mf_chk_autoLogin" class="w2checkbox " title="자동로그인" style="display: none;"><table class="w2checkbox_main"><tbody><tr class="w2checkbox_row"><td class="w2checkbox_td_input"><input type="checkbox" class="w2checkbox_input" name="mf_chk_autoLogin_input" index="0" id="mf_chk_autoLogin_input_0" title="자동로그인"></td><td class="w2checkbox_td_label"><label class="w2checkbox_label " index="0" for="mf_chk_autoLogin_input_0">자동로그인</label></td></tr></tbody></table></div><input type="button" tabindex="0" id="mf_btn_pwdReset" style="font-size:12px" class="w2trigger  btn_cm pw" value="비밀번호 초기화"></div><div id="mf_wq_uuid_23" class="w2group btn_wrap full"><input type="button" tabindex="0" id="mf_btn_login" class="w2trigger btn_login" value="LOGIN"></div><div id="mf_wq_uuid_25" class="w2group login_call"><a id="mf_tbx_tel" class="w2anchor2 " href="javascript:void(null);">고객센터 1522-0741</a></div></div></article></section></div></body></html>
