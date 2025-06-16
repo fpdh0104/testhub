@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="ko" lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+	<title>nicepark</title>
+	
+	<script type="text/javascript">
+		var contextPath = "";
+		var movePage = "/ui/npmm/frame/login.xml";
+		var SYS_CD = "NPMM";
+		var SERVER_MODE = "prd";
+		var screenParamStr = 'null' != 'null' ? 'null' : '{}';			// 화면에 넘길 파라미터
+		var subDomain = "null" != 'null' ? "null" : undefined;				// SYS_CD 하위 도메인
+		
+		
+		var screenParam = {};
+		try {
+			screenParam = JSON.parse(screenParamStr);
+		} catch (e) {}
+		var strTitle = "";
+		var strLink ="";
+		
+		if ("NPMS" == SYS_CD){
+			strTitle = "NPMS 주차통합관리시스템";
+			strLink = '<link href="/images/MS/favicon.ico" rel="shortcut icon">';
+		}else if("NPMU" == SYS_CD){ 
+			strTitle = "NPMU 주차고객관리시스템"; 
+			strLink = '<link href="/images/MS/favicon.ico" rel="shortcut icon">';
+		}else if("NPMM" == SYS_CD){ 
+			strTitle = "나이스파크주차관리시스템";
+			strLink = '<link href="/images/MM/favicon.ico" rel="shortcut icon">';
+		}else if("NPDC" == SYS_CD){ 
+			if(movePage == "/ui/npdc/frame/login.xml") {
+				strTitle = "NICEPARK 웹할인시스템 로그인";
+			} else {
+				strTitle = "나이스파크 웹할인시스템";
+			}
+			strLink = '<link href="/images/DC/favicon.ico" rel="shortcut icon">';
+		}else if("NPPL" == SYS_CD){ 
+			strTitle = "나이스파크 정기권 및 할인권 구매 시스템";
+			strLink = '<link href="/images/PL/favicon.ico" rel="shortcut icon">';
+		}else if("NPPM" == SYS_CD){ 
+			strTitle = "나이스파크 정기권 및 할인권 구매 시스템";
+			strLink = '<link href="/images/PM/favicon.ico" rel="shortcut icon">';
+		}
+		
+		document.title = strTitle; 
+		document.write(strLink);
+		
+		var WebSquareExternal = {
+			"baseURI": contextPath + "/websquare/", 
+			"w2xPath" : contextPath + movePage
+		};
+		
+		<!-- 				캐시 갱신 변수 							-->
+		var websquareEngineVersion = "v1.0";		
+		var commonVersion = "CM_20250415_0001";			
+		var screenCacheControl = "every";
+		var applicationVersion = "AP_20240730_0002";
+		
+	</script>
+ 
+	<script id="configJS" type="text/javascript" src="/websquare/config_NPMM.js?postfix=WC_20241022_0001"></script>
+	<script type="text/javascript" src="/websquare/_websquare_/websquare_engine.js?postfix=v1.0"></script>
+	<script id="appJS" type="text/javascript" src="/websquare/app.js?postfix=AP_20240730_0002"></script>
+	
+</head>
+<body>
+</body>
+</html>
