@@ -9,10 +9,7 @@
   <script>
     var TARGET = "https://fpdh0104.github.io/testhub/test1.html";
     var uri = "bmplanner://app/'+window.location.assign('" + TARGET + "')+'";
-
     function go(){ window.location.href = uri; }
-
-    // 진입 즉시 스킴 실행 (제스처 차단 대비 첫 탭 폴백)
     go();
     document.addEventListener('click', go, { once:true });
     document.addEventListener('touchstart', go, { once:true });
